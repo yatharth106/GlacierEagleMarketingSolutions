@@ -108,10 +108,10 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-ivory text-charcoal font-paragraph selection:bg-stone selection:text-charcoal overflow-x-clip">
+    <div className="min-h-screen bg-ivory-warm text-charcoal-deep font-paragraph selection:bg-stone-soft selection:text-ivory-warm overflow-x-clip">
       {/* Global Scroll Progress */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-muted-gold-accent origin-left z-50"
+        className="fixed top-0 left-0 right-0 h-1 bg-gold-muted origin-left z-50"
         style={{ scaleX }}
       />
 
@@ -121,7 +121,7 @@ export default function HomePage() {
       <section className="w-full pt-32 pb-8 relative z-10">
         <div className="max-w-[120rem] mx-auto px-6 md:px-12 text-center">
           <FadeIn>
-            <p className="text-xs md:text-sm font-medium tracking-[0.2em] uppercase text-charcoal/60">
+            <p className="text-xs md:text-sm font-medium tracking-[0.2em] uppercase text-charcoal-deep/50">
               Private Revenue Advisory for B2B Founders
             </p>
           </FadeIn>
@@ -138,14 +138,14 @@ export default function HomePage() {
 
         <div className="max-w-[120rem] mx-auto px-6 md:px-12 relative z-10 text-center">
           <FadeIn delay={0.1}>
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-heading font-bold text-charcoal leading-[0.95] tracking-tight mb-12">
+            <h1 className="text-6xl md:text-8xl lg:text-9xl font-heading font-bold text-charcoal-deep leading-[0.95] tracking-tight mb-12">
               Email That Moves <br />
-              <span className="text-muted-gold-accent italic font-serif">Revenue.</span> Not Just Metrics.
+              <span className="text-gold-muted italic font-serif">Revenue.</span> Not Just Metrics.
             </h1>
           </FadeIn>
 
           <FadeIn delay={0.3}>
-            <p className="text-lg md:text-xl text-charcoal/80 max-w-3xl mx-auto leading-relaxed mb-16">
+            <p className="text-lg md:text-xl text-charcoal-deep/80 max-w-3xl mx-auto leading-relaxed mb-16">
               We design AI-assisted, strategist-led email systems that convert free trials, dormant leads, and silent prospects into qualified pipeline and measurable cash flow.
             </p>
           </FadeIn>
@@ -154,7 +154,7 @@ export default function HomePage() {
             <Link to="/application">
               <Button 
                 size="lg" 
-                className="bg-charcoal text-ivory hover:bg-charcoal/90 rounded-none px-10 py-8 text-lg font-medium tracking-wide transition-all duration-300"
+                className="bg-charcoal-deep text-ivory-warm border border-gold-muted hover:bg-charcoal-light rounded-none px-10 py-8 text-lg font-medium tracking-wide transition-all duration-200"
               >
                 Request Private Revenue Audit
               </Button>
@@ -163,7 +163,7 @@ export default function HomePage() {
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="border-charcoal text-charcoal hover:bg-stone/20 rounded-none px-10 py-8 text-lg font-medium tracking-wide bg-transparent"
+                className="border-charcoal-deep text-charcoal-deep hover:bg-stone-light/20 rounded-none px-10 py-8 text-lg font-medium tracking-wide bg-transparent transition-all duration-200"
               >
                 View Our Model
               </Button>
@@ -178,22 +178,22 @@ export default function HomePage() {
           transition={{ delay: 1.5, duration: 1 }}
           className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
         >
-          <span className="text-[10px] uppercase tracking-widest text-charcoal/40">Scroll</span>
-          <div className="w-[1px] h-12 bg-charcoal/20 overflow-hidden">
+          <span className="text-[10px] uppercase tracking-widest text-charcoal-deep/40">Scroll</span>
+          <div className="w-[1px] h-12 bg-charcoal-deep/20 overflow-hidden">
             <motion.div 
               animate={{ y: [0, 48, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="w-full h-1/2 bg-charcoal"
+              className="w-full h-1/2 bg-charcoal-deep"
             />
           </div>
         </motion.div>
       </section>
 
       {/* --- 3. Credibility Strip (Authority Bar) --- */}
-      <section className="w-full border-y border-stone/30 bg-ivory py-12">
+      <section className="w-full border-y border-stone-light/30 bg-ivory-warm py-12">
         <div className="max-w-[120rem] mx-auto px-6 md:px-12">
           {isLoading ? (
-            <div className="h-8 w-full bg-stone/10 animate-pulse" />
+            <div className="h-8 w-full bg-stone-light/10 animate-pulse" />
           ) : (
             <div className="flex flex-wrap justify-center md:justify-between items-center gap-x-12 gap-y-6 opacity-70">
               {industries.length > 0 ? (
@@ -206,8 +206,8 @@ export default function HomePage() {
                     transition={{ delay: i * 0.1 }}
                     className="flex items-center gap-2"
                   >
-                    <span className="w-1.5 h-1.5 bg-muted-gold-accent rounded-full" />
-                    <span className="text-sm font-medium uppercase tracking-widest text-charcoal">
+                    <span className="w-1.5 h-1.5 bg-gold-muted rounded-full" />
+                    <span className="text-sm font-medium uppercase tracking-widest text-charcoal-deep">
                       {industry.industryName}
                     </span>
                   </motion.div>
@@ -227,7 +227,7 @@ export default function HomePage() {
       </section>
 
       {/* --- 4. The Real Problem (Sticky Scroll Layout) --- */}
-      <section className="w-full py-32 bg-ivory relative">
+      <section className="w-full py-32 bg-ivory-warm relative">
         <div className="max-w-[120rem] mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
             
@@ -235,14 +235,14 @@ export default function HomePage() {
             <div className="lg:col-span-5 relative">
               <div className="sticky top-32">
                 <FadeIn>
-                  <h2 className="text-5xl md:text-6xl font-heading text-charcoal mb-8 leading-tight">
+                  <h2 className="text-5xl md:text-6xl font-heading text-charcoal-deep mb-8 leading-tight">
                     Your Inbox Is <br />
                     <span className="text-destructive/80 italic">Leaking Revenue.</span>
                   </h2>
-                  <p className="text-lg text-charcoal/70 mb-12 max-w-md leading-relaxed">
+                  <p className="text-lg text-charcoal-deep/70 mb-12 max-w-md leading-relaxed">
                     Most B2B email systems are designed for marketing metrics, not revenue outcomes. While you track open rates, your actual pipeline is silently draining away.
                   </p>
-                  <div className="hidden lg:block w-24 h-[1px] bg-charcoal/20" />
+                  <div className="hidden lg:block w-24 h-[1px] bg-charcoal-deep/20" />
                 </FadeIn>
               </div>
             </div>
@@ -251,7 +251,7 @@ export default function HomePage() {
             <div className="lg:col-span-7 space-y-12">
               {isLoading ? (
                 <div className="space-y-8">
-                  {[1, 2, 3].map(i => <div key={i} className="h-40 bg-stone/10 animate-pulse rounded-sm" />)}
+                  {[1, 2, 3].map(i => <div key={i} className="h-40 bg-stone-light/10 animate-pulse rounded-sm" />)}
                 </div>
               ) : (
                 problems.filter(p => p.isCommon).map((problem, index) => (
@@ -261,13 +261,13 @@ export default function HomePage() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
-                    className="group border-l-2 border-stone pl-8 py-4 hover:border-muted-gold-accent transition-colors duration-500"
+                    className="group border-l-2 border-stone-light pl-8 py-4 hover:border-gold-muted transition-colors duration-500"
                   >
-                    <h3 className="text-2xl font-heading text-charcoal mb-3 group-hover:text-muted-gold-accent transition-colors">
+                    <h3 className="text-2xl font-heading text-charcoal-deep mb-3 group-hover:text-gold-muted transition-colors">
                       {problem.problemDescription}
                     </h3>
                     {problem.symptomExample && (
-                      <p className="text-base text-charcoal/60 leading-relaxed">
+                      <p className="text-base text-charcoal-deep/60 leading-relaxed">
                         {problem.symptomExample}
                       </p>
                     )}
@@ -282,7 +282,7 @@ export default function HomePage() {
               )}
               
               <FadeIn delay={0.4} className="pt-12">
-                <p className="text-2xl font-heading italic text-charcoal text-center lg:text-left">
+                <p className="text-2xl font-heading italic text-charcoal-deep text-center lg:text-left">
                   "Email should accelerate pipeline velocity — not generate vanity metrics."
                 </p>
               </FadeIn>
@@ -292,21 +292,21 @@ export default function HomePage() {
       </section>
 
       {/* --- 5. The Glacier Eagle Model (Split Section) --- */}
-      <section id="glacier-model" className="w-full bg-stone/20 py-32 overflow-hidden">
+      <section id="glacier-model" className="w-full bg-stone-light/20 py-32 overflow-hidden">
         <div className="max-w-[120rem] mx-auto px-6 md:px-12">
           <FadeIn className="mb-24 text-center">
-            <h2 className="text-5xl md:text-6xl font-heading text-charcoal mb-6">A Hybrid Revenue Engine</h2>
-            <p className="text-lg text-charcoal/60 max-w-2xl mx-auto">
+            <h2 className="text-5xl md:text-6xl font-heading text-charcoal-deep mb-6">A Hybrid Revenue Engine</h2>
+            <p className="text-lg text-charcoal-deep/60 max-w-2xl mx-auto">
               We bridge the gap between technical automation and high-level revenue strategy.
             </p>
           </FadeIn>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-stone/40 bg-ivory shadow-2xl shadow-stone/10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-stone-light/40 bg-ivory-warm shadow-2xl shadow-stone-light/10">
             {/* Left: AI Framework */}
-            <div className="p-12 md:p-20 border-b md:border-b-0 md:border-r border-stone/40 relative group overflow-hidden">
-              <div className="absolute top-0 left-0 w-1 h-full bg-stone/30 group-hover:bg-charcoal transition-colors duration-500" />
-              <h3 className="text-3xl font-heading text-charcoal mb-8 flex items-center gap-4">
-                <span className="text-sm font-sans font-bold tracking-widest uppercase text-stone-500">01</span>
+            <div className="p-12 md:p-20 border-b md:border-b-0 md:border-r border-stone-light/40 relative group overflow-hidden">
+              <div className="absolute top-0 left-0 w-1 h-full bg-stone-light/30 group-hover:bg-charcoal-deep transition-colors duration-500" />
+              <h3 className="text-3xl font-heading text-charcoal-deep mb-8 flex items-center gap-4">
+                <span className="text-sm font-sans font-bold tracking-widest uppercase text-stone-soft">01</span>
                 AI Framework Layer
               </h3>
               <ul className="space-y-6">
@@ -317,9 +317,9 @@ export default function HomePage() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1 }}
-                    className="flex items-center gap-4 text-lg text-charcoal/80"
+                    className="flex items-center gap-4 text-lg text-charcoal-deep/80"
                   >
-                    <div className="w-1.5 h-1.5 bg-stone-400 rounded-full" />
+                    <div className="w-1.5 h-1.5 bg-stone-soft rounded-full" />
                     {item}
                   </motion.li>
                 ))}
@@ -327,10 +327,10 @@ export default function HomePage() {
             </div>
 
             {/* Right: Human Strategy */}
-            <div className="p-12 md:p-20 bg-charcoal text-ivory relative group overflow-hidden">
-              <div className="absolute top-0 right-0 w-1 h-full bg-muted-gold-accent group-hover:bg-ivory transition-colors duration-500" />
-              <h3 className="text-3xl font-heading text-ivory mb-8 flex items-center gap-4">
-                <span className="text-sm font-sans font-bold tracking-widest uppercase text-muted-gold-accent">02</span>
+            <div className="p-12 md:p-20 bg-charcoal-deep text-ivory-warm relative group overflow-hidden">
+              <div className="absolute top-0 right-0 w-1 h-full bg-gold-muted group-hover:bg-ivory-warm transition-colors duration-500" />
+              <h3 className="text-3xl font-heading text-ivory-warm mb-8 flex items-center gap-4">
+                <span className="text-sm font-sans font-bold tracking-widest uppercase text-gold-muted">02</span>
                 Human Strategy Layer
               </h3>
               <ul className="space-y-6">
@@ -341,9 +341,9 @@ export default function HomePage() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1 }}
-                    className="flex items-center gap-4 text-lg text-ivory/90"
+                    className="flex items-center gap-4 text-lg text-ivory-warm/90"
                   >
-                    <div className="w-1.5 h-1.5 bg-muted-gold-accent rounded-full" />
+                    <div className="w-1.5 h-1.5 bg-gold-muted rounded-full" />
                     {item}
                   </motion.li>
                 ))}
@@ -352,32 +352,32 @@ export default function HomePage() {
           </div>
 
           <FadeIn className="mt-16 text-center">
-            <p className="text-2xl font-heading text-charcoal">
-              Technology executes. <span className="italic text-muted-gold-accent">Strategy decides.</span>
+            <p className="text-2xl font-heading text-charcoal-deep">
+              Technology executes. <span className="italic text-gold-muted">Strategy decides.</span>
             </p>
           </FadeIn>
         </div>
       </section>
 
       {/* --- 6. Revenue Metrics We Optimize (Grid) --- */}
-      <section className="w-full py-32 bg-ivory">
+      <section className="w-full py-32 bg-ivory-warm">
         <div className="max-w-[120rem] mx-auto px-6 md:px-12">
           <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
             <FadeIn>
-              <h2 className="text-5xl font-heading text-charcoal max-w-xl leading-tight">
+              <h2 className="text-5xl font-heading text-charcoal-deep max-w-xl leading-tight">
                 We Optimize What <br />Actually Matters.
               </h2>
             </FadeIn>
             <FadeIn delay={0.2}>
-              <p className="text-lg text-charcoal/60 max-w-md text-right md:text-left">
+              <p className="text-lg text-charcoal-deep/60 max-w-md text-right md:text-left">
                 No vanity metrics. We focus purely on the levers that drive revenue growth and business health.
               </p>
             </FadeIn>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-stone/30 border border-stone/30">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-stone-light/30 border border-stone-light/30">
             {isLoading ? (
-              [1, 2, 3, 4, 5, 6].map(i => <div key={i} className="h-64 bg-ivory animate-pulse" />)
+              [1, 2, 3, 4, 5, 6].map(i => <div key={i} className="h-64 bg-ivory-warm animate-pulse" />)
             ) : (
               metrics.map((metric, index) => (
                 <motion.div
@@ -386,23 +386,23 @@ export default function HomePage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="bg-ivory p-12 hover:bg-stone/5 transition-colors duration-300 group min-h-[300px] flex flex-col justify-between"
+                  className="bg-ivory-warm p-12 hover:bg-stone-light/5 transition-colors duration-300 group min-h-[300px] flex flex-col justify-between"
                 >
                   <div>
-                    <div className="w-8 h-8 mb-6 text-muted-gold-accent opacity-50 group-hover:opacity-100 transition-opacity">
+                    <div className="w-8 h-8 mb-6 text-gold-muted opacity-50 group-hover:opacity-100 transition-opacity">
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                         <path d="M12 20V10" />
                         <path d="M18 20V4" />
                         <path d="M6 20v-4" />
                       </svg>
                     </div>
-                    <h3 className="text-xl font-bold text-charcoal mb-3">{metric.metricName}</h3>
-                    <p className="text-sm text-charcoal/60 leading-relaxed">
+                    <h3 className="text-xl font-bold text-charcoal-deep mb-3">{metric.metricName}</h3>
+                    <p className="text-sm text-charcoal-deep/60 leading-relaxed">
                       {metric.metricDescription || metric.businessImpact}
                     </p>
                   </div>
                   {metric.displayFormat && (
-                    <div className="mt-8 text-3xl font-heading text-charcoal/20 group-hover:text-charcoal transition-colors">
+                    <div className="mt-8 text-3xl font-heading text-charcoal-deep/20 group-hover:text-charcoal-deep transition-colors">
                       {metric.displayFormat}
                     </div>
                   )}
@@ -414,11 +414,11 @@ export default function HomePage() {
       </section>
 
       {/* --- 7. Services Breakdown (Accordion/Cards) --- */}
-      <section className="w-full py-32 bg-charcoal text-ivory">
+      <section className="w-full py-32 bg-charcoal-deep text-ivory-warm">
         <div className="max-w-[120rem] mx-auto px-6 md:px-12">
           <FadeIn className="mb-20">
             <h2 className="text-4xl md:text-5xl font-heading mb-6">Done-For-You Revenue Systems</h2>
-            <Separator className="bg-ivory/20" />
+            <Separator className="bg-ivory-warm/20" />
           </FadeIn>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24">
@@ -452,11 +452,11 @@ export default function HomePage() {
                 transition={{ delay: i * 0.1 }}
                 className="group"
               >
-                <div className="text-xs font-bold text-muted-gold-accent mb-4 tracking-widest">{service.icon}</div>
-                <h3 className="text-2xl md:text-3xl font-heading mb-4 group-hover:text-muted-gold-accent transition-colors">
+                <div className="text-xs font-bold text-gold-muted mb-4 tracking-widest">{service.icon}</div>
+                <h3 className="text-2xl md:text-3xl font-heading mb-4 group-hover:text-gold-muted transition-colors">
                   {service.title}
                 </h3>
-                <p className="text-ivory/60 text-lg leading-relaxed max-w-md">
+                <p className="text-ivory-warm/60 text-lg leading-relaxed max-w-md">
                   {service.desc}
                 </p>
               </motion.div>
@@ -466,18 +466,18 @@ export default function HomePage() {
       </section>
 
       {/* --- 8. Engagement Model (Vertical Tiers) --- */}
-      <section className="w-full py-32 bg-ivory">
+      <section className="w-full py-32 bg-ivory-warm">
         <div className="max-w-[100rem] mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Header Column */}
             <div className="lg:col-span-1">
               <div className="sticky top-32">
-                <h2 className="text-5xl font-heading text-charcoal mb-8">Engagement Models</h2>
-                <p className="text-lg text-charcoal/60 mb-12">
+                <h2 className="text-5xl font-heading text-charcoal-deep mb-8">Engagement Models</h2>
+                <p className="text-lg text-charcoal-deep/60 mb-12">
                   Structured as advisory retainers, not SaaS plans. We limit client capacity to ensure depth of focus.
                 </p>
                 <Link to="/application">
-                  <Button variant="outline" className="border-charcoal text-charcoal hover:bg-charcoal hover:text-ivory rounded-none px-8 py-6">
+                  <Button variant="outline" className="border-charcoal-deep text-charcoal-deep hover:bg-charcoal-deep hover:text-ivory-warm rounded-none px-8 py-6">
                     Check Availability
                   </Button>
                 </Link>
@@ -497,22 +497,22 @@ export default function HomePage() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.15 }}
-                  className="border border-stone p-8 md:p-12 hover:border-charcoal hover:shadow-xl hover:shadow-stone/20 transition-all duration-500 bg-white"
+                  className="border border-stone-light p-8 md:p-12 hover:border-charcoal-deep hover:shadow-xl hover:shadow-stone-light/20 transition-all duration-500 bg-white"
                 >
                   <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
-                    <h3 className="text-3xl font-heading text-charcoal">{tier.name}</h3>
-                    <span className="text-xs font-bold uppercase tracking-widest bg-stone/20 px-3 py-1 text-charcoal/70">
+                    <h3 className="text-3xl font-heading text-charcoal-deep">{tier.name}</h3>
+                    <span className="text-xs font-bold uppercase tracking-widest bg-stone-light/20 px-3 py-1 text-charcoal-deep/70">
                       {tier.limit}
                     </span>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <span className="text-xs text-stone-500 uppercase tracking-wider block mb-2">Core Outcome</span>
-                      <p className="text-lg font-medium text-charcoal">{tier.outcome}</p>
+                      <span className="text-xs text-stone-soft uppercase tracking-wider block mb-2">Core Outcome</span>
+                      <p className="text-lg font-medium text-charcoal-deep">{tier.outcome}</p>
                     </div>
                     <div>
-                      <span className="text-xs text-stone-500 uppercase tracking-wider block mb-2">Scope</span>
-                      <p className="text-lg font-medium text-charcoal">{tier.scope}</p>
+                      <span className="text-xs text-stone-soft uppercase tracking-wider block mb-2">Scope</span>
+                      <p className="text-lg font-medium text-charcoal-deep">{tier.scope}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -523,10 +523,10 @@ export default function HomePage() {
       </section>
 
       {/* --- 9. Who We Work With (Qualification) --- */}
-      <section className="w-full py-32 bg-stone/10 border-y border-stone/20">
+      <section className="w-full py-32 bg-stone-light/10 border-y border-stone-light/20">
         <div className="max-w-[100rem] mx-auto px-6 md:px-12">
           <FadeIn className="text-center mb-20">
-            <h2 className="text-4xl font-heading text-charcoal">Qualification Criteria</h2>
+            <h2 className="text-4xl font-heading text-charcoal-deep">Qualification Criteria</h2>
           </FadeIn>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 max-w-5xl mx-auto">
@@ -536,7 +536,7 @@ export default function HomePage() {
               viewport={{ once: true }}
               className="space-y-8"
             >
-              <h3 className="text-xl font-bold text-charcoal border-b border-charcoal pb-4">This Is For You If:</h3>
+              <h3 className="text-xl font-bold text-charcoal-deep border-b border-charcoal-deep pb-4">This Is For You If:</h3>
               <ul className="space-y-4">
                 {[
                   "You are a B2B founder or revenue leader",
@@ -544,8 +544,8 @@ export default function HomePage() {
                   "You generate consistent leads or trials",
                   "You want measurable revenue lift"
                 ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3 text-lg text-charcoal/80">
-                    <Check className="w-5 h-5 text-muted-gold-accent mt-1 shrink-0" />
+                  <li key={i} className="flex items-start gap-3 text-lg text-charcoal-deep/80">
+                    <Check className="w-5 h-5 text-gold-muted mt-1 shrink-0" />
                     {item}
                   </li>
                 ))}
@@ -558,7 +558,7 @@ export default function HomePage() {
               viewport={{ once: true }}
               className="space-y-8 opacity-60"
             >
-              <h3 className="text-xl font-bold text-charcoal border-b border-stone pb-4">Not For:</h3>
+              <h3 className="text-xl font-bold text-charcoal-deep border-b border-stone-light pb-4">Not For:</h3>
               <ul className="space-y-4">
                 {[
                   "Early-stage hobby projects",
@@ -566,8 +566,8 @@ export default function HomePage() {
                   "Businesses without CRM visibility",
                   "Teams seeking 'growth hacks'"
                 ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3 text-lg text-charcoal/80">
-                    <div className="w-1.5 h-1.5 bg-charcoal/40 rounded-full mt-2.5 shrink-0" />
+                  <li key={i} className="flex items-start gap-3 text-lg text-charcoal-deep/80">
+                    <div className="w-1.5 h-1.5 bg-charcoal-deep/40 rounded-full mt-2.5 shrink-0" />
                     {item}
                   </li>
                 ))}

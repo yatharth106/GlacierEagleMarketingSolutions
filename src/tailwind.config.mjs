@@ -23,18 +23,33 @@ export default {
                 paragraph: "open sans"
             },
             colors: {
-                'muted-gold-accent': '#B8A06A',
+                // Primary base colors - Old money aesthetic
+                'charcoal-deep': '#1C1C1C',
+                'charcoal-light': '#2A2A2A',
+                'ivory-warm': '#F4F1EA',
+                'ivory-off': '#F8F5F0',
+                'stone-soft': '#B8B5AE',
+                'stone-light': '#D3CFC6',
+                
+                // Accent colors - Discreet wealth
+                'gold-muted': '#A89968',
+                'gold-subtle': '#9D8E5C',
+                'navy-desaturated': '#1F2A36',
+                'forest-dark': '#1E2B24',
+                
+                // Legacy mappings for compatibility
+                'muted-gold-accent': '#A89968',
                 stone: '#D3CFC6',
-                charcoal: '#333333',
-                ivory: '#F8F5F0',
+                charcoal: '#1C1C1C',
+                ivory: '#F4F1EA',
                 destructive: '#E53935',
                 'destructive-foreground': '#FFFFFF',
-                background: '#F8F5F0',
-                secondary: '#333333',
-                foreground: '#333333',
-                'secondary-foreground': '#F5F5DC',
-                'primary-foreground': '#222222',
-                primary: '#B8A06A'
+                background: '#F4F1EA',
+                secondary: '#1C1C1C',
+                foreground: '#1C1C1C',
+                'secondary-foreground': '#F4F1EA',
+                'primary-foreground': '#F4F1EA',
+                primary: '#A89968'
             },
         },
     },
