@@ -159,7 +159,13 @@ export default function HomePage() {
                 Request Private Revenue Audit
               </Button>
             </Link>
-            <a href="#glacier-model">
+            <a href="#glacier-model" onClick={(e) => {
+              e.preventDefault();
+              const element = document.getElementById('glacier-model');
+              if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}>
               <Button 
                 variant="outline" 
                 size="lg" 
