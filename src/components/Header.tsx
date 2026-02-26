@@ -51,6 +51,21 @@ export default function Header() {
             >
               FAQ
             </Link>
+            <a 
+              href="#glacier-model" 
+              onClick={(e) => {
+                e.preventDefault();
+                const element = document.getElementById('glacier-model');
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                  window.location.href = '/#glacier-model';
+                }
+              }}
+              className="text-base font-paragraph text-charcoal-deep transition-colors duration-200 hover:text-gold-muted cursor-pointer"
+            >
+              View Our Model
+            </a>
             <Link 
               to="/application"
               className="bg-charcoal-deep text-ivory-warm px-6 py-3 font-paragraph font-semibold border border-gold-muted transition-all duration-200 hover:bg-charcoal-light"
@@ -114,6 +129,22 @@ export default function Header() {
             >
               FAQ
             </Link>
+            <a 
+              href="#glacier-model" 
+              onClick={(e) => {
+                e.preventDefault();
+                setIsMenuOpen(false);
+                const element = document.getElementById('glacier-model');
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                  window.location.href = '/#glacier-model';
+                }
+              }}
+              className="text-base font-paragraph text-charcoal-deep py-2 transition-colors duration-200 hover:text-gold-muted cursor-pointer"
+            >
+              View Our Model
+            </a>
             <Link 
               to="/application"
               className="bg-charcoal-deep text-ivory-warm px-6 py-3 font-paragraph font-semibold border border-gold-muted text-center transition-all duration-200 hover:bg-charcoal-light"
