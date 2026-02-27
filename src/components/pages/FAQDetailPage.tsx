@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { BaseCrudService } from '@/integrations';
 import { FrequentlyAskedQuestions } from '@/entities';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import PageLayout from '@/components/PageLayout';
 import { ChevronDown } from 'lucide-react';
 
 const FadeIn = ({ children, delay = 0, className = "" }: { children: React.ReactNode, delay?: number, className?: string }) => (
@@ -69,8 +68,7 @@ export default function FAQDetailPage() {
   const displayFaqs = faqs.length > 0 ? faqs : defaultFaqs;
 
   return (
-    <div className="min-h-screen bg-navy-dark text-ivory-primary font-paragraph selection:bg-gold-antique selection:text-navy-dark">
-      <Header />
+    <PageLayout>
 
       {/* --- Hero Section --- */}
       <section className="w-full pt-32 pb-20 bg-navy-dark">
@@ -159,7 +157,6 @@ export default function FAQDetailPage() {
         </div>
       </section>
 
-      <Footer />
-    </div>
+    </PageLayout>
   );
 }

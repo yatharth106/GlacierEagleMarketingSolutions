@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { BaseCrudService } from '@/integrations';
 import { Services, EngagementTiers } from '@/entities';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import PageLayout from '@/components/PageLayout';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
@@ -45,8 +44,7 @@ export default function ServicesFrameworkPage() {
   };
 
   return (
-    <div className="min-h-screen bg-navy-dark text-ivory-primary font-paragraph selection:bg-gold-antique selection:text-navy-dark">
-      <Header />
+    <PageLayout>
 
       {/* --- Services Overview Section --- */}
       <section className="w-full pt-32 pb-24 bg-navy-dark">
@@ -238,7 +236,6 @@ export default function ServicesFrameworkPage() {
         </div>
       </section>
 
-      <Footer />
-    </div>
+    </PageLayout>
   );
 }

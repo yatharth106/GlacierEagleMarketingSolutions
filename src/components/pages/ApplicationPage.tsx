@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import PageLayout from '@/components/PageLayout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -47,9 +46,8 @@ export default function ApplicationPage() {
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen bg-ivory">
-        <Header />
-        <section className="w-full bg-ivory pt-32 pb-32">
+      <PageLayout>
+        <section className="w-full bg-navy-dark pt-32 pb-32">
           <div className="max-w-[100rem] mx-auto px-8">
             <motion.div
               initial="hidden"
@@ -60,23 +58,23 @@ export default function ApplicationPage() {
               {isTestMode && (
                 <div className="mb-8 p-4 bg-emerald-forest/10 border border-emerald-forest rounded-lg">
                   <Badge className="bg-emerald-forest text-ivory mb-3">Test Mode</Badge>
-                  <p className="text-sm font-paragraph text-charcoal">
+                  <p className="text-sm font-paragraph text-ivory-primary">
                     This is a test submission. No live business process was triggered.
                   </p>
                 </div>
               )}
-              <h1 className="text-5xl font-heading text-charcoal mb-8">
+              <h1 className="text-5xl font-heading text-ivory-primary mb-8">
                 Application Received
               </h1>
-              <p className="text-lg font-paragraph text-charcoal mb-8">
+              <p className="text-lg font-paragraph text-ivory-primary mb-8">
                 Thank you for your interest in Glacier Eagle. We review all applications carefully and will respond within 3-5 business days.
               </p>
-              <p className="text-base font-paragraph text-charcoal opacity-70">
+              <p className="text-base font-paragraph text-ivory-primary opacity-70">
                 Limited engagements accepted quarterly.
               </p>
               {isTestMode && (
-                <div className="mt-12 pt-8 border-t border-charcoal/20">
-                  <p className="text-sm font-paragraph text-charcoal opacity-70 mb-4">
+                <div className="mt-12 pt-8 border-t border-ivory-primary/20">
+                  <p className="text-sm font-paragraph text-ivory-primary opacity-70 mb-4">
                     Submitted Data (Test Mode):
                   </p>
                   <div className="bg-charcoal/5 p-6 rounded-lg text-left space-y-2">
@@ -91,16 +89,14 @@ export default function ApplicationPage() {
             </motion.div>
           </div>
         </section>
-        <Footer />
-      </div>
+      </PageLayout>
     );
   }
 
   return (
-    <div className="min-h-screen bg-ivory">
-      <Header />
+    <PageLayout>
 
-      <section className="w-full bg-ivory pt-32 pb-32">
+      <section className="w-full bg-navy-dark pt-32 pb-32">
         <div className="max-w-[100rem] mx-auto px-8">
           <motion.div
             initial="hidden"
@@ -109,26 +105,26 @@ export default function ApplicationPage() {
             className="max-w-3xl mx-auto"
           >
             <div className="flex items-center justify-center gap-3 mb-8">
-              <h1 className="text-5xl md:text-6xl font-heading text-charcoal text-center">
+              <h1 className="text-5xl md:text-6xl font-heading text-ivory-primary text-center">
                 Request a Private Revenue Audit
               </h1>
               {isTestMode && <Badge className="bg-emerald-forest text-ivory">Test Mode</Badge>}
             </div>
-            <p className="text-lg font-paragraph text-charcoal mb-12 text-center">
+            <p className="text-lg font-paragraph text-ivory-primary mb-12 text-center">
               Complete this application to be considered for engagement. We review all submissions and respond within 3-5 business days.
             </p>
 
             {isTestMode && (
               <div className="mb-8 p-4 bg-emerald-forest/10 border border-emerald-forest rounded-lg">
-                <p className="text-sm font-paragraph text-charcoal">
+                <p className="text-sm font-paragraph text-ivory-primary">
                   <span className="font-semibold">🧪 Test Mode Active:</span> Submitting this form will simulate a successful submission without triggering any live business processes.
                 </p>
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-8 bg-stone p-12">
+            <form onSubmit={handleSubmit} className="space-y-8 bg-slate-deep p-12">
               <div className="space-y-3">
-                <Label htmlFor="companyName" className="text-base font-paragraph text-charcoal font-semibold">
+                <Label htmlFor="companyName" className="text-base font-paragraph text-ivory-primary font-semibold">
                   Company Name *
                 </Label>
                 <Input
@@ -249,7 +245,6 @@ export default function ApplicationPage() {
         </div>
       </section>
 
-      <Footer />
-    </div>
+    </PageLayout>
   );
 }

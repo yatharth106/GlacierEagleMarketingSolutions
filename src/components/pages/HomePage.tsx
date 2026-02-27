@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, useSpring, useInView } from 'framer-motion';
 import { BaseCrudService } from '@/integrations';
 import { ProblemStatements, OptimizationMetrics, TargetIndustries } from '@/entities';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import PageLayout from '@/components/PageLayout';
 import { ArrowRight, Check, ChevronDown, Minus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
@@ -108,13 +107,12 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-navy-dark text-ivory-primary font-paragraph selection:bg-gold-antique selection:text-navy-dark overflow-x-clip">
+    <PageLayout>
       {/* Global Scroll Progress */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-1 bg-gold-antique origin-left z-50"
         style={{ scaleX }}
       />
-      <Header />
       {/* --- 1. Pre-Hero Micro Statement --- */}
       <section className="w-full pt-32 pb-8 relative z-10">
         <div className="max-w-[120rem] mx-auto px-6 md:px-12 text-center">
@@ -689,7 +687,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      <Footer />
-    </div>
+    </PageLayout>
   );
 }
