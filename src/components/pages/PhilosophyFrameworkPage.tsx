@@ -47,11 +47,24 @@ export default function PhilosophyFrameworkPage() {
   const [processSteps, setProcessSteps] = useState<AdvisoryProcessSteps[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
+  const location = useLocation();
   const [ctaDisabled, setCtaDisabled] = useState(false);
 
   useEffect(() => {
     loadData();
   }, []);
+
+  useEffect(() => {
+    // Scroll to the appropriate section based on the current route
+    if (location.pathname === '/framework') {
+      const frameworkSection = document.getElementById('framework');
+      if (frameworkSection) {
+        setTimeout(() => {
+          frameworkSection.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }, [location.pathname]);
 
   const loadData = async () => {
     setIsLoading(true);
@@ -79,7 +92,7 @@ export default function PhilosophyFrameworkPage() {
       <Header />
 
       {/* --- Philosophy Section --- */}
-      <section className="w-full pt-[140px] pb-[140px] bg-navy-dark relative overflow-hidden">
+      <section className={`w-full pt-[140px] pb-[140px] bg-navy-dark relative overflow-hidden ${location.pathname === '/framework' ? 'hidden' : ''}`}>
         {/* Grain texture overlay */}
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{
           backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="2" /%3E%3C/filter%3E%3Crect width="400" height="400" filter="url(%23noiseFilter)" /%3E%3C/svg%3E")',
