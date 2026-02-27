@@ -54,18 +54,6 @@ export default function PhilosophyFrameworkPage() {
     loadData();
   }, []);
 
-  useEffect(() => {
-    // Scroll to the appropriate section based on the current route
-    if (location.pathname === '/framework') {
-      const frameworkSection = document.getElementById('framework');
-      if (frameworkSection) {
-        setTimeout(() => {
-          frameworkSection.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
-      }
-    }
-  }, [location.pathname]);
-
   const loadData = async () => {
     setIsLoading(true);
     try {

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showStickyCTA, setShowStickyCTA] = useState(false);
+  const navigate = useNavigate();
 
   const navItems = [
     { label: 'Philosophy', href: '/philosophy' },
@@ -14,6 +15,11 @@ export default function Header() {
     { label: 'Case Studies', href: '/case-studies' },
     { label: 'FAQ', href: '/faq' },
   ];
+
+  const handleNavClick = (href: string) => {
+    navigate(href);
+    setIsMenuOpen(false);
+  };
 
   // Show sticky CTA after scrolling past hero section
   useEffect(() => {
@@ -39,14 +45,14 @@ export default function Header() {
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-10">
               {navItems.map((item) => (
-                <Link
+                <button
                   key={item.href}
-                  to={item.href}
-                  className="text-base font-paragraph text-ivory-primary relative group transition-colors duration-300 hover:text-gold-antique px-2 py-2"
+                  onClick={() => handleNavClick(item.href)}
+                  className="text-base font-paragraph text-ivory-primary relative group transition-colors duration-300 hover:text-gold-antique px-2 py-2 bg-transparent border-none cursor-pointer"
                 >
                   {item.label}
                   <span className="absolute bottom-0 left-0 w-0 h-px bg-gold-antique group-hover:w-full transition-all duration-300" />
-                </Link>
+                </button>
               ))}
               <Link
                 to="/application"
@@ -70,14 +76,13 @@ export default function Header() {
           {isMenuOpen && (
             <nav className="lg:hidden mt-6 pb-4 flex flex-col gap-4 border-t border-gold-antique/20 pt-4">
               {navItems.map((item) => (
-                <Link
+                <button
                   key={item.href}
-                  to={item.href}
-                  className="text-base font-paragraph text-ivory-primary py-2 transition-colors duration-300 hover:text-gold-antique"
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={() => handleNavClick(item.href)}
+                  className="text-base font-paragraph text-ivory-primary py-2 transition-colors duration-300 hover:text-gold-antique text-left bg-transparent border-none cursor-pointer"
                 >
                   {item.label}
-                </Link>
+                </button>
               ))}
               <Link
                 to="/application"
