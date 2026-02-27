@@ -286,7 +286,7 @@ export default function ApplicationPage() {
               </div>
 
               <div className="space-y-3" ref={Object.keys(errors).length > 0 && errors.leadVolume && !errors.companyName && !errors.arrRange && !errors.revenueChallenge && !errors.emailPlatform && !errors.crm ? firstErrorRef : undefined}>
-                <Label htmlFor="leadVolume" className="text-base font-paragraph text-charcoal font-semibold">
+                <Label htmlFor="leadVolume" className="text-base font-paragraph font-semibold text-primary-foreground">
                   Monthly Trial / Lead Volume *
                 </Label>
                 <Select
