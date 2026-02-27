@@ -250,7 +250,7 @@ export default function CaseStudiesDetailPage() {
             </p>
             <Link to="/application">
               <Button className="bg-bronze-burnished text-ivory-primary hover:bg-bronze-burnished/90 rounded-none px-12 py-6 text-lg font-medium tracking-wide inline-flex items-center gap-2">
-                Request Private Revenue Audit
+                Request a Private Revenue Audit
                 <ArrowRight className="w-4 h-4" />
               </Button>
             </Link>

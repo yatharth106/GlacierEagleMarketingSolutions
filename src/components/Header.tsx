@@ -100,7 +100,7 @@ export default function Header() {
       >
         <Link to="/application">
           <button className="bg-bronze-burnished text-ivory-primary border border-gold-antique hover:bg-bronze-burnished/90 rounded-none px-6 md:px-8 py-3 md:py-4 text-sm md:text-base font-medium tracking-wide transition-all duration-200 shadow-lg hover:shadow-xl hover:shadow-gold-antique/20 whitespace-nowrap">
-            Request Audit
+            Request a Private Revenue Audit
           </button>
         </Link>
       </motion.div>

@@ -243,7 +243,7 @@ export default function PhilosophyFrameworkPage() {
               transition={{ duration: 0.3 }}
               className="border border-gold-antique text-ivory-primary bg-transparent px-11 py-4 text-[11px] uppercase tracking-[1.8px] font-light hover:bg-gold-antique hover:text-navy-dark transition-all duration-300 rounded-sm disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Request Private Revenue Audit
+              Request a Private Revenue Audit
             </motion.button>
           </FadeIn>
         </div>
@@ -394,7 +394,7 @@ export default function PhilosophyFrameworkPage() {
               transition={{ duration: 0.3 }}
               className="px-12 py-[18px] min-h-[46px] border border-gold-antique text-ivory-primary bg-transparent text-[11px] uppercase tracking-[1.8px] font-light hover:bg-gold-antique hover:text-navy-dark transition-all duration-300 rounded-sm disabled:opacity-50 disabled:cursor-not-allowed w-full md:w-auto max-w-[340px] md:max-w-none"
             >
-              Request Private Revenue Audit
+              Request a Private Revenue Audit
             </motion.button>
           </FadeIn>
         </div>
