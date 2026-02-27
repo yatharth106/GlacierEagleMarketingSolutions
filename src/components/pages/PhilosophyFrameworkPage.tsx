@@ -8,10 +8,34 @@ import { Separator } from '@/components/ui/separator';
 
 const FadeIn = ({ children, delay = 0, className = "" }: { children: React.ReactNode, delay?: number, className?: string }) => (
   <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
+    initial={{ opacity: 0 }}
+    whileInView={{ opacity: 1 }}
     viewport={{ once: true, margin: "-50px" }}
-    transition={{ duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] }}
+    transition={{ duration: 0.8, delay, ease: "easeOut" }}
+    className={className}
+  >
+    {children}
+  </motion.div>
+);
+
+const SlideInLeft = ({ children, delay = 0, className = "" }: { children: React.ReactNode, delay?: number, className?: string }) => (
+  <motion.div
+    initial={{ opacity: 0, x: -24 }}
+    whileInView={{ opacity: 1, x: 0 }}
+    viewport={{ once: true, margin: "-50px" }}
+    transition={{ duration: 0.8, delay, ease: "easeOut" }}
+    className={className}
+  >
+    {children}
+  </motion.div>
+);
+
+const SlideInRight = ({ children, delay = 0, className = "" }: { children: React.ReactNode, delay?: number, className?: string }) => (
+  <motion.div
+    initial={{ opacity: 0, x: 24 }}
+    whileInView={{ opacity: 1, x: 0 }}
+    viewport={{ once: true, margin: "-50px" }}
+    transition={{ duration: 0.8, delay, ease: "easeOut" }}
     className={className}
   >
     {children}
@@ -43,85 +67,169 @@ export default function PhilosophyFrameworkPage() {
       <Header />
 
       {/* --- Philosophy Section --- */}
-      <section className="w-full pt-32 pb-24 bg-navy-dark">
-        <div className="max-w-[120rem] mx-auto px-6 md:px-12">
-          {/* Philosophy Headline */}
-          <FadeIn className="mb-24 text-center">
-            <h1 className="text-6xl md:text-7xl font-heading text-ivory-primary mb-6">
-              Our Philosophy
-            </h1>
-            <p className="text-lg text-ivory-primary/60 max-w-2xl mx-auto">
-              Revenue systems should be invisible yet powerful. We believe in quiet execution and measurable results.
-            </p>
-          </FadeIn>
+      <section className="w-full pt-[140px] pb-[140px] bg-navy-dark relative overflow-hidden">
+        {/* Grain texture overlay */}
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{
+          backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="2" /%3E%3C/filter%3E%3Crect width="400" height="400" filter="url(%23noiseFilter)" /%3E%3C/svg%3E")',
+          backgroundSize: '200px 200px'
+        }} />
 
-          {/* Two-Column Philosophy Layout */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 mb-24">
-            {/* Core Philosophy */}
-            <FadeIn delay={0.1}>
-              <h2 className="text-3xl font-heading text-ivory-primary mb-8">Core Philosophy</h2>
-              <div className="space-y-6 text-lg text-ivory-primary/80 leading-relaxed">
-                <p>
-                  We design revenue systems for founders who understand that email is infrastructure, not marketing.
-                </p>
-                <p>
-                  Your inbox is either accelerating pipeline velocity or silently draining it. There is no middle ground.
-                </p>
-                <p>
-                  We limit engagements to ensure depth. We measure success in revenue, not vanity metrics. We execute quietly and let results speak.
-                </p>
+        <div className="max-w-[1050px] mx-auto px-6 md:px-12 relative z-10">
+          {/* Headline Block */}
+          <div className="mb-16 text-center">
+            {/* Eyebrow */}
+            <FadeIn delay={0}>
+              <p className="text-[11px] uppercase tracking-[3.5px] text-gold-antique mb-7 font-light">
+                Our Philosophy
+              </p>
+            </FadeIn>
+
+            {/* Main Headline with glow */}
+            <FadeIn delay={0}>
+              <div className="relative inline-block">
+                <div className="absolute inset-0 blur-[60px] bg-gold-antique/13 rounded-full w-[120%] h-[120%] -top-[10%] -left-[10%]" />
+                <h1 className="text-[54px] md:text-[54px] font-heading text-ivory-primary leading-[1.15] relative z-10">
+                  Our Philosophy
+                </h1>
               </div>
             </FadeIn>
 
-            {/* Core Beliefs */}
-            <FadeIn delay={0.2}>
-              <h2 className="text-3xl font-heading text-ivory-primary mb-8">Core Beliefs</h2>
-              <ul className="space-y-6">
-                {[
-                  "Technology executes. Strategy decides.",
-                  "Automation without psychology is just noise.",
-                  "Revenue systems compound over time.",
-                  "Founders deserve advisory partners, not vendors.",
-                  "Depth beats volume. Always."
-                ].map((belief, i) => (
-                  <motion.li
-                    key={i}
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 }}
-                    className="flex items-start gap-4 text-lg text-ivory-primary/80"
-                  >
-                    <div className="w-2 h-2 bg-gold-antique rounded-full mt-3 shrink-0" />
-                    <span>{belief}</span>
-                  </motion.li>
-                ))}
-              </ul>
+            {/* Sub-headline */}
+            <FadeIn delay={0}>
+              <p className="text-gold-antique italic mt-6 text-lg font-light">
+                Intelligence Over Noise.
+              </p>
+            </FadeIn>
+
+            {/* Divider */}
+            <FadeIn delay={0}>
+              <div className="flex justify-center mt-8">
+                <div className="w-[60px] h-px bg-gold-antique" />
+              </div>
             </FadeIn>
           </div>
 
-          {/* Divider */}
-          <div className="flex justify-center mb-24">
-            <div className="w-24 h-px bg-gold-antique" />
+          {/* Core Statement */}
+          <FadeIn delay={0.4} className="mb-20">
+            <div className="max-w-[750px] mx-auto text-center">
+              <p className="text-[20px] md:text-[20px] leading-[1.75] text-ivory-primary/75 font-light">
+                Most companies do not suffer from a <span className="text-ivory-primary font-normal">marketing problem</span>. They suffer from <span className="text-ivory-primary font-normal">structural misalignment</span>. Revenue rarely collapses because of effort. It erodes because <span className="text-ivory-primary font-normal">acquisition, positioning, conversion, and retention</span> were never engineered as a <span className="text-ivory-primary font-normal">unified system</span>. The firms that scale predictably are not more active. They are <span className="text-ivory-primary font-normal">more precisely constructed</span>.
+              </p>
+            </div>
+          </FadeIn>
+
+          {/* Separator */}
+          <div className="my-20 flex justify-center">
+            <div className="w-full h-px bg-white/8" />
           </div>
 
-          {/* Founder Letter */}
-          <FadeIn delay={0.3} className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl font-heading text-ivory-primary mb-12">A Note From the Founder</h2>
-            <div className="space-y-6 text-lg text-ivory-primary/80 leading-relaxed font-serif italic">
-              <p>
-                "Glacier Eagle was built for founders who want quiet execution and measurable results."
-              </p>
-              <p>
-                "We limit the number of engagements to ensure depth, not volume. We believe revenue systems should feel invisible — yet powerful."
-              </p>
-              <p>
-                "Every founder deserves a revenue partner who understands that email is not a channel. It's infrastructure. And infrastructure should be engineered, not guessed."
-              </p>
-            </div>
-            <div className="mt-12">
-              <p className="font-heading font-bold text-ivory-primary">The Glacier Eagle Team</p>
-            </div>
+          {/* Two-Column Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-20 md:gap-20 mb-24">
+            {/* Left Column - Philosophy Text */}
+            <SlideInLeft delay={0.8}>
+              <div className="space-y-8">
+                {/* Paragraph 1 */}
+                <div>
+                  <h3 className="text-[10.5px] uppercase tracking-[2px] text-gold-antique mb-4 font-light">
+                    Diagnosis Before Strategy
+                  </h3>
+                  <p className="text-[17.5px] leading-[1.8] text-ivory-primary/75 font-light">
+                    Strategy applied to a <span className="text-ivory-primary font-normal">misdiagnosed system</span> only accelerates waste. Before channels are optimized or campaigns deployed, <span className="text-ivory-primary font-normal">structural friction must be identified</span>. Growth is rarely blocked by effort. It is blocked by <span className="text-ivory-primary font-normal">architecture</span>.
+                  </p>
+                </div>
+
+                {/* Divider */}
+                <div className="h-px bg-white/8" />
+
+                {/* Paragraph 2 */}
+                <div>
+                  <h3 className="text-[10.5px] uppercase tracking-[2px] text-gold-antique mb-4 font-light">
+                    Architecture Over Tactics
+                  </h3>
+                  <p className="text-[17.5px] leading-[1.8] text-ivory-primary/75 font-light">
+                    Channels do not fail in isolation. When performance fluctuates, the cause is often <span className="text-ivory-primary font-normal">upstream</span> — positioning, offer clarity, internal process, or conversion sequencing. <span className="text-ivory-primary font-normal">Treating tactics without examining the system</span> creates temporary improvements, not durable outcomes.
+                  </p>
+                </div>
+
+                {/* Divider */}
+                <div className="h-px bg-white/8" />
+
+                {/* Paragraph 3 */}
+                <div>
+                  <h3 className="text-[10.5px] uppercase tracking-[2px] text-gold-antique mb-4 font-light">
+                    Depth Over Volume
+                  </h3>
+                  <p className="text-[17.5px] leading-[1.8] text-ivory-primary/75 font-light">
+                    Serious intervention requires <span className="text-ivory-primary font-normal">attention</span>. Structural work cannot be templated across dozens of accounts simultaneously. <span className="text-ivory-primary font-normal">Precision demands constraint</span> — in focus, in diagnosis, and in execution.
+                  </p>
+                </div>
+              </div>
+            </SlideInLeft>
+
+            {/* Right Column - Core Principles */}
+            <SlideInRight delay={0.8}>
+              <div className="space-y-9">
+                {/* Principle 1 */}
+                <div>
+                  <h3 className="text-[10.5px] uppercase tracking-[2px] text-gold-antique mb-3 font-light">
+                    Diagnosis Before Direction
+                  </h3>
+                  <p className="text-[16.5px] leading-[1.72] text-ivory-primary/75 font-light">
+                    No strategic action is taken without structural clarity. Speed of recommendation is not a virtue.
+                  </p>
+                </div>
+
+                {/* Divider */}
+                <div className="h-px bg-white/8" />
+
+                {/* Principle 2 */}
+                <div>
+                  <h3 className="text-[10.5px] uppercase tracking-[2px] text-gold-antique mb-3 font-light">
+                    Systems Determine Outcomes
+                  </h3>
+                  <p className="text-[16.5px] leading-[1.72] text-ivory-primary/75 font-light">
+                    Tactics operate within systems. Systems determine performance. Work begins at the system level.
+                  </p>
+                </div>
+
+                {/* Divider */}
+                <div className="h-px bg-white/8" />
+
+                {/* Principle 3 */}
+                <div>
+                  <h3 className="text-[10.5px] uppercase tracking-[2px] text-gold-antique mb-3 font-light">
+                    Precision Over Volume
+                  </h3>
+                  <p className="text-[16.5px] leading-[1.72] text-ivory-primary/75 font-light">
+                    Interventions are selective and deliberate. Fewer decisions. Higher consequence.
+                  </p>
+                </div>
+
+                {/* Divider */}
+                <div className="h-px bg-white/8" />
+
+                {/* Principle 4 */}
+                <div>
+                  <h3 className="text-[10.5px] uppercase tracking-[2px] text-gold-antique mb-3 font-light">
+                    Calm Conviction
+                  </h3>
+                  <p className="text-[16.5px] leading-[1.72] text-ivory-primary/75 font-light">
+                    Urgency is not confused with importance. Process creates certainty. Certainty allows restraint.
+                  </p>
+                </div>
+              </div>
+            </SlideInRight>
+          </div>
+
+          {/* CTA Button */}
+          <FadeIn delay={1.2} className="flex justify-center">
+            <motion.button
+              whileHover={{ y: -2 }}
+              transition={{ duration: 0.3 }}
+              className="border border-gold-antique text-ivory-primary bg-transparent px-11 py-4 text-[11px] uppercase tracking-[1.8px] font-light hover:bg-gold-antique hover:text-navy-dark transition-all duration-300 rounded-sm"
+            >
+              Request Private Revenue Audit
+            </motion.button>
           </FadeIn>
         </div>
       </section>
