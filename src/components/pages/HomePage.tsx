@@ -278,6 +278,18 @@ export default function HomePage() {
             </p>
           </FadeIn>
 
+          {/* CTA Button after model intro */}
+          <FadeIn delay={0.3} className="flex justify-center mb-16">
+            <Link to="/application">
+              <Button 
+                size="lg" 
+                className="bg-bronze-burnished text-ivory-primary border border-gold-antique hover:bg-bronze-burnished/90 rounded-none px-10 py-8 text-lg font-medium tracking-wide transition-all duration-200"
+              >
+                Request Private Revenue Audit
+              </Button>
+            </Link>
+          </FadeIn>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-gold-antique/30 bg-navy-dark">
             {/* Left: AI Framework */}
             <div className="p-12 md:p-20 border-b md:border-b-0 md:border-r border-gold-antique/30 relative group overflow-hidden">
