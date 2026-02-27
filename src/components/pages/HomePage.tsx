@@ -153,7 +153,7 @@ export default function HomePage() {
                 size="lg" 
                 className="bg-bronze-burnished text-ivory-primary border border-gold-antique hover:bg-bronze-burnished/90 rounded-none px-10 py-8 text-lg font-medium tracking-wide transition-all duration-200"
               >
-                Request Private Revenue Audit
+                Request a Private Revenue Audit
               </Button>
             </Link>
             <a href="#glacier-model" onClick={(e) => {
