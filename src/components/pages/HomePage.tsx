@@ -143,7 +143,6 @@ export default function HomePage() {
         className="fixed top-0 left-0 right-0 h-1 bg-gold-antique origin-left z-50"
         style={{ scaleX }}
       />
-
       {/* --- Audit Modal --- */}
       {isAuditModalOpen && (
         <motion.div
@@ -266,7 +265,6 @@ export default function HomePage() {
           </motion.div>
         </motion.div>
       )}
-
       {/* --- 1. Pre-Hero Micro Statement --- */}
       <section className="w-full pt-32 pb-8 relative z-10">
         <div className="max-w-[120rem] mx-auto px-6 md:px-12 text-center">
@@ -344,16 +342,7 @@ export default function HomePage() {
       </section>
       {/* --- 3. Credibility Strip (Authority Bar) --- */}
       <section className="w-full border-y border-gold-antique/20 bg-slate-deep py-12">
-        <div className="max-w-[120rem] mx-auto px-6 md:px-12">
-          <div className="mb-8">
-            <h3 className="font-heading text-2xl md:text-3xl text-gold-antique uppercase tracking-widest">Our Industry Expertise</h3>
-          </div>
-          {isLoading ? (
-            <div className="h-8 w-full bg-gold-antique/10 animate-pulse" />
-          ) : (
-            <div className="w-full pt-24 pb-8 relative z-10 bg-slate-deep/50 border-y border-gold-antique/20"> <div className="max-w-[120rem] mx-auto px-6 md:px-12"> {isLoading ? (<div className="h-8 w-full bg-gold-antique/10 animate-pulse" />) : (<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-4 bg-navy-dark/70 rounded-lg shadow-xl"> {industries.length > 0 ? (industries.map((industry, i) => (<motion.div key={industry._id} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }} className="flex flex-col items-center justify-center p-4 group relative overflow-hidden"> <div className="absolute inset-0 bg-gradient-to-br from-gold-antique/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" /> <span className="text-sm md:text-base font-medium uppercase tracking-widest text-ivory-primary/70 group-hover:text-gold-antique transition-colors duration-300 relative z-10"> {industry.industryName} </span> <span className="w-2 h-2 bg-gold-antique rounded-full mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 relative z-10" /> </motion.div>))) : (<> <span className="text-sm font-medium uppercase tracking-widest text-ivory-primary/80">B2B SaaS</span> <span className="text-sm font-medium uppercase tracking-widest text-ivory-primary/80">Professional Services</span> <span className="text-sm font-medium uppercase tracking-widest text-ivory-primary/80">High-Ticket Consultancies</span> <span className="text-sm font-medium uppercase tracking-widest text-ivory-primary/80">Mid-Market Technology</span> </>)} </div>)} </div> </div>
-          )}
-        </div>
+        <div className="max-w-[120rem] mx-auto px-6 md:px-12 pt-16 pb-8"><FadeIn className="mb-16 text-center"><h3 className="font-heading text-4xl md:text-5xl text-ivory-primary relative inline-block pb-3">Our Industry Expertise<span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-gold-antique"></span></h3></FadeIn>{isLoading ? (<div className="h-24 w-full bg-gold-antique/10 animate-pulse rounded-lg" />) : (<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"><StaggerContainer staggerDelay={0.08} className="contents">{industries.length > 0 ? (industries.map((industry, i) => (<StaggerItem key={industry._id} className="relative p-8 bg-slate-deep border border-gold-antique/20 group overflow-hidden flex flex-col justify-between text-left hover:border-gold-antique transition-all duration-300 min-h-[180px] shadow-lg hover:shadow-gold-antique/20"><div className="absolute inset-0 bg-gradient-to-br from-gold-antique/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" /><span className="text-lg font-medium uppercase tracking-widest text-ivory-primary/70 group-hover:text-gold-antique transition-colors duration-300 relative z-10">{industry.industryName}</span><div className="mt-6 w-full h-0.5 bg-gold-antique/50 group-hover:bg-gold-antique transition-colors duration-300 relative z-10" /></StaggerItem>))) : (<><StaggerItem className="relative p-8 bg-slate-deep border border-gold-antique/20 group overflow-hidden flex flex-col justify-between text-left min-h-[180px]"><span className="text-lg font-medium uppercase tracking-widest text-ivory-primary/80 relative z-10">B2B SaaS</span><div className="mt-6 w-full h-0.5 bg-gold-antique/50 relative z-10" /></StaggerItem><StaggerItem className="relative p-8 bg-slate-deep border border-gold-antique/20 group overflow-hidden flex flex-col justify-between text-left min-h-[180px]"><span className="text-lg font-medium uppercase tracking-widest text-ivory-primary/80 relative z-10">Professional Services</span><div className="mt-6 w-full h-0.5 bg-gold-antique/50 relative z-10" /></StaggerItem><StaggerItem className="relative p-8 bg-slate-deep border border-gold-antique/20 group overflow-hidden flex flex-col justify-between text-left min-h-[180px]"><span className="text-lg font-medium uppercase tracking-widest text-ivory-primary/80 relative z-10">High-Ticket Consultancies</span><div className="mt-6 w-full h-0.5 bg-gold-antique/50 relative z-10" /></StaggerItem><StaggerItem className="relative p-8 bg-slate-deep border border-gold-antique/20 group overflow-hidden flex flex-col justify-between text-left min-h-[180px]"><span className="text-lg font-medium uppercase tracking-widest text-ivory-primary/80 relative z-10">Mid-Market Technology</span><div className="mt-6 w-full h-0.5 bg-gold-antique/50 relative z-10" /></StaggerItem></>)}</StaggerContainer></div>)}</div>
       </section>
       {/* --- 4. The Real Problem (Sticky Scroll Layout) --- */}
       <section className="w-full py-32 bg-navy-dark relative">

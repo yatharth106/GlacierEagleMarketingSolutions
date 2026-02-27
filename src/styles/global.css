@@ -4,18 +4,25 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Hide WixVibe banner */
-[class*="vibe-banner"],
+/* Hide WixVibe banner - comprehensive selectors */
+[class*="vibe"],
 [class*="wix-vibe"],
 [data-testid*="vibe"],
-.wix-vibe-banner {
+[id*="vibe"],
+[id*="wix"],
+.wix-vibe-banner,
+div[style*="position: fixed"][style*="bottom"][style*="right"][style*="z-index"] {
   display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
-/* Additional selectors to catch the banner in various forms */
-div[style*="position: fixed"][style*="bottom"][style*="right"] {
-  &:has(> *[class*="vibe"]),
-  &:has(> *[class*="wix"]) {
+/* Catch any remaining banner elements */
+body > div[style*="position: fixed"],
+body > div[style*="position: absolute"] {
+  &[style*="bottom"],
+  &[style*="right"] {
     display: none !important;
   }
 }
