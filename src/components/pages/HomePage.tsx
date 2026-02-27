@@ -5,10 +5,14 @@ import { motion, useScroll, useTransform, useSpring, useInView } from 'framer-mo
 import { BaseCrudService } from '@/integrations';
 import { ProblemStatements, OptimizationMetrics, TargetIndustries } from '@/entities';
 import PageLayout from '@/components/PageLayout';
-import { ArrowRight, Check, ChevronDown, Minus } from 'lucide-react';
+import { ArrowRight, Check, ChevronDown, Minus, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { Image } from '@/components/ui/image';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 // --- Utility Components for Motion & Layout ---
 
@@ -75,6 +79,16 @@ export default function HomePage() {
   const [metrics, setMetrics] = useState<OptimizationMetrics[]>([]);
   const [industries, setIndustries] = useState<TargetIndustries[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isAuditModalOpen, setIsAuditModalOpen] = useState(false);
+  const [auditFormData, setAuditFormData] = useState({
+    companyName: '',
+    arrRange: '',
+    revenueChallenge: '',
+    emailPlatform: '',
+    crm: '',
+    leadVolume: ''
+  });
+  const [isSubmittingAudit, setIsSubmittingAudit] = useState(false);
 
   // --- Scroll Progress for Global Indicator ---
   const { scrollYProgress } = useScroll();
@@ -106,6 +120,22 @@ export default function HomePage() {
     }
   };
 
+  const handleAuditSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmittingAudit(true);
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    setIsSubmittingAudit(false);
+    setIsAuditModalOpen(false);
+    setAuditFormData({
+      companyName: '',
+      arrRange: '',
+      revenueChallenge: '',
+      emailPlatform: '',
+      crm: '',
+      leadVolume: ''
+    });
+  };
+
   return (
     <PageLayout>
       {/* Global Scroll Progress */}
@@ -113,6 +143,130 @@ export default function HomePage() {
         className="fixed top-0 left-0 right-0 h-1 bg-gold-antique origin-left z-50"
         style={{ scaleX }}
       />
+
+      {/* --- Audit Modal --- */}
+      {isAuditModalOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 bg-black/50 z-[100] flex items-center justify-center p-4"
+          onClick={() => setIsAuditModalOpen(false)}
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            transition={{ duration: 0.3 }}
+            className="bg-navy-dark border border-gold-antique/30 rounded-lg p-8 md:p-12 max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex justify-between items-center mb-8">
+              <h2 className="text-3xl font-heading text-ivory-primary">Request a Private Revenue Audit</h2>
+              <button
+                onClick={() => setIsAuditModalOpen(false)}
+                className="text-ivory-primary/60 hover:text-ivory-primary transition-colors"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+
+            <form onSubmit={handleAuditSubmit} className="space-y-6">
+              <div>
+                <Label className="text-ivory-primary mb-2 block">Company Name</Label>
+                <Input
+                  type="text"
+                  placeholder="Your company name"
+                  value={auditFormData.companyName}
+                  onChange={(e) => setAuditFormData({ ...auditFormData, companyName: e.target.value })}
+                  required
+                  className="bg-slate-deep border-gold-antique/30 text-ivory-primary placeholder:text-ivory-primary/40"
+                />
+              </div>
+
+              <div>
+                <Label className="text-ivory-primary mb-2 block">Annual Recurring Revenue (ARR)</Label>
+                <Select value={auditFormData.arrRange} onValueChange={(value) => setAuditFormData({ ...auditFormData, arrRange: value })}>
+                  <SelectTrigger className="bg-slate-deep border-gold-antique/30 text-ivory-primary">
+                    <SelectValue placeholder="Select ARR range" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-slate-deep border-gold-antique/30">
+                    <SelectItem value="0-500k" className="text-ivory-primary">$0 - $500K</SelectItem>
+                    <SelectItem value="500k-2m" className="text-ivory-primary">$500K - $2M</SelectItem>
+                    <SelectItem value="2m-10m" className="text-ivory-primary">$2M - $10M</SelectItem>
+                    <SelectItem value="10m+" className="text-ivory-primary">$10M+</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div>
+                <Label className="text-ivory-primary mb-2 block">Primary Revenue Challenge</Label>
+                <Textarea
+                  placeholder="What's your biggest revenue bottleneck?"
+                  value={auditFormData.revenueChallenge}
+                  onChange={(e) => setAuditFormData({ ...auditFormData, revenueChallenge: e.target.value })}
+                  required
+                  className="bg-slate-deep border-gold-antique/30 text-ivory-primary placeholder:text-ivory-primary/40 min-h-24"
+                />
+              </div>
+
+              <div>
+                <Label className="text-ivory-primary mb-2 block">Email Platform</Label>
+                <Select value={auditFormData.emailPlatform} onValueChange={(value) => setAuditFormData({ ...auditFormData, emailPlatform: value })}>
+                  <SelectTrigger className="bg-slate-deep border-gold-antique/30 text-ivory-primary">
+                    <SelectValue placeholder="Select email platform" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-slate-deep border-gold-antique/30">
+                    <SelectItem value="klaviyo" className="text-ivory-primary">Klaviyo</SelectItem>
+                    <SelectItem value="hubspot" className="text-ivory-primary">HubSpot</SelectItem>
+                    <SelectItem value="mailchimp" className="text-ivory-primary">Mailchimp</SelectItem>
+                    <SelectItem value="other" className="text-ivory-primary">Other</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div>
+                <Label className="text-ivory-primary mb-2 block">CRM System</Label>
+                <Select value={auditFormData.crm} onValueChange={(value) => setAuditFormData({ ...auditFormData, crm: value })}>
+                  <SelectTrigger className="bg-slate-deep border-gold-antique/30 text-ivory-primary">
+                    <SelectValue placeholder="Select CRM" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-slate-deep border-gold-antique/30">
+                    <SelectItem value="salesforce" className="text-ivory-primary">Salesforce</SelectItem>
+                    <SelectItem value="hubspot" className="text-ivory-primary">HubSpot</SelectItem>
+                    <SelectItem value="pipedrive" className="text-ivory-primary">Pipedrive</SelectItem>
+                    <SelectItem value="other" className="text-ivory-primary">Other</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div>
+                <Label className="text-ivory-primary mb-2 block">Monthly Lead Volume</Label>
+                <Select value={auditFormData.leadVolume} onValueChange={(value) => setAuditFormData({ ...auditFormData, leadVolume: value })}>
+                  <SelectTrigger className="bg-slate-deep border-gold-antique/30 text-ivory-primary">
+                    <SelectValue placeholder="Select lead volume" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-slate-deep border-gold-antique/30">
+                    <SelectItem value="0-100" className="text-ivory-primary">0 - 100</SelectItem>
+                    <SelectItem value="100-500" className="text-ivory-primary">100 - 500</SelectItem>
+                    <SelectItem value="500-1000" className="text-ivory-primary">500 - 1,000</SelectItem>
+                    <SelectItem value="1000+" className="text-ivory-primary">1,000+</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <Button
+                type="submit"
+                disabled={isSubmittingAudit}
+                className="w-full bg-bronze-burnished text-ivory-primary hover:bg-bronze-burnished/90 rounded-none px-8 py-6 text-lg font-medium tracking-wide"
+              >
+                {isSubmittingAudit ? 'Submitting...' : 'Submit Application'}
+              </Button>
+            </form>
+          </motion.div>
+        </motion.div>
+      )}
+
       {/* --- 1. Pre-Hero Micro Statement --- */}
       <section className="w-full pt-32 pb-8 relative z-10">
         <div className="max-w-[120rem] mx-auto px-6 md:px-12 text-center">
@@ -146,14 +300,13 @@ export default function HomePage() {
           </FadeIn>
 
           <FadeIn delay={0.5} className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <Link to="/application">
-              <Button 
-                size="lg" 
-                className="bg-bronze-burnished text-ivory-primary border border-gold-antique hover:bg-bronze-burnished/90 rounded-none px-10 py-8 text-lg font-medium tracking-wide transition-all duration-200"
-              >
-                Request a Private Revenue Audit
-              </Button>
-            </Link>
+            <Button 
+              size="lg" 
+              onClick={() => setIsAuditModalOpen(true)}
+              className="bg-bronze-burnished text-ivory-primary border border-gold-antique hover:bg-bronze-burnished/90 rounded-none px-10 py-8 text-lg font-medium tracking-wide transition-all duration-200"
+            >
+              Request a Private Revenue Audit
+            </Button>
             <a href="#glacier-model" onClick={(e) => {
               e.preventDefault();
               const element = document.getElementById('glacier-model');
@@ -278,14 +431,13 @@ export default function HomePage() {
 
           {/* CTA Button after model intro */}
           <FadeIn delay={0.3} className="flex justify-center mb-16">
-            <Link to="/application">
-              <Button 
-                size="lg" 
-                className="bg-bronze-burnished text-ivory-primary border border-gold-antique hover:bg-bronze-burnished/90 rounded-none px-10 py-8 text-lg font-medium tracking-wide transition-all duration-200"
-              >
-                Request a Private Revenue Audit
-              </Button>
-            </Link>
+            <Button 
+              size="lg" 
+              onClick={() => setIsAuditModalOpen(true)}
+              className="bg-bronze-burnished text-ivory-primary border border-gold-antique hover:bg-bronze-burnished/90 rounded-none px-10 py-8 text-lg font-medium tracking-wide transition-all duration-200"
+            >
+              Request a Private Revenue Audit
+            </Button>
           </FadeIn>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-gold-antique/30 bg-navy-dark">
@@ -460,11 +612,13 @@ export default function HomePage() {
                 <p className="text-lg text-ivory-primary/60 mb-12">
                   Structured as advisory retainers, not SaaS plans. We limit client capacity to ensure depth of focus.
                 </p>
-                <Link to="/application">
-                  <Button variant="outline" className="border-ivory-primary text-ivory-primary hover:bg-slate-deep hover:text-gold-antique rounded-none px-8 py-6">
-                    Check Availability
-                  </Button>
-                </Link>
+                <Button 
+                  variant="outline" 
+                  onClick={() => setIsAuditModalOpen(true)}
+                  className="border-ivory-primary text-ivory-primary hover:bg-slate-deep hover:text-gold-antique rounded-none px-8 py-6"
+                >
+                  Check Availability
+                </Button>
               </div>
             </div>
 
@@ -659,7 +813,7 @@ export default function HomePage() {
               <p className="text-ivory-primary/60">Limited engagements accepted quarterly.</p>
             </div>
 
-            <div className="text-center">
+            <div className="text-center\">
               <Link to="/application">
                 <Button className="bg-bronze-burnished text-ivory-primary hover:bg-bronze-burnished/90 rounded-none px-12 py-6 text-lg font-medium tracking-wide">
                   Start Your Application
