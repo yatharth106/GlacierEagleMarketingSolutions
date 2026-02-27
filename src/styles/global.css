@@ -3,3 +3,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Hide WixVibe banner */
+[class*="vibe-banner"],
+[class*="wix-vibe"],
+[data-testid*="vibe"],
+.wix-vibe-banner {
+  display: none !important;
+}
+
+/* Additional selectors to catch the banner in various forms */
+div[style*="position: fixed"][style*="bottom"][style*="right"] {
+  &:has(> *[class*="vibe"]),
+  &:has(> *[class*="wix"]) {
+    display: none !important;
+  }
+}
