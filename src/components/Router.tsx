@@ -8,6 +8,7 @@ import ServicesFrameworkPage from '@/components/pages/ServicesFrameworkPage';
 import CaseStudiesDetailPage from '@/components/pages/CaseStudiesDetailPage';
 import FAQDetailPage from '@/components/pages/FAQDetailPage';
 import ApplyPage from '@/components/pages/ApplyPage';
+import ApplicationPage from '@/components/pages/ApplicationPage';
 import PrivacyPage from '@/components/pages/PrivacyPage';
 import TermsPage from '@/components/pages/TermsPage';
 
@@ -74,6 +75,13 @@ const router = createBrowserRouter([
         element: <ApplyPage />,
         routeMetadata: {
           pageIdentifier: 'apply',
+        },
+      },
+      {
+        path: "application",
+        element: <ApplicationPage />,
+        routeMetadata: {
+          pageIdentifier: 'application',
         },
       },
       {
