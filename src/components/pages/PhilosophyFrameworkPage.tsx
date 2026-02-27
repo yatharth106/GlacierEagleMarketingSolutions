@@ -5,7 +5,7 @@ import { AdvisoryProcessSteps } from '@/entities';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Separator } from '@/components/ui/separator';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const FadeIn = ({ children, delay = 0, className = "" }: { children: React.ReactNode, delay?: number, className?: string }) => (
   <motion.div
@@ -46,7 +46,7 @@ const SlideInRight = ({ children, delay = 0, className = "" }: { children: React
 export default function PhilosophyFrameworkPage() {
   const [processSteps, setProcessSteps] = useState<AdvisoryProcessSteps[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const location = useLocation();
+  const navigate = useNavigate();
   const [ctaDisabled, setCtaDisabled] = useState(false);
 
   useEffect(() => {
@@ -71,14 +71,7 @@ export default function PhilosophyFrameworkPage() {
     setCtaDisabled(true);
     setTimeout(() => setCtaDisabled(false), 800);
 
-    if (location.pathname === '/') {
-      const element = document.getElementById('application');
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    } else {
-      window.location.href = '/application';
-    }
+    navigate('/application');
   };
 
   return (
