@@ -87,6 +87,13 @@ export default function ApplyPage() {
     e.preventDefault();
     
     if (!validateForm()) {
+      // Scroll to first error field
+      const formElement = e.currentTarget as HTMLFormElement;
+      const firstErrorField = formElement.querySelector('[data-error="true"]') as HTMLElement;
+      if (firstErrorField) {
+        firstErrorField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        firstErrorField.focus();
+      }
       return;
     }
 
@@ -188,7 +195,7 @@ export default function ApplyPage() {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
+                      <div data-error={!!errors.arrRange}>
                         <label className="text-xs font-bold uppercase tracking-widest text-ivory-primary/70 block mb-3">
                           Annual Recurring Revenue (ARR) *
                         </label>
@@ -212,7 +219,7 @@ export default function ApplyPage() {
                         )}
                       </div>
 
-                      <div>
+                      <div data-error={!!errors.trialVolume}>
                         <label className="text-xs font-bold uppercase tracking-widest text-ivory-primary/70 block mb-3">
                           Current Trial Volume (Monthly) *
                         </label>
@@ -241,7 +248,7 @@ export default function ApplyPage() {
                     <span className="text-sm font-bold text-gold-antique tracking-widest uppercase">02</span>
                     Your Revenue Challenge
                   </h3>
-                  <div>
+                  <div data-error={!!errors.revenueChallenge}>
                     <label className="text-xs font-bold uppercase tracking-widest text-ivory-primary/70 block mb-3">
                       Primary Revenue Challenge *
                     </label>
@@ -269,7 +276,7 @@ export default function ApplyPage() {
                     Technology Stack
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
+                    <div data-error={!!errors.emailPlatform}>
                       <label className="text-xs font-bold uppercase tracking-widest text-ivory-primary/70 block mb-3">
                         Email Platform *
                       </label>
@@ -289,7 +296,7 @@ export default function ApplyPage() {
                       )}
                     </div>
 
-                    <div>
+                    <div data-error={!!errors.crm}>
                       <label className="text-xs font-bold uppercase tracking-widest text-ivory-primary/70 block mb-3">
                         CRM Used *
                       </label>
@@ -318,7 +325,7 @@ export default function ApplyPage() {
                     Contact Information
                   </h3>
                   <div className="space-y-6">
-                    <div>
+                    <div data-error={!!errors.contactName}>
                       <label className="text-xs font-bold uppercase tracking-widest text-ivory-primary/70 block mb-3">
                         Your Name *
                       </label>
@@ -339,7 +346,7 @@ export default function ApplyPage() {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
+                      <div data-error={!!errors.contactEmail}>
                         <label className="text-xs font-bold uppercase tracking-widest text-ivory-primary/70 block mb-3">
                           Email Address *
                         </label>
