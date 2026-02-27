@@ -26,3 +26,13 @@ body > div[style*="position: absolute"] {
     display: none !important;
   }
 }
+
+/* Prevent scroll behavior on focus changes */
+html {
+  scroll-behavior: auto !important;
+}
+
+/* Prevent layout shift from scrollbar appearing/disappearing */
+body {
+  overflow-y: scroll;
+}

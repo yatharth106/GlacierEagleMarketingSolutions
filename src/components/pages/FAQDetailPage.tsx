@@ -21,6 +21,7 @@ export default function FAQDetailPage() {
   const [faqs, setFaqs] = useState<FrequentlyAskedQuestions[]>([]);
   const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
   const [isLoading, setIsLoading] = useState(true);
+  const itemRefs = React.useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     loadData();
@@ -96,6 +97,7 @@ export default function FAQDetailPage() {
               displayFaqs.map((faq, index) => (
                 <motion.div
                   key={index}
+                  ref={(el) => { itemRefs.current[index] = el; }}
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
