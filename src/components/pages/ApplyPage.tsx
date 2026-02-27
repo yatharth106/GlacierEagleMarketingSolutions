@@ -30,8 +30,43 @@ export default function ApplyPage() {
     contactPhone: ''
   });
 
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const validateForm = (): boolean => {
+    const newErrors: Record<string, string> = {};
+
+    if (!formData.companyName.trim()) {
+      newErrors.companyName = 'Company name is required';
+    }
+    if (!formData.arrRange) {
+      newErrors.arrRange = 'Please select an ARR range';
+    }
+    if (!formData.trialVolume.trim()) {
+      newErrors.trialVolume = 'Trial volume is required';
+    }
+    if (!formData.revenueChallenge.trim()) {
+      newErrors.revenueChallenge = 'Please describe your revenue challenge';
+    }
+    if (!formData.emailPlatform.trim()) {
+      newErrors.emailPlatform = 'Email platform is required';
+    }
+    if (!formData.crm.trim()) {
+      newErrors.crm = 'CRM is required';
+    }
+    if (!formData.contactName.trim()) {
+      newErrors.contactName = 'Your name is required';
+    }
+    if (!formData.contactEmail.trim()) {
+      newErrors.contactEmail = 'Email address is required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.contactEmail)) {
+      newErrors.contactEmail = 'Please enter a valid email address';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -39,10 +74,22 @@ export default function ApplyPage() {
       ...prev,
       [name]: value
     }));
+    // Clear error for this field when user starts typing
+    if (errors[name]) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: ''
+      }));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!validateForm()) {
+      return;
+    }
+
     setIsSubmitting(true);
     
     try {
@@ -60,6 +107,7 @@ export default function ApplyPage() {
         contactEmail: '',
         contactPhone: ''
       });
+      setErrors({});
       setTimeout(() => setSubmitStatus('idle'), 5000);
     } catch (error) {
       setSubmitStatus('error');
@@ -129,9 +177,14 @@ export default function ApplyPage() {
                         value={formData.companyName}
                         onChange={handleChange}
                         required
-                        className="w-full bg-transparent border-b border-gold-antique/30 py-3 text-ivory-primary focus:border-gold-antique outline-none transition-colors placeholder-ivory-primary/30"
+                        className={`w-full bg-transparent border-b py-3 text-ivory-primary outline-none transition-colors placeholder-ivory-primary/30 ${
+                          errors.companyName ? 'border-destructive focus:border-destructive' : 'border-gold-antique/30 focus:border-gold-antique'
+                        }`}
                         placeholder="Your company name"
                       />
+                      {errors.companyName && (
+                        <p className="text-destructive text-sm mt-2">{errors.companyName}</p>
+                      )}
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -144,7 +197,9 @@ export default function ApplyPage() {
                           value={formData.arrRange}
                           onChange={handleChange}
                           required
-                          className="w-full bg-transparent border-b border-gold-antique/30 py-3 text-ivory-primary focus:border-gold-antique outline-none transition-colors"
+                          className={`w-full bg-transparent border-b py-3 text-ivory-primary outline-none transition-colors ${
+                            errors.arrRange ? 'border-destructive focus:border-destructive' : 'border-gold-antique/30 focus:border-gold-antique'
+                          }`}
                         >
                           <option value="" className="bg-navy-dark">Select Range</option>
                           <option value="1m-5m" className="bg-navy-dark">$1M - $5M</option>
@@ -152,6 +207,9 @@ export default function ApplyPage() {
                           <option value="20m-50m" className="bg-navy-dark">$20M - $50M</option>
                           <option value="50m+" className="bg-navy-dark">$50M+</option>
                         </select>
+                        {errors.arrRange && (
+                          <p className="text-destructive text-sm mt-2">{errors.arrRange}</p>
+                        )}
                       </div>
 
                       <div>
@@ -164,9 +222,14 @@ export default function ApplyPage() {
                           value={formData.trialVolume}
                           onChange={handleChange}
                           required
-                          className="w-full bg-transparent border-b border-gold-antique/30 py-3 text-ivory-primary focus:border-gold-antique outline-none transition-colors placeholder-ivory-primary/30"
+                          className={`w-full bg-transparent border-b py-3 text-ivory-primary outline-none transition-colors placeholder-ivory-primary/30 ${
+                            errors.trialVolume ? 'border-destructive focus:border-destructive' : 'border-gold-antique/30 focus:border-gold-antique'
+                          }`}
                           placeholder="e.g., 500 trials/month"
                         />
+                        {errors.trialVolume && (
+                          <p className="text-destructive text-sm mt-2">{errors.trialVolume}</p>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -188,9 +251,14 @@ export default function ApplyPage() {
                       onChange={handleChange}
                       required
                       rows={4}
-                      className="w-full bg-transparent border border-gold-antique/30 p-4 text-ivory-primary focus:border-gold-antique outline-none transition-colors placeholder-ivory-primary/30 resize-none"
+                      className={`w-full bg-transparent border p-4 text-ivory-primary outline-none transition-colors placeholder-ivory-primary/30 resize-none ${
+                        errors.revenueChallenge ? 'border-destructive focus:border-destructive' : 'border-gold-antique/30 focus:border-gold-antique'
+                      }`}
                       placeholder="What's your biggest revenue bottleneck? (e.g., low trial conversion, long sales cycles, etc.)"
                     />
+                    {errors.revenueChallenge && (
+                      <p className="text-destructive text-sm mt-2">{errors.revenueChallenge}</p>
+                    )}
                   </div>
                 </div>
 
@@ -211,9 +279,14 @@ export default function ApplyPage() {
                         value={formData.emailPlatform}
                         onChange={handleChange}
                         required
-                        className="w-full bg-transparent border-b border-gold-antique/30 py-3 text-ivory-primary focus:border-gold-antique outline-none transition-colors placeholder-ivory-primary/30"
+                        className={`w-full bg-transparent border-b py-3 text-ivory-primary outline-none transition-colors placeholder-ivory-primary/30 ${
+                          errors.emailPlatform ? 'border-destructive focus:border-destructive' : 'border-gold-antique/30 focus:border-gold-antique'
+                        }`}
                         placeholder="e.g., HubSpot, Klaviyo, Marketo"
                       />
+                      {errors.emailPlatform && (
+                        <p className="text-destructive text-sm mt-2">{errors.emailPlatform}</p>
+                      )}
                     </div>
 
                     <div>
@@ -226,9 +299,14 @@ export default function ApplyPage() {
                         value={formData.crm}
                         onChange={handleChange}
                         required
-                        className="w-full bg-transparent border-b border-gold-antique/30 py-3 text-ivory-primary focus:border-gold-antique outline-none transition-colors placeholder-ivory-primary/30"
+                        className={`w-full bg-transparent border-b py-3 text-ivory-primary outline-none transition-colors placeholder-ivory-primary/30 ${
+                          errors.crm ? 'border-destructive focus:border-destructive' : 'border-gold-antique/30 focus:border-gold-antique'
+                        }`}
                         placeholder="e.g., Salesforce, Pipedrive, HubSpot"
                       />
+                      {errors.crm && (
+                        <p className="text-destructive text-sm mt-2">{errors.crm}</p>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -250,9 +328,14 @@ export default function ApplyPage() {
                         value={formData.contactName}
                         onChange={handleChange}
                         required
-                        className="w-full bg-transparent border-b border-gold-antique/30 py-3 text-ivory-primary focus:border-gold-antique outline-none transition-colors placeholder-ivory-primary/30"
+                        className={`w-full bg-transparent border-b py-3 text-ivory-primary outline-none transition-colors placeholder-ivory-primary/30 ${
+                          errors.contactName ? 'border-destructive focus:border-destructive' : 'border-gold-antique/30 focus:border-gold-antique'
+                        }`}
                         placeholder="Full name"
                       />
+                      {errors.contactName && (
+                        <p className="text-destructive text-sm mt-2">{errors.contactName}</p>
+                      )}
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -266,9 +349,14 @@ export default function ApplyPage() {
                           value={formData.contactEmail}
                           onChange={handleChange}
                           required
-                          className="w-full bg-transparent border-b border-gold-antique/30 py-3 text-ivory-primary focus:border-gold-antique outline-none transition-colors placeholder-ivory-primary/30"
+                          className={`w-full bg-transparent border-b py-3 text-ivory-primary outline-none transition-colors placeholder-ivory-primary/30 ${
+                            errors.contactEmail ? 'border-destructive focus:border-destructive' : 'border-gold-antique/30 focus:border-gold-antique'
+                          }`}
                           placeholder="your@email.com"
                         />
+                        {errors.contactEmail && (
+                          <p className="text-destructive text-sm mt-2">{errors.contactEmail}</p>
+                        )}
                       </div>
 
                       <div>
