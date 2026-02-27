@@ -243,9 +243,12 @@ export default function PhilosophyFrameworkPage() {
           {/* CTA Button */}
           <FadeIn delay={1.2} className="flex justify-center">
             <motion.button
-              whileHover={{ y: -2 }}
+              onClick={handleFrameworkCTA}
+              disabled={ctaDisabled}
+              whileHover={!ctaDisabled ? { y: -2 } : {}}
+              whileTap={!ctaDisabled ? { y: 1 } : {}}
               transition={{ duration: 0.3 }}
-              className="border border-gold-antique text-ivory-primary bg-transparent px-11 py-4 text-[11px] uppercase tracking-[1.8px] font-light hover:bg-gold-antique hover:text-navy-dark transition-all duration-300 rounded-sm"
+              className="border border-gold-antique text-ivory-primary bg-transparent px-11 py-4 text-[11px] uppercase tracking-[1.8px] font-light hover:bg-gold-antique hover:text-navy-dark transition-all duration-300 rounded-sm disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Request Private Revenue Audit
             </motion.button>
