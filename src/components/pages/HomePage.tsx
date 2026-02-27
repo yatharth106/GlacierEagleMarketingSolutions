@@ -661,47 +661,13 @@ export default function HomePage() {
               <p className="text-ivory-primary/60">Limited engagements accepted quarterly.</p>
             </div>
 
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-widest text-ivory-primary/70">Company Name</label>
-                  <input type="text" className="w-full bg-transparent border-b border-gold-antique/30 py-2 text-ivory-primary focus:border-gold-antique outline-none transition-colors" />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-widest text-ivory-primary/70">ARR Range</label>
-                  <select className="w-full bg-transparent border-b border-gold-antique/30 py-2 text-ivory-primary focus:border-gold-antique outline-none transition-colors">
-                    <option className="bg-navy-dark">Select Range</option>
-                    <option className="bg-navy-dark">$1M - $5M</option>
-                    <option className="bg-navy-dark">$5M - $20M</option>
-                    <option className="bg-navy-dark">$20M+</option>
-                  </select>
-                </div>
-              </div>
-              
-              <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-ivory-primary/70">Primary Revenue Challenge</label>
-                <input type="text" className="w-full bg-transparent border-b border-gold-antique/30 py-2 text-ivory-primary focus:border-gold-antique outline-none transition-colors" />
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-widest text-ivory-primary/70">Current Email Platform</label>
-                  <input type="text" className="w-full bg-transparent border-b border-gold-antique/30 py-2 text-ivory-primary focus:border-gold-antique outline-none transition-colors" />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-widest text-ivory-primary/70">CRM Used</label>
-                  <input type="text" className="w-full bg-transparent border-b border-gold-antique/30 py-2 text-ivory-primary focus:border-gold-antique outline-none transition-colors" />
-                </div>
-              </div>
-
-              <div className="pt-8 text-center">
-                <Link to="/application">
-                  <Button className="w-full md:w-auto bg-bronze-burnished text-ivory-primary hover:bg-bronze-burnished/90 rounded-none px-12 py-6 text-lg font-medium tracking-wide">
-                    Submit for Review
-                  </Button>
-                </Link>
-              </div>
-            </form>
+            <div className="text-center">
+              <Link to="/application">
+                <Button className="bg-bronze-burnished text-ivory-primary hover:bg-bronze-burnished/90 rounded-none px-12 py-6 text-lg font-medium tracking-wide">
+                  Start Your Application
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
