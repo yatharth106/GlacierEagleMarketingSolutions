@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Badge } from '@/components/ui/badge';
 
 export default function ApplicationPage() {
   const [formData, setFormData] = useState({
@@ -18,9 +19,24 @@ export default function ApplicationPage() {
     leadVolume: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isTestMode, setIsTestMode] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Check for test mode in URL params on mount
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const testMode = params.get('testMode') === 'true';
+    setIsTestMode(testMode);
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    
+    // Simulate submission delay
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    
+    setIsSubmitting(false);
     setIsSubmitted(true);
   };
 
@@ -41,6 +57,14 @@ export default function ApplicationPage() {
               variants={fadeIn}
               className="max-w-2xl mx-auto text-center"
             >
+              {isTestMode && (
+                <div className="mb-8 p-4 bg-emerald-forest/10 border border-emerald-forest rounded-lg">
+                  <Badge className="bg-emerald-forest text-ivory mb-3">Test Mode</Badge>
+                  <p className="text-sm font-paragraph text-charcoal">
+                    This is a test submission. No live business process was triggered.
+                  </p>
+                </div>
+              )}
               <h1 className="text-5xl font-heading text-charcoal mb-8">
                 Application Received
               </h1>
@@ -50,6 +74,20 @@ export default function ApplicationPage() {
               <p className="text-base font-paragraph text-charcoal opacity-70">
                 Limited engagements accepted quarterly.
               </p>
+              {isTestMode && (
+                <div className="mt-12 pt-8 border-t border-charcoal/20">
+                  <p className="text-sm font-paragraph text-charcoal opacity-70 mb-4">
+                    Submitted Data (Test Mode):
+                  </p>
+                  <div className="bg-charcoal/5 p-6 rounded-lg text-left space-y-2">
+                    <p className="text-sm font-paragraph"><span className="font-semibold">Company:</span> {formData.companyName}</p>
+                    <p className="text-sm font-paragraph"><span className="font-semibold">ARR Range:</span> {formData.arrRange}</p>
+                    <p className="text-sm font-paragraph"><span className="font-semibold">Email Platform:</span> {formData.emailPlatform}</p>
+                    <p className="text-sm font-paragraph"><span className="font-semibold">CRM:</span> {formData.crm}</p>
+                    <p className="text-sm font-paragraph"><span className="font-semibold">Lead Volume:</span> {formData.leadVolume}</p>
+                  </div>
+                </div>
+              )}
             </motion.div>
           </div>
         </section>
@@ -70,12 +108,23 @@ export default function ApplicationPage() {
             variants={fadeIn}
             className="max-w-3xl mx-auto"
           >
-            <h1 className="text-5xl md:text-6xl font-heading text-charcoal mb-8 text-center">
-              Request a Private Revenue Audit
-            </h1>
+            <div className="flex items-center justify-center gap-3 mb-8">
+              <h1 className="text-5xl md:text-6xl font-heading text-charcoal text-center">
+                Request a Private Revenue Audit
+              </h1>
+              {isTestMode && <Badge className="bg-emerald-forest text-ivory">Test Mode</Badge>}
+            </div>
             <p className="text-lg font-paragraph text-charcoal mb-12 text-center">
               Complete this application to be considered for engagement. We review all submissions and respond within 3-5 business days.
             </p>
+
+            {isTestMode && (
+              <div className="mb-8 p-4 bg-emerald-forest/10 border border-emerald-forest rounded-lg">
+                <p className="text-sm font-paragraph text-charcoal">
+                  <span className="font-semibold">🧪 Test Mode Active:</span> Submitting this form will simulate a successful submission without triggering any live business processes.
+                </p>
+              </div>
+            )}
 
             <form onSubmit={handleSubmit} className="space-y-8 bg-stone p-12">
               <div className="space-y-3">
@@ -181,13 +230,19 @@ export default function ApplicationPage() {
               <div className="pt-6">
                 <Button
                   type="submit"
-                  className="w-full bg-primary text-primary-foreground hover:opacity-90 py-6 text-lg font-semibold"
+                  disabled={isSubmitting}
+                  className="w-full bg-primary text-primary-foreground hover:opacity-90 py-6 text-lg font-semibold disabled:opacity-50"
                 >
-                  Submit for Review
+                  {isSubmitting ? 'Submitting...' : 'Submit for Review'}
                 </Button>
                 <p className="text-sm font-paragraph text-charcoal opacity-70 text-center mt-4">
                   Limited engagements accepted quarterly.
                 </p>
+                {isTestMode && (
+                  <p className="text-xs font-paragraph text-emerald-forest text-center mt-3">
+                    ✓ Test mode enabled - safe to submit
+                  </p>
+                )}
               </div>
             </form>
           </motion.div>
