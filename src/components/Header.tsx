@@ -5,70 +5,38 @@ import { Menu, X } from 'lucide-react';
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const navItems = [
+    { label: 'Philosophy', href: '/philosophy' },
+    { label: 'Framework', href: '/framework' },
+    { label: 'Services', href: '/services' },
+    { label: 'Case Studies', href: '/case-studies' },
+    { label: 'FAQ', href: '/faq' },
+  ];
+
   return (
-    <header className="w-full bg-ivory-warm border-b border-stone-light fixed top-0 left-0 right-0 z-50">
-      <div className="max-w-[120rem] mx-auto px-8 py-6">
+    <header className="w-full bg-navy-dark border-b border-gold-antique/20 fixed top-0 left-0 right-0 z-50">
+      <div className="max-w-[120rem] mx-auto px-6 md:px-12 py-6">
         <div className="flex justify-between items-center">
-          <Link to="/" className="text-2xl font-heading text-charcoal-deep tracking-tight">
+          {/* Logo */}
+          <Link to="/" className="text-xl font-heading text-ivory-primary tracking-tight hover:text-gold-antique transition-colors duration-300">
             Glacier Eagle
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
-            <Link 
-              to="/services" 
-              className="text-base font-paragraph text-charcoal-deep transition-colors duration-200 hover:text-gold-muted"
-            >
-              Services
-            </Link>
-            <Link 
-              to="/engagement" 
-              className="text-base font-paragraph text-charcoal-deep transition-colors duration-200 hover:text-gold-muted"
-            >
-              Engagement
-            </Link>
-            <Link 
-              to="/process" 
-              className="text-base font-paragraph text-charcoal-deep transition-colors duration-200 hover:text-gold-muted"
-            >
-              Process
-            </Link>
-            <Link 
-              to="/case-studies" 
-              className="text-base font-paragraph text-charcoal-deep transition-colors duration-200 hover:text-gold-muted"
-            >
-              Case Studies
-            </Link>
-            <Link 
-              to="/founder-letter" 
-              className="text-base font-paragraph text-charcoal-deep transition-colors duration-200 hover:text-gold-muted"
-            >
-              Founder Letter
-            </Link>
-            <Link 
-              to="/faq" 
-              className="text-base font-paragraph text-charcoal-deep transition-colors duration-200 hover:text-gold-muted"
-            >
-              FAQ
-            </Link>
-            <a 
-              href="#glacier-model" 
-              onClick={(e) => {
-                e.preventDefault();
-                const element = document.getElementById('glacier-model');
-                if (element) {
-                  element.scrollIntoView({ behavior: 'smooth' });
-                } else {
-                  window.location.href = '/#glacier-model';
-                }
-              }}
-              className="text-base font-paragraph text-charcoal-deep transition-colors duration-200 hover:text-gold-muted cursor-pointer"
-            >
-              View Our Model
-            </a>
-            <Link 
-              to="/application"
-              className="bg-charcoal-deep text-ivory-warm px-6 py-3 font-paragraph font-semibold border border-gold-muted transition-all duration-200 hover:bg-charcoal-light"
+          <nav className="hidden lg:flex items-center gap-10">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                to={item.href}
+                className="text-base font-paragraph text-ivory-primary relative group transition-colors duration-300 hover:text-gold-antique px-2 py-2"
+              >
+                {item.label}
+                <span className="absolute bottom-0 left-0 w-0 h-px bg-gold-antique group-hover:w-full transition-all duration-300" />
+              </Link>
+            ))}
+            <Link
+              to="/apply"
+              className="ml-6 px-6 py-3 border border-gold-antique text-ivory-primary font-paragraph font-medium transition-all duration-300 hover:bg-gold-antique hover:text-navy-dark"
             >
               Apply
             </Link>
@@ -77,7 +45,7 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-charcoal-deep"
+            className="lg:hidden text-ivory-primary"
             aria-label="Toggle menu"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -86,68 +54,20 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <nav className="md:hidden mt-6 pb-4 flex flex-col gap-4 border-t border-stone-light pt-4">
-            <Link 
-              to="/services" 
-              className="text-base font-paragraph text-charcoal-deep py-2 transition-colors duration-200 hover:text-gold-muted"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Services
-            </Link>
-            <Link 
-              to="/engagement" 
-              className="text-base font-paragraph text-charcoal-deep py-2 transition-colors duration-200 hover:text-gold-muted"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Engagement
-            </Link>
-            <Link 
-              to="/process" 
-              className="text-base font-paragraph text-charcoal-deep py-2 transition-colors duration-200 hover:text-gold-muted"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Process
-            </Link>
-            <Link 
-              to="/case-studies" 
-              className="text-base font-paragraph text-charcoal-deep py-2 transition-colors duration-200 hover:text-gold-muted"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Case Studies
-            </Link>
-            <Link 
-              to="/founder-letter" 
-              className="text-base font-paragraph text-charcoal-deep py-2 transition-colors duration-200 hover:text-gold-muted"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Founder Letter
-            </Link>
-            <Link 
-              to="/faq" 
-              className="text-base font-paragraph text-charcoal-deep py-2 transition-colors duration-200 hover:text-gold-muted"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              FAQ
-            </Link>
-            <a 
-              href="#glacier-model" 
-              onClick={(e) => {
-                e.preventDefault();
-                setIsMenuOpen(false);
-                const element = document.getElementById('glacier-model');
-                if (element) {
-                  element.scrollIntoView({ behavior: 'smooth' });
-                } else {
-                  window.location.href = '/#glacier-model';
-                }
-              }}
-              className="text-base font-paragraph text-charcoal-deep py-2 transition-colors duration-200 hover:text-gold-muted cursor-pointer"
-            >
-              View Our Model
-            </a>
-            <Link 
-              to="/application"
-              className="bg-charcoal-deep text-ivory-warm px-6 py-3 font-paragraph font-semibold border border-gold-muted text-center transition-all duration-200 hover:bg-charcoal-light"
+          <nav className="lg:hidden mt-6 pb-4 flex flex-col gap-4 border-t border-gold-antique/20 pt-4">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                to={item.href}
+                className="text-base font-paragraph text-ivory-primary py-2 transition-colors duration-300 hover:text-gold-antique"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item.label}
+              </Link>
+            ))}
+            <Link
+              to="/apply"
+              className="mt-4 px-6 py-3 border border-gold-antique text-ivory-primary font-paragraph font-medium text-center transition-all duration-300 hover:bg-gold-antique hover:text-navy-dark"
               onClick={() => setIsMenuOpen(false)}
             >
               Apply
