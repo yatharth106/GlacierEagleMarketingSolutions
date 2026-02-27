@@ -60,7 +60,7 @@ export default function ApplyPage() {
     }
     if (!formData.contactEmail.trim()) {
       newErrors.contactEmail = 'Email address is required';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.contactEmail)) {
+    } else if (!/^\S+@\S+\.\S+$/.test(formData.contactEmail)) {
       newErrors.contactEmail = 'Please enter a valid email address';
     }
 
@@ -143,9 +143,9 @@ export default function ApplyPage() {
       </section>
 
       {/* --- Application Form Section --- */}
-      <section id="application" className="w-full py-20 md:py-32 bg-slate-deep">
+      <section id="application" className="w-full py-12 md:py-20 bg-slate-deep">
         <div className="max-w-4xl mx-auto px-6 md:px-12">
-          <FadeIn delay={0.1} className="bg-navy-dark border border-gold-antique/30 p-6 md:p-12">
+          <FadeIn delay={0.1} className="bg-navy-dark border border-gold-antique/30 p-6 md:p-10">
             {submitStatus === 'success' ? (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -166,16 +166,16 @@ export default function ApplyPage() {
                 </p>
               </motion.div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-8">
+              <form onSubmit={handleSubmit} className="space-y-5">
                 {/* Company Information */}
                 <div>
-                  <h3 className="text-xl font-heading text-ivory-primary mb-6 flex items-center gap-3">
-                    <span className="text-sm font-bold text-gold-antique tracking-widest uppercase">01</span>
+                  <h3 className="text-lg font-heading text-ivory-primary mb-4 flex items-center gap-3">
+                    <span className="text-xs font-bold text-gold-antique tracking-widest uppercase">01</span>
                     Company Information
                   </h3>
-                  <div className="space-y-6">
+                  <div className="space-y-4">
                     <div>
-                      <label className="text-xs font-bold uppercase tracking-widest text-ivory-primary/70 block mb-3">
+                      <label className="text-xs font-bold uppercase tracking-widest text-ivory-primary/70 block mb-2">
                         Company Name *
                       </label>
                       <input
@@ -184,19 +184,19 @@ export default function ApplyPage() {
                         value={formData.companyName}
                         onChange={handleChange}
                         required
-                        className={`w-full bg-transparent border-b py-3 text-ivory-primary outline-none transition-colors placeholder-ivory-primary/30 ${
+                        className={`w-full bg-transparent border-b py-2 text-ivory-primary outline-none transition-colors placeholder-ivory-primary/30 ${
                           errors.companyName ? 'border-destructive focus:border-destructive' : 'border-gold-antique/30 focus:border-gold-antique'
                         }`}
                         placeholder="Your company name"
                       />
                       {errors.companyName && (
-                        <p className="text-destructive text-sm mt-2">{errors.companyName}</p>
+                        <p className="text-destructive text-sm mt-1">{errors.companyName}</p>
                       )}
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div data-error={!!errors.arrRange}>
-                        <label className="text-xs font-bold uppercase tracking-widest text-ivory-primary/70 block mb-3">
+                        <label className="text-xs font-bold uppercase tracking-widest text-ivory-primary/70 block mb-2">
                           Annual Recurring Revenue (ARR) *
                         </label>
                         <select
@@ -204,7 +204,7 @@ export default function ApplyPage() {
                           value={formData.arrRange}
                           onChange={handleChange}
                           required
-                          className={`w-full bg-transparent border-b py-3 text-ivory-primary outline-none transition-colors ${
+                          className={`w-full bg-transparent border-b py-2 text-ivory-primary outline-none transition-colors ${
                             errors.arrRange ? 'border-destructive focus:border-destructive' : 'border-gold-antique/30 focus:border-gold-antique'
                           }`}
                         >
@@ -215,12 +215,12 @@ export default function ApplyPage() {
                           <option value="50m+" className="bg-navy-dark">$50M+</option>
                         </select>
                         {errors.arrRange && (
-                          <p className="text-destructive text-sm mt-2">{errors.arrRange}</p>
+                          <p className="text-destructive text-sm mt-1">{errors.arrRange}</p>
                         )}
                       </div>
 
                       <div data-error={!!errors.trialVolume}>
-                        <label className="text-xs font-bold uppercase tracking-widest text-ivory-primary/70 block mb-3">
+                        <label className="text-xs font-bold uppercase tracking-widest text-ivory-primary/70 block mb-2">
                           Current Trial Volume (Monthly) *
                         </label>
                         <input
@@ -229,13 +229,13 @@ export default function ApplyPage() {
                           value={formData.trialVolume}
                           onChange={handleChange}
                           required
-                          className={`w-full bg-transparent border-b py-3 text-ivory-primary outline-none transition-colors placeholder-ivory-primary/30 ${
+                          className={`w-full bg-transparent border-b py-2 text-ivory-primary outline-none transition-colors placeholder-ivory-primary/30 ${
                             errors.trialVolume ? 'border-destructive focus:border-destructive' : 'border-gold-antique/30 focus:border-gold-antique'
                           }`}
                           placeholder="e.g., 500 trials/month"
                         />
                         {errors.trialVolume && (
-                          <p className="text-destructive text-sm mt-2">{errors.trialVolume}</p>
+                          <p className="text-destructive text-sm mt-1">{errors.trialVolume}</p>
                         )}
                       </div>
                     </div>
@@ -244,12 +244,12 @@ export default function ApplyPage() {
 
                 {/* Revenue Challenge */}
                 <div>
-                  <h3 className="text-xl font-heading text-ivory-primary mb-6 flex items-center gap-3">
-                    <span className="text-sm font-bold text-gold-antique tracking-widest uppercase">02</span>
+                  <h3 className="text-lg font-heading text-ivory-primary mb-4 flex items-center gap-3">
+                    <span className="text-xs font-bold text-gold-antique tracking-widest uppercase">02</span>
                     Your Revenue Challenge
                   </h3>
                   <div data-error={!!errors.revenueChallenge}>
-                    <label className="text-xs font-bold uppercase tracking-widest text-ivory-primary/70 block mb-3">
+                    <label className="text-xs font-bold uppercase tracking-widest text-ivory-primary/70 block mb-2">
                       Primary Revenue Challenge *
                     </label>
                     <textarea
@@ -257,27 +257,27 @@ export default function ApplyPage() {
                       value={formData.revenueChallenge}
                       onChange={handleChange}
                       required
-                      rows={4}
-                      className={`w-full bg-transparent border p-4 text-ivory-primary outline-none transition-colors placeholder-ivory-primary/30 resize-none ${
+                      rows={3}
+                      className={`w-full bg-transparent border p-3 text-ivory-primary outline-none transition-colors placeholder-ivory-primary/30 resize-none ${
                         errors.revenueChallenge ? 'border-destructive focus:border-destructive' : 'border-gold-antique/30 focus:border-gold-antique'
                       }`}
                       placeholder="What's your biggest revenue bottleneck? (e.g., low trial conversion, long sales cycles, etc.)"
                     />
                     {errors.revenueChallenge && (
-                      <p className="text-destructive text-sm mt-2">{errors.revenueChallenge}</p>
+                      <p className="text-destructive text-sm mt-1">{errors.revenueChallenge}</p>
                     )}
                   </div>
                 </div>
 
                 {/* Technology Stack */}
                 <div>
-                  <h3 className="text-xl font-heading text-ivory-primary mb-6 flex items-center gap-3">
-                    <span className="text-sm font-bold text-gold-antique tracking-widest uppercase">03</span>
+                  <h3 className="text-lg font-heading text-ivory-primary mb-4 flex items-center gap-3">
+                    <span className="text-xs font-bold text-gold-antique tracking-widest uppercase">03</span>
                     Technology Stack
                   </h3>
-                  <div className="space-y-6">
+                  <div className="space-y-4">
                     <div data-error={!!errors.emailPlatform}>
-                      <label className="text-xs font-bold uppercase tracking-widest text-ivory-primary/70 block mb-3">
+                      <label className="text-xs font-bold uppercase tracking-widest text-ivory-primary/70 block mb-2">
                         Email Platform *
                       </label>
                       <input
@@ -286,18 +286,18 @@ export default function ApplyPage() {
                         value={formData.emailPlatform}
                         onChange={handleChange}
                         required
-                        className={`w-full bg-transparent border-b py-3 text-ivory-primary outline-none transition-colors placeholder-ivory-primary/30 ${
+                        className={`w-full bg-transparent border-b py-2 text-ivory-primary outline-none transition-colors placeholder-ivory-primary/30 ${
                           errors.emailPlatform ? 'border-destructive focus:border-destructive' : 'border-gold-antique/30 focus:border-gold-antique'
                         }`}
                         placeholder="e.g., HubSpot, Klaviyo, Marketo"
                       />
                       {errors.emailPlatform && (
-                        <p className="text-destructive text-sm mt-2">{errors.emailPlatform}</p>
+                        <p className="text-destructive text-sm mt-1">{errors.emailPlatform}</p>
                       )}
                     </div>
 
                     <div data-error={!!errors.crm}>
-                      <label className="text-xs font-bold uppercase tracking-widest text-ivory-primary/70 block mb-3">
+                      <label className="text-xs font-bold uppercase tracking-widest text-ivory-primary/70 block mb-2">
                         CRM Used *
                       </label>
                       <input
@@ -306,13 +306,13 @@ export default function ApplyPage() {
                         value={formData.crm}
                         onChange={handleChange}
                         required
-                        className={`w-full bg-transparent border-b py-3 text-ivory-primary outline-none transition-colors placeholder-ivory-primary/30 ${
+                        className={`w-full bg-transparent border-b py-2 text-ivory-primary outline-none transition-colors placeholder-ivory-primary/30 ${
                           errors.crm ? 'border-destructive focus:border-destructive' : 'border-gold-antique/30 focus:border-gold-antique'
                         }`}
                         placeholder="e.g., Salesforce, Pipedrive, HubSpot"
                       />
                       {errors.crm && (
-                        <p className="text-destructive text-sm mt-2">{errors.crm}</p>
+                        <p className="text-destructive text-sm mt-1">{errors.crm}</p>
                       )}
                     </div>
                   </div>
@@ -320,13 +320,13 @@ export default function ApplyPage() {
 
                 {/* Contact Information */}
                 <div>
-                  <h3 className="text-xl font-heading text-ivory-primary mb-6 flex items-center gap-3">
-                    <span className="text-sm font-bold text-gold-antique tracking-widest uppercase">04</span>
+                  <h3 className="text-lg font-heading text-ivory-primary mb-4 flex items-center gap-3">
+                    <span className="text-xs font-bold text-gold-antique tracking-widest uppercase">04</span>
                     Contact Information
                   </h3>
-                  <div className="space-y-6">
+                  <div className="space-y-4">
                     <div data-error={!!errors.contactName}>
-                      <label className="text-xs font-bold uppercase tracking-widest text-ivory-primary/70 block mb-3">
+                      <label className="text-xs font-bold uppercase tracking-widest text-ivory-primary/70 block mb-2">
                         Your Name *
                       </label>
                       <input
@@ -335,19 +335,19 @@ export default function ApplyPage() {
                         value={formData.contactName}
                         onChange={handleChange}
                         required
-                        className={`w-full bg-transparent border-b py-3 text-ivory-primary outline-none transition-colors placeholder-ivory-primary/30 ${
+                        className={`w-full bg-transparent border-b py-2 text-ivory-primary outline-none transition-colors placeholder-ivory-primary/30 ${
                           errors.contactName ? 'border-destructive focus:border-destructive' : 'border-gold-antique/30 focus:border-gold-antique'
                         }`}
                         placeholder="Full name"
                       />
                       {errors.contactName && (
-                        <p className="text-destructive text-sm mt-2">{errors.contactName}</p>
+                        <p className="text-destructive text-sm mt-1">{errors.contactName}</p>
                       )}
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div data-error={!!errors.contactEmail}>
-                        <label className="text-xs font-bold uppercase tracking-widest text-ivory-primary/70 block mb-3">
+                        <label className="text-xs font-bold uppercase tracking-widest text-ivory-primary/70 block mb-2">
                           Email Address *
                         </label>
                         <input
@@ -356,18 +356,18 @@ export default function ApplyPage() {
                           value={formData.contactEmail}
                           onChange={handleChange}
                           required
-                          className={`w-full bg-transparent border-b py-3 text-ivory-primary outline-none transition-colors placeholder-ivory-primary/30 ${
+                          className={`w-full bg-transparent border-b py-2 text-ivory-primary outline-none transition-colors placeholder-ivory-primary/30 ${
                             errors.contactEmail ? 'border-destructive focus:border-destructive' : 'border-gold-antique/30 focus:border-gold-antique'
                           }`}
                           placeholder="your@email.com"
                         />
                         {errors.contactEmail && (
-                          <p className="text-destructive text-sm mt-2">{errors.contactEmail}</p>
+                          <p className="text-destructive text-sm mt-1">{errors.contactEmail}</p>
                         )}
                       </div>
 
                       <div>
-                        <label className="text-xs font-bold uppercase tracking-widest text-ivory-primary/70 block mb-3">
+                        <label className="text-xs font-bold uppercase tracking-widest text-ivory-primary/70 block mb-2">
                           Phone Number
                         </label>
                         <input
@@ -375,7 +375,7 @@ export default function ApplyPage() {
                           name="contactPhone"
                           value={formData.contactPhone}
                           onChange={handleChange}
-                          className="w-full bg-transparent border-b border-gold-antique/30 py-3 text-ivory-primary focus:border-gold-antique outline-none transition-colors placeholder-ivory-primary/30"
+                          className="w-full bg-transparent border-b border-gold-antique/30 py-2 text-ivory-primary focus:border-gold-antique outline-none transition-colors placeholder-ivory-primary/30"
                           placeholder="+1 (555) 000-0000"
                         />
                       </div>
@@ -384,11 +384,11 @@ export default function ApplyPage() {
                 </div>
 
                 {/* Submit Button */}
-                <div className="pt-8">
+                <div className="pt-4">
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-bronze-burnished text-ivory-primary hover:bg-bronze-burnished/90 rounded-none px-12 py-6 text-lg font-medium tracking-wide disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2"
+                    className="w-full bg-bronze-burnished text-ivory-primary hover:bg-bronze-burnished/90 rounded-none px-12 py-5 text-base font-medium tracking-wide disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2"
                   >
                     {isSubmitting ? 'Submitting...' : 'Submit for Review'}
                     {!isSubmitting && <ArrowRight className="w-4 h-4" />}
@@ -403,7 +403,7 @@ export default function ApplyPage() {
           </FadeIn>
 
           {/* Qualification Info */}
-          <FadeIn delay={0.2} className="mt-16 pt-16 border-t border-gold-antique/20">
+          <FadeIn delay={0.2} className="mt-12 pt-12 border-t border-gold-antique/20">
             <h3 className="text-2xl font-heading text-ivory-primary mb-8 text-center">
               What We're Looking For
             </h3>
