@@ -133,7 +133,6 @@ export default function ApplicationPage() {
 
   return (
     <PageLayout>
-
       <section className="w-full bg-navy-dark pt-32 pb-32">
         <div className="max-w-[100rem] mx-auto px-8">
           <motion.div
@@ -191,7 +190,7 @@ export default function ApplicationPage() {
               </div>
 
               <div className="space-y-3" ref={Object.keys(errors).length > 0 && errors.arrRange && !errors.companyName ? firstErrorRef : undefined}>
-                <Label htmlFor="arrRange" className="text-base font-paragraph text-charcoal font-semibold">
+                <Label htmlFor="arrRange" className="text-base font-paragraph font-semibold text-primary-foreground">
                   Annual Recurring Revenue Range *
                 </Label>
                 <Select
@@ -220,7 +219,7 @@ export default function ApplicationPage() {
               </div>
 
               <div className="space-y-3" ref={Object.keys(errors).length > 0 && errors.revenueChallenge && !errors.companyName && !errors.arrRange ? firstErrorRef : undefined}>
-                <Label htmlFor="revenueChallenge" className="text-base font-paragraph text-charcoal font-semibold">
+                <Label htmlFor="revenueChallenge" className="text-base font-paragraph font-semibold text-primary-foreground">
                   Primary Revenue Challenge *
                 </Label>
                 <Textarea
@@ -243,7 +242,7 @@ export default function ApplicationPage() {
               </div>
 
               <div className="space-y-3" ref={Object.keys(errors).length > 0 && errors.emailPlatform && !errors.companyName && !errors.arrRange && !errors.revenueChallenge ? firstErrorRef : undefined}>
-                <Label htmlFor="emailPlatform" className="text-base font-paragraph text-charcoal font-semibold">
+                <Label htmlFor="emailPlatform" className="text-base font-paragraph font-semibold text-primary-foreground">
                   Current Email Platform *
                 </Label>
                 <Input
@@ -265,7 +264,7 @@ export default function ApplicationPage() {
               </div>
 
               <div className="space-y-3" ref={Object.keys(errors).length > 0 && errors.crm && !errors.companyName && !errors.arrRange && !errors.revenueChallenge && !errors.emailPlatform ? firstErrorRef : undefined}>
-                <Label htmlFor="crm" className="text-base font-paragraph text-charcoal font-semibold">
+                <Label htmlFor="crm" className="text-base font-paragraph font-semibold text-primary-foreground">
                   CRM Used *
                 </Label>
                 <Input
@@ -336,7 +335,6 @@ export default function ApplicationPage() {
           </motion.div>
         </div>
       </section>
-
     </PageLayout>
   );
 }
