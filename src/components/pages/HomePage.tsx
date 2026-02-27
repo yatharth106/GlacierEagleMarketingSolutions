@@ -194,34 +194,13 @@ export default function HomePage() {
       {/* --- 3. Credibility Strip (Authority Bar) --- */}
       <section className="w-full border-y border-gold-antique/20 bg-slate-deep py-12">
         <div className="max-w-[120rem] mx-auto px-6 md:px-12">
+          <div className="mb-8">
+            <h3 className="font-heading text-2xl md:text-3xl text-gold-antique uppercase tracking-widest">Our Industry Expertise</h3>
+          </div>
           {isLoading ? (
             <div className="h-8 w-full bg-gold-antique/10 animate-pulse" />
           ) : (
-            <div className="flex flex-wrap justify-center md:justify-between items-center gap-x-12 gap-y-6 opacity-70">
-              {industries.length > 0 ? (
-                industries.map((industry, i) => (
-                  <motion.div
-                    key={industry._id}
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 }}
-                    className="flex items-center gap-2"
-                  >
-                    <span className="w-1.5 h-1.5 bg-gold-antique rounded-full" />
-
-                  </motion.div>
-                ))
-              ) : (
-                // Fallback if no data
-                (<>
-                  <span className="text-sm font-medium uppercase tracking-widest text-ivory-primary">B2B SaaS</span>
-                  <span className="text-sm font-medium uppercase tracking-widest text-ivory-primary">Professional Services</span>
-                  <span className="text-sm font-medium uppercase tracking-widest text-ivory-primary">High-Ticket Consultancies</span>
-                  <span className="text-sm font-medium uppercase tracking-widest text-ivory-primary">Mid-Market Technology</span>
-                </>)
-              )}
-            </div>
+            <div className="w-full pt-24 pb-8 relative z-10 bg-slate-deep/50 border-y border-gold-antique/20"> <div className="max-w-[120rem] mx-auto px-6 md:px-12"> {isLoading ? (<div className="h-8 w-full bg-gold-antique/10 animate-pulse" />) : (<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-4 bg-navy-dark/70 rounded-lg shadow-xl"> {industries.length > 0 ? (industries.map((industry, i) => (<motion.div key={industry._id} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }} className="flex flex-col items-center justify-center p-4 group relative overflow-hidden"> <div className="absolute inset-0 bg-gradient-to-br from-gold-antique/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" /> <span className="text-sm md:text-base font-medium uppercase tracking-widest text-ivory-primary/70 group-hover:text-gold-antique transition-colors duration-300 relative z-10"> {industry.industryName} </span> <span className="w-2 h-2 bg-gold-antique rounded-full mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 relative z-10" /> </motion.div>))) : (<> <span className="text-sm font-medium uppercase tracking-widest text-ivory-primary/80">B2B SaaS</span> <span className="text-sm font-medium uppercase tracking-widest text-ivory-primary/80">Professional Services</span> <span className="text-sm font-medium uppercase tracking-widest text-ivory-primary/80">High-Ticket Consultancies</span> <span className="text-sm font-medium uppercase tracking-widest text-ivory-primary/80">Mid-Market Technology</span> </>)} </div>)} </div> </div>
           )}
         </div>
       </section>
