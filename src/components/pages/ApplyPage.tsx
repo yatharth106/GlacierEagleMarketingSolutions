@@ -143,9 +143,9 @@ export default function ApplyPage() {
       </section>
 
       {/* --- Application Form Section --- */}
-      <section id="application" className="w-full py-32 bg-slate-deep">
-        <div className="max-w-2xl mx-auto px-6 md:px-12">
-          <FadeIn delay={0.1} className="bg-navy-dark border border-gold-antique/30 p-8 md:p-16">
+      <section id="application" className="w-full py-20 md:py-32 bg-slate-deep">
+        <div className="max-w-4xl mx-auto px-6 md:px-12">
+          <FadeIn delay={0.1} className="bg-navy-dark border border-gold-antique/30 p-6 md:p-12">
             {submitStatus === 'success' ? (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -275,7 +275,7 @@ export default function ApplyPage() {
                     <span className="text-sm font-bold text-gold-antique tracking-widest uppercase">03</span>
                     Technology Stack
                   </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-6">
                     <div data-error={!!errors.emailPlatform}>
                       <label className="text-xs font-bold uppercase tracking-widest text-ivory-primary/70 block mb-3">
                         Email Platform *
