@@ -145,7 +145,7 @@ export default function ApplicationPage() {
                   value={formData.arrRange}
                   onValueChange={(value) => setFormData({ ...formData, arrRange: value })}
                 >
-                  <SelectTrigger className="bg-ivory border-charcoal text-charcoal">
+                  <SelectTrigger className="bg-ivory border-2 border-charcoal text-charcoal cursor-pointer hover:bg-ivory/90 transition-colors">
                     <SelectValue placeholder="Select ARR range" />
                   </SelectTrigger>
                   <SelectContent>
@@ -210,7 +210,7 @@ export default function ApplicationPage() {
                   value={formData.leadVolume}
                   onValueChange={(value) => setFormData({ ...formData, leadVolume: value })}
                 >
-                  <SelectTrigger className="bg-ivory border-charcoal text-charcoal">
+                  <SelectTrigger className="bg-ivory border-2 border-charcoal text-charcoal cursor-pointer hover:bg-ivory/90 transition-colors">
                     <SelectValue placeholder="Select monthly volume" />
                   </SelectTrigger>
                   <SelectContent>
