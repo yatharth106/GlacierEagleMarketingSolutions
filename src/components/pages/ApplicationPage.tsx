@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import PageLayout from '@/components/PageLayout';
 import { Button } from '@/components/ui/button';
@@ -17,9 +17,12 @@ export default function ApplicationPage() {
     crm: '',
     leadVolume: ''
   });
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isTestMode, setIsTestMode] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+  const firstErrorRef = useRef<HTMLDivElement>(null);
 
   // Check for test mode in URL params on mount
   useEffect(() => {
@@ -28,8 +31,43 @@ export default function ApplicationPage() {
     setIsTestMode(testMode);
   }, []);
 
+  const validateForm = () => {
+    const newErrors: Record<string, string> = {};
+
+    if (!formData.companyName.trim()) {
+      newErrors.companyName = 'Company Name is required';
+    }
+    if (!formData.arrRange) {
+      newErrors.arrRange = 'Annual Recurring Revenue Range is required';
+    }
+    if (!formData.revenueChallenge.trim()) {
+      newErrors.revenueChallenge = 'Primary Revenue Challenge is required';
+    }
+    if (!formData.emailPlatform.trim()) {
+      newErrors.emailPlatform = 'Current Email Platform is required';
+    }
+    if (!formData.crm.trim()) {
+      newErrors.crm = 'CRM Used is required';
+    }
+    if (!formData.leadVolume) {
+      newErrors.leadVolume = 'Monthly Trial / Lead Volume is required';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!validateForm()) {
+      // Scroll to first error field after a brief delay to ensure DOM is updated
+      setTimeout(() => {
+        firstErrorRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 0);
+      return;
+    }
+
     setIsSubmitting(true);
     
     // Simulate submission delay
@@ -122,30 +160,50 @@ export default function ApplicationPage() {
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-8 bg-slate-deep p-12">
-              <div className="space-y-3">
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-8 bg-slate-deep p-12">
+              {Object.keys(errors).length > 0 && (
+                <div className="p-4 bg-destructive/10 border border-destructive rounded-lg">
+                  <p className="text-sm font-paragraph text-destructive font-semibold">
+                    Please fill out all required fields
+                  </p>
+                </div>
+              )}
+
+              <div className="space-y-3" ref={Object.keys(errors).length > 0 && errors.companyName ? firstErrorRef : undefined}>
                 <Label htmlFor="companyName" className="text-base font-paragraph text-ivory-primary font-semibold">
                   Company Name *
                 </Label>
                 <Input
                   id="companyName"
-                  required
                   value={formData.companyName}
-                  onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
-                  className="bg-ivory border-charcoal text-charcoal"
+                  onChange={(e) => {
+                    setFormData({ ...formData, companyName: e.target.value });
+                    if (errors.companyName) {
+                      setErrors({ ...errors, companyName: '' });
+                    }
+                  }}
+                  className={`bg-ivory border-charcoal text-charcoal ${errors.companyName ? 'border-2 border-destructive' : ''}`}
+                  aria-invalid={!!errors.companyName}
                 />
+                {errors.companyName && (
+                  <p className="text-sm text-destructive font-paragraph">{errors.companyName}</p>
+                )}
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-3" ref={Object.keys(errors).length > 0 && errors.arrRange && !errors.companyName ? firstErrorRef : undefined}>
                 <Label htmlFor="arrRange" className="text-base font-paragraph text-charcoal font-semibold">
                   Annual Recurring Revenue Range *
                 </Label>
                 <Select
-                  required
                   value={formData.arrRange}
-                  onValueChange={(value) => setFormData({ ...formData, arrRange: value })}
+                  onValueChange={(value) => {
+                    setFormData({ ...formData, arrRange: value });
+                    if (errors.arrRange) {
+                      setErrors({ ...errors, arrRange: '' });
+                    }
+                  }}
                 >
-                  <SelectTrigger className="bg-ivory border-2 border-charcoal text-charcoal cursor-pointer hover:bg-ivory/90 transition-colors">
+                  <SelectTrigger className={`bg-ivory border-2 border-charcoal text-charcoal cursor-pointer hover:bg-ivory/90 transition-colors ${errors.arrRange ? 'border-destructive' : ''}`}>
                     <SelectValue placeholder="Select ARR range" />
                   </SelectTrigger>
                   <SelectContent>
@@ -156,61 +214,92 @@ export default function ApplicationPage() {
                     <SelectItem value="10m-plus">$10M+</SelectItem>
                   </SelectContent>
                 </Select>
+                {errors.arrRange && (
+                  <p className="text-sm text-destructive font-paragraph">{errors.arrRange}</p>
+                )}
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-3" ref={Object.keys(errors).length > 0 && errors.revenueChallenge && !errors.companyName && !errors.arrRange ? firstErrorRef : undefined}>
                 <Label htmlFor="revenueChallenge" className="text-base font-paragraph text-charcoal font-semibold">
                   Primary Revenue Challenge *
                 </Label>
                 <Textarea
                   id="revenueChallenge"
-                  required
                   rows={4}
                   value={formData.revenueChallenge}
-                  onChange={(e) => setFormData({ ...formData, revenueChallenge: e.target.value })}
+                  onChange={(e) => {
+                    setFormData({ ...formData, revenueChallenge: e.target.value });
+                    if (errors.revenueChallenge) {
+                      setErrors({ ...errors, revenueChallenge: '' });
+                    }
+                  }}
                   placeholder="Describe your primary revenue challenge or opportunity"
-                  className="bg-ivory border-charcoal text-charcoal"
+                  className={`bg-ivory border-charcoal text-charcoal ${errors.revenueChallenge ? 'border-2 border-destructive' : ''}`}
+                  aria-invalid={!!errors.revenueChallenge}
                 />
+                {errors.revenueChallenge && (
+                  <p className="text-sm text-destructive font-paragraph">{errors.revenueChallenge}</p>
+                )}
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-3" ref={Object.keys(errors).length > 0 && errors.emailPlatform && !errors.companyName && !errors.arrRange && !errors.revenueChallenge ? firstErrorRef : undefined}>
                 <Label htmlFor="emailPlatform" className="text-base font-paragraph text-charcoal font-semibold">
                   Current Email Platform *
                 </Label>
                 <Input
                   id="emailPlatform"
-                  required
                   value={formData.emailPlatform}
-                  onChange={(e) => setFormData({ ...formData, emailPlatform: e.target.value })}
+                  onChange={(e) => {
+                    setFormData({ ...formData, emailPlatform: e.target.value });
+                    if (errors.emailPlatform) {
+                      setErrors({ ...errors, emailPlatform: '' });
+                    }
+                  }}
                   placeholder="e.g., HubSpot, Mailchimp, ActiveCampaign"
-                  className="bg-ivory border-charcoal text-charcoal"
+                  className={`bg-ivory border-charcoal text-charcoal ${errors.emailPlatform ? 'border-2 border-destructive' : ''}`}
+                  aria-invalid={!!errors.emailPlatform}
                 />
+                {errors.emailPlatform && (
+                  <p className="text-sm text-destructive font-paragraph">{errors.emailPlatform}</p>
+                )}
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-3" ref={Object.keys(errors).length > 0 && errors.crm && !errors.companyName && !errors.arrRange && !errors.revenueChallenge && !errors.emailPlatform ? firstErrorRef : undefined}>
                 <Label htmlFor="crm" className="text-base font-paragraph text-charcoal font-semibold">
                   CRM Used *
                 </Label>
                 <Input
                   id="crm"
-                  required
                   value={formData.crm}
-                  onChange={(e) => setFormData({ ...formData, crm: e.target.value })}
+                  onChange={(e) => {
+                    setFormData({ ...formData, crm: e.target.value });
+                    if (errors.crm) {
+                      setErrors({ ...errors, crm: '' });
+                    }
+                  }}
                   placeholder="e.g., Salesforce, HubSpot, Pipedrive"
-                  className="bg-ivory border-charcoal text-charcoal"
+                  className={`bg-ivory border-charcoal text-charcoal ${errors.crm ? 'border-2 border-destructive' : ''}`}
+                  aria-invalid={!!errors.crm}
                 />
+                {errors.crm && (
+                  <p className="text-sm text-destructive font-paragraph">{errors.crm}</p>
+                )}
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-3" ref={Object.keys(errors).length > 0 && errors.leadVolume && !errors.companyName && !errors.arrRange && !errors.revenueChallenge && !errors.emailPlatform && !errors.crm ? firstErrorRef : undefined}>
                 <Label htmlFor="leadVolume" className="text-base font-paragraph text-charcoal font-semibold">
                   Monthly Trial / Lead Volume *
                 </Label>
                 <Select
-                  required
                   value={formData.leadVolume}
-                  onValueChange={(value) => setFormData({ ...formData, leadVolume: value })}
+                  onValueChange={(value) => {
+                    setFormData({ ...formData, leadVolume: value });
+                    if (errors.leadVolume) {
+                      setErrors({ ...errors, leadVolume: '' });
+                    }
+                  }}
                 >
-                  <SelectTrigger className="bg-ivory border-2 border-charcoal text-charcoal cursor-pointer hover:bg-ivory/90 transition-colors">
+                  <SelectTrigger className={`bg-ivory border-2 border-charcoal text-charcoal cursor-pointer hover:bg-ivory/90 transition-colors ${errors.leadVolume ? 'border-destructive' : ''}`}>
                     <SelectValue placeholder="Select monthly volume" />
                   </SelectTrigger>
                   <SelectContent>
@@ -221,6 +310,9 @@ export default function ApplicationPage() {
                     <SelectItem value="500-plus">500+</SelectItem>
                   </SelectContent>
                 </Select>
+                {errors.leadVolume && (
+                  <p className="text-sm text-destructive font-paragraph">{errors.leadVolume}</p>
+                )}
               </div>
 
               <div className="pt-6">
