@@ -35,7 +35,7 @@ export default function Header() {
               </Link>
             ))}
             <Link
-              to="/apply"
+              to="/application"
               className="ml-6 px-6 py-3 border border-gold-antique text-ivory-primary font-paragraph font-medium transition-all duration-300 hover:bg-gold-antique hover:text-navy-dark"
             >
               Apply
@@ -66,7 +66,7 @@ export default function Header() {
               </Link>
             ))}
             <Link
-              to="/apply"
+              to="/application"
               className="mt-4 px-6 py-3 border border-gold-antique text-ivory-primary font-paragraph font-medium text-center transition-all duration-300 hover:bg-gold-antique hover:text-navy-dark"
               onClick={() => setIsMenuOpen(false)}
             >
