@@ -5,6 +5,7 @@ import { AdvisoryProcessSteps } from '@/entities';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Separator } from '@/components/ui/separator';
+import { useLocation } from 'react-router-dom';
 
 const FadeIn = ({ children, delay = 0, className = "" }: { children: React.ReactNode, delay?: number, className?: string }) => (
   <motion.div
@@ -45,6 +46,8 @@ const SlideInRight = ({ children, delay = 0, className = "" }: { children: React
 export default function PhilosophyFrameworkPage() {
   const [processSteps, setProcessSteps] = useState<AdvisoryProcessSteps[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const location = useLocation();
+  const [ctaDisabled, setCtaDisabled] = useState(false);
 
   useEffect(() => {
     loadData();
@@ -59,6 +62,22 @@ export default function PhilosophyFrameworkPage() {
       console.error('Error loading process steps:', error);
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handleFrameworkCTA = () => {
+    if (ctaDisabled) return;
+    
+    setCtaDisabled(true);
+    setTimeout(() => setCtaDisabled(false), 800);
+
+    if (location.pathname === '/') {
+      const element = document.getElementById('application');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    } else {
+      window.location.href = '/application';
     }
   };
 
@@ -234,126 +253,153 @@ export default function PhilosophyFrameworkPage() {
         </div>
       </section>
 
-      {/* --- Framework Section: The Revenue Architecture --- */}
-      <section className="w-full py-32 bg-slate-deep">
-        <div className="max-w-[120rem] mx-auto px-6 md:px-12">
-          {/* Framework Headline */}
-          <FadeIn className="mb-24 text-center">
-            <h1 className="text-6xl md:text-7xl font-heading text-ivory-primary mb-6">
-              The Revenue Architecture
-            </h1>
-            <p className="text-lg text-ivory-primary/60 max-w-2xl mx-auto">
-              How we bridge technical automation and high-level revenue strategy.
-            </p>
-          </FadeIn>
-
-          {/* The Hybrid Model */}
-          <FadeIn delay={0.1} className="mb-32">
-            <h2 className="text-4xl font-heading text-ivory-primary mb-12 text-center">The Hybrid Model: AI + Human</h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-gold-antique/30 bg-navy-dark">
-              {/* AI Layer */}
-              <div className="p-12 md:p-16 border-b md:border-b-0 md:border-r border-gold-antique/30 relative group overflow-hidden">
-                <div className="absolute top-0 left-0 w-1 h-full bg-gold-antique/30 group-hover:bg-gold-antique transition-colors duration-500" />
-                <h3 className="text-3xl font-heading text-ivory-primary mb-8 flex items-center gap-4">
-                  <span className="text-sm font-sans font-bold tracking-widest uppercase text-gold-antique/60">01</span>
-                  AI Framework Layer
-                </h3>
-                <ul className="space-y-6">
-                  {['Behavioral tracking logic', 'Trigger-based automation', 'Predictive segmentation', 'CRM integration', 'Conversion mapping'].map((item, i) => (
-                    <motion.li
-                      key={i}
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.1 }}
-                      className="flex items-center gap-4 text-lg text-ivory-primary/80"
-                    >
-                      <div className="w-1.5 h-1.5 bg-gold-antique rounded-full" />
-                      {item}
-                    </motion.li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Human Strategy Layer */}
-              <div className="p-12 md:p-16 bg-emerald-forest text-ivory-primary relative group overflow-hidden">
-                <div className="absolute top-0 right-0 w-1 h-full bg-gold-antique group-hover:bg-ivory-primary transition-colors duration-500" />
-                <h3 className="text-3xl font-heading text-ivory-primary mb-8 flex items-center gap-4">
-                  <span className="text-sm font-sans font-bold tracking-widest uppercase text-gold-antique">02</span>
-                  Human Strategy Layer
-                </h3>
-                <ul className="space-y-6">
-                  {['Founder-level messaging', 'Revenue modeling', 'Sales cycle engineering', 'High-trust persuasion', 'Pipeline optimization'].map((item, i) => (
-                    <motion.li
-                      key={i}
-                      initial={{ opacity: 0, x: 10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.1 }}
-                      className="flex items-center gap-4 text-lg text-ivory-primary/90"
-                    >
-                      <div className="w-1.5 h-1.5 bg-gold-antique rounded-full" />
-                      {item}
-                    </motion.li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            <FadeIn className="mt-12 text-center">
-              <p className="text-2xl font-heading text-ivory-primary">
-                Technology executes. <span className="italic text-gold-antique">Strategy decides.</span>
+      {/* --- Framework Section: The Revenue Architecture Model --- */}
+      <section id="framework" className="w-full pt-[160px] pb-[160px] md:pt-[120px] md:pb-[120px] bg-navy-dark relative overflow-hidden">
+        <div className="max-w-[1080px] mx-auto px-6 md:px-12 relative z-10">
+          
+          {/* E1 — INTRO BLOCK */}
+          <div className="mb-[100px] text-center">
+            {/* Eyebrow */}
+            <FadeIn delay={0}>
+              <p className="text-[11px] uppercase tracking-[3px] text-gold-antique mb-7 font-light">
+                Framework
               </p>
             </FadeIn>
+
+            {/* Primary Headline */}
+            <FadeIn delay={0}>
+              <h1 className="text-[34px] md:text-[56px] font-heading text-ivory-primary leading-[1.15] mb-6">
+                The Revenue Architecture Model
+              </h1>
+            </FadeIn>
+
+            {/* Supporting Line */}
+            <FadeIn delay={0}>
+              <p className="text-[19px] leading-[1.6] text-ivory-primary/75 max-w-[700px] mx-auto font-light">
+                A human-directed, AI-structured system for engineered growth.
+              </p>
+            </FadeIn>
+
+            {/* Gold Divider */}
+            <FadeIn delay={0}>
+              <div className="flex justify-center mt-11">
+                <div className="w-[60px] h-px bg-gold-antique" />
+              </div>
+            </FadeIn>
+          </div>
+
+          {/* Full-width divider before grid */}
+          <div className="w-full h-px bg-white/8 mb-[120px]" />
+
+          {/* E2 — FOUR-PHASE ARCHITECTURE GRID */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-[72px] md:gap-x-[100px] md:gap-y-[120px] mb-[120px]">
+            
+            {/* Phase 01 */}
+            <FadeIn delay={0.12}>
+              <div>
+                <p className="text-[10.5px] uppercase tracking-[2.2px] text-gold-antique mb-3 font-light">
+                  01 — Structural Diagnosis
+                </p>
+                <h3 className="text-[28px] font-heading text-ivory-primary mb-[14px] leading-[1.2]">
+                  System Audit
+                </h3>
+                <p className="text-[17px] leading-[1.85] text-ivory-primary/75 font-light">
+                  Evaluate positioning, acquisition pathways, offer structure, conversion mechanics, retention logic, and revenue leakage. AI detects pattern friction. Human analysis determines causation.
+                </p>
+              </div>
+            </FadeIn>
+
+            {/* Phase 02 */}
+            <FadeIn delay={0.24}>
+              <div>
+                <p className="text-[10.5px] uppercase tracking-[2.2px] text-gold-antique mb-3 font-light">
+                  02 — Strategic Blueprint
+                </p>
+                <h3 className="text-[28px] font-heading text-ivory-primary mb-[14px] leading-[1.2]">
+                  Revenue Design
+                </h3>
+                <p className="text-[17px] leading-[1.85] text-ivory-primary/75 font-light">
+                  Construct an integrated revenue architecture aligning acquisition, conversion, messaging, and retention into one unified system. No isolated tactics.
+                </p>
+              </div>
+            </FadeIn>
+
+            {/* Phase 03 */}
+            <FadeIn delay={0.36}>
+              <div>
+                <p className="text-[10.5px] uppercase tracking-[2.2px] text-gold-antique mb-3 font-light">
+                  03 — Controlled Execution
+                </p>
+                <h3 className="text-[28px] font-heading text-ivory-primary mb-[14px] leading-[1.2]">
+                  Precision Deployment
+                </h3>
+                <p className="text-[17px] leading-[1.85] text-ivory-primary/75 font-light">
+                  Deploy high-leverage interventions within the engineered structure. AI manages modeling and measurement. Human strategy governs sequencing and risk.
+                </p>
+              </div>
+            </FadeIn>
+
+            {/* Phase 04 */}
+            <FadeIn delay={0.48}>
+              <div>
+                <p className="text-[10.5px] uppercase tracking-[2.2px] text-gold-antique mb-3 font-light">
+                  04 — Iterative Refinement
+                </p>
+                <h3 className="text-[28px] font-heading text-ivory-primary mb-[14px] leading-[1.2]">
+                  Compounding Optimization
+                </h3>
+                <p className="text-[17px] leading-[1.85] text-ivory-primary/75 font-light">
+                  Continuous structural refinement based on system-level data. Improvement occurs at architecture level, not campaign level.
+                </p>
+              </div>
+            </FadeIn>
+          </div>
+
+          {/* E3 — AI / HUMAN ARCHITECTURE STRIP */}
+          <FadeIn delay={0.6}>
+            <div className="bg-white/[0.02] px-[72px] py-[72px] mb-[120px]">
+              {/* Headline */}
+              <h2 className="text-[38px] font-heading text-ivory-primary text-center mb-14">
+                Human Judgment. Artificial Precision.
+              </h2>
+
+              {/* Two Columns */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-[100px]">
+                {/* Left Column */}
+                <div>
+                  <p className="text-[10.5px] uppercase tracking-[2px] text-gold-antique mb-6 font-light">
+                    AI Infrastructure
+                  </p>
+                  <p className="text-[17px] leading-[1.85] text-ivory-primary/75 font-light">
+                    Pattern recognition. Predictive diagnostics. Structural modeling. Data-layer optimization. Performance mapping.
+                  </p>
+                </div>
+
+                {/* Right Column */}
+                <div>
+                  <p className="text-[10.5px] uppercase tracking-[2px] text-gold-antique mb-6 font-light">
+                    Strategic Authority
+                  </p>
+                  <p className="text-[17px] leading-[1.85] text-ivory-primary/75 font-light">
+                    Priority determination. Sequencing decisions. Risk calibration. Capital allocation logic. Business alignment.
+                  </p>
+                </div>
+              </div>
+            </div>
           </FadeIn>
 
-          {/* The 4-Step Advisory Process */}
-          <FadeIn delay={0.2}>
-            <h2 className="text-4xl font-heading text-ivory-primary mb-16 text-center">The 4-Step Advisory Process</h2>
-            
-            <div className="relative max-w-4xl mx-auto">
-              {/* Vertical Line */}
-              <div className="absolute left-[15px] md:left-1/2 top-0 bottom-0 w-px bg-gold-antique/30 md:-translate-x-1/2" />
-
-              {isLoading ? (
-                <div className="space-y-12">
-                  {[1, 2, 3, 4].map(i => (
-                    <div key={i} className="h-32 bg-gold-antique/10 animate-pulse rounded-sm" />
-                  ))}
-                </div>
-              ) : (
-                processSteps.map((step, i) => (
-                  <motion.div
-                    key={step._id}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.2 }}
-                    className={`relative flex flex-col md:flex-row gap-8 md:gap-0 items-start md:items-center mb-20 last:mb-0 ${
-                      i % 2 === 0 ? 'md:flex-row-reverse' : ''
-                    }`}
-                  >
-                    {/* Content Side */}
-                    <div className={`md:w-1/2 pl-12 md:pl-0 ${i % 2 === 0 ? 'md:pl-16 text-left' : 'md:pr-16 md:text-right'}`}>
-                      <span className="text-sm font-bold text-gold-antique tracking-widest uppercase mb-2 block">
-                        Step {step.stepNumber || i + 1}
-                      </span>
-                      <h3 className="text-2xl font-heading text-ivory-primary mb-3">{step.stepName}</h3>
-                      <p className="text-ivory-primary/60">{step.description || step.shortDescription}</p>
-                    </div>
-
-                    {/* Center Node */}
-                    <div className="absolute left-0 md:left-1/2 w-8 h-8 bg-navy-dark border-2 border-gold-antique rounded-full flex items-center justify-center z-10 md:-translate-x-1/2">
-                      <div className="w-2 h-2 bg-gold-antique rounded-full" />
-                    </div>
-
-                    {/* Empty Side for Balance */}
-                    <div className="md:w-1/2" />
-                  </motion.div>
-                ))
-              )}
-            </div>
+          {/* E4 — CTA SYSTEM */}
+          <FadeIn delay={0.72} className="flex justify-center">
+            <motion.button
+              onClick={handleFrameworkCTA}
+              disabled={ctaDisabled}
+              whileHover={!ctaDisabled ? { y: -2 } : {}}
+              whileTap={!ctaDisabled ? { y: 1 } : {}}
+              transition={{ duration: 0.3 }}
+              className="px-12 py-[18px] min-h-[46px] border border-gold-antique text-ivory-primary bg-transparent text-[11px] uppercase tracking-[1.8px] font-light hover:bg-gold-antique hover:text-navy-dark transition-all duration-300 rounded-sm disabled:opacity-50 disabled:cursor-not-allowed w-full md:w-auto max-w-[340px] md:max-w-none"
+            >
+              Request Private Revenue Audit
+            </motion.button>
           </FadeIn>
         </div>
       </section>

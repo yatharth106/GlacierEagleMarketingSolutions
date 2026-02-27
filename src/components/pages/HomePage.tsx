@@ -197,7 +197,31 @@ export default function HomePage() {
           {isLoading ? (
             <div className="h-8 w-full bg-gold-antique/10 animate-pulse" />
           ) : (
-            <div className="w-full py-24 pt-32 bg-slate-deep text-ivory-primary/80"><div className="max-w-[120rem] mx-auto px-6 md:px-12"><div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 lg:gap-16"><div className="lg:col-span-1 flex flex-col justify-center items-start"><h2 className="text-3xl md:text-4xl font-heading text-ivory-primary mb-4">Our Focus</h2><p className="text-lg text-ivory-primary/70">Industries where our revenue systems thrive.</p></div>{isLoading ? (<div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-8"><div className="h-40 bg-gold-antique/10 animate-pulse rounded-lg" /><div className="h-40 bg-gold-antique/10 animate-pulse rounded-lg" /><div className="h-40 bg-gold-antique/10 animate-pulse rounded-lg" /><div className="h-40 bg-gold-antique/10 animate-pulse rounded-lg" /></div>) : (<div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-8">{(industries.length > 0 ? industries : [{ _id: 'fallback1', industryName: 'B2B SaaS' }, { _id: 'fallback2', industryName: 'Professional Services' }, { _id: 'fallback3', industryName: 'High-Ticket Consultancies' }, { _id: 'fallback4', industryName: 'Mid-Market Technology' }]).map((industry, i) => (<motion.div key={industry._id} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="relative p-8 bg-navy-dark border border-gold-antique/20 group hover:border-gold-antique transition-colors duration-300 overflow-hidden"><div className="absolute inset-0 bg-gradient-to-br from-transparent via-gold-antique/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" /><h3 className="relative z-10 text-xl font-heading text-ivory-primary mb-2 group-hover:text-gold-antique transition-colors">{industry.industryName}</h3><p className="relative z-10 text-sm text-ivory-primary/60">Driving revenue in {industry.industryName.toLowerCase()} markets.</p><span className="absolute bottom-4 right-4 text-5xl font-bold text-ivory-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">0{i + 1}</span></motion.div>))}</div>)}</div></div></div>
+            <div className="flex flex-wrap justify-center md:justify-between items-center gap-x-12 gap-y-6 opacity-70">
+              {industries.length > 0 ? (
+                industries.map((industry, i) => (
+                  <motion.div
+                    key={industry._id}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className="flex items-center gap-2"
+                  >
+                    <span className="w-1.5 h-1.5 bg-gold-antique rounded-full" />
+
+                  </motion.div>
+                ))
+              ) : (
+                // Fallback if no data
+                (<>
+                  <span className="text-sm font-medium uppercase tracking-widest text-ivory-primary">B2B SaaS</span>
+                  <span className="text-sm font-medium uppercase tracking-widest text-ivory-primary">Professional Services</span>
+                  <span className="text-sm font-medium uppercase tracking-widest text-ivory-primary">High-Ticket Consultancies</span>
+                  <span className="text-sm font-medium uppercase tracking-widest text-ivory-primary">Mid-Market Technology</span>
+                </>)
+              )}
+            </div>
           )}
         </div>
       </section>

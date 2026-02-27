@@ -88,7 +88,7 @@ export default function ApplyPage() {
       </section>
 
       {/* --- Application Form Section --- */}
-      <section className="w-full py-32 bg-slate-deep">
+      <section id="application" className="w-full py-32 bg-slate-deep">
         <div className="max-w-2xl mx-auto px-6 md:px-12">
           <FadeIn delay={0.1} className="bg-navy-dark border border-gold-antique/30 p-8 md:p-16">
             {submitStatus === 'success' ? (
