@@ -344,6 +344,201 @@ export default function HomePage() {
       <section className="w-full border-y border-gold-antique/20 bg-slate-deep py-12">
         <div className="max-w-[120rem] mx-auto px-6 md:px-12 pt-16 pb-8"><FadeIn className="mb-16 text-center"><h3 className="font-heading text-4xl md:text-5xl text-ivory-primary relative inline-block pb-3">Our Industry Expertise<span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-gold-antique"></span></h3></FadeIn>{isLoading ? (<div className="h-24 w-full bg-gold-antique/10 animate-pulse rounded-lg" />) : (<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"><StaggerContainer staggerDelay={0.08} className="contents">{industries.length > 0 ? (industries.map((industry, i) => (<StaggerItem key={industry._id} className="relative p-8 bg-slate-deep border border-gold-antique/20 group overflow-hidden flex flex-col justify-between text-left hover:border-gold-antique transition-all duration-300 min-h-[180px] shadow-lg hover:shadow-gold-antique/20"><div className="absolute inset-0 bg-gradient-to-br from-gold-antique/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" /><span className="text-lg font-medium uppercase tracking-widest text-ivory-primary/70 group-hover:text-gold-antique transition-colors duration-300 relative z-10">{industry.industryName}</span><div className="mt-6 w-full h-0.5 bg-gold-antique/50 group-hover:bg-gold-antique transition-colors duration-300 relative z-10" /></StaggerItem>))) : (<><StaggerItem className="relative p-8 bg-slate-deep border border-gold-antique/20 group overflow-hidden flex flex-col justify-between text-left min-h-[180px]"><span className="text-lg font-medium uppercase tracking-widest text-ivory-primary/80 relative z-10">B2B SaaS</span><div className="mt-6 w-full h-0.5 bg-gold-antique/50 relative z-10" /></StaggerItem><StaggerItem className="relative p-8 bg-slate-deep border border-gold-antique/20 group overflow-hidden flex flex-col justify-between text-left min-h-[180px]"><span className="text-lg font-medium uppercase tracking-widest text-ivory-primary/80 relative z-10">Professional Services</span><div className="mt-6 w-full h-0.5 bg-gold-antique/50 relative z-10" /></StaggerItem><StaggerItem className="relative p-8 bg-slate-deep border border-gold-antique/20 group overflow-hidden flex flex-col justify-between text-left min-h-[180px]"><span className="text-lg font-medium uppercase tracking-widest text-ivory-primary/80 relative z-10">High-Ticket Consultancies</span><div className="mt-6 w-full h-0.5 bg-gold-antique/50 relative z-10" /></StaggerItem><StaggerItem className="relative p-8 bg-slate-deep border border-gold-antique/20 group overflow-hidden flex flex-col justify-between text-left min-h-[180px]"><span className="text-lg font-medium uppercase tracking-widest text-ivory-primary/80 relative z-10">Mid-Market Technology</span><div className="mt-6 w-full h-0.5 bg-gold-antique/50 relative z-10" /></StaggerItem></>)}</StaggerContainer></div>)}</div>
       </section>
+      {/* --- 3.5. INDUSTRY EXPERTISE SECTION — SCALABLE VERSION --- */}
+      <section className="w-full py-[140px] bg-navy-dark">
+        <div className="max-w-[1150px] mx-auto px-6 md:px-12">
+          {/* E1 — INTRO BLOCK (CENTERED) */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.9, ease: "easeOut" }}
+            className="text-center mb-24"
+          >
+            {/* Eyebrow */}
+            <p className="text-[11px] uppercase tracking-[3px] text-gold-antique font-sans font-bold mb-6">
+              Industry Architecture
+            </p>
+            
+            {/* Headline */}
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-semibold text-ivory-primary mb-8 leading-tight">
+              Built for Structural Complexity.
+            </h2>
+            
+            {/* Subline */}
+            <p className="text-lg font-serif text-ivory-primary/75 max-w-[760px] mx-auto leading-relaxed mb-10">
+              Different business models demand different revenue systems. Our work adapts to the structural mechanics of each industry we operate within.
+            </p>
+            
+            {/* Divider */}
+            <div className="w-[60px] h-px bg-gold-antique mx-auto" />
+          </motion.div>
+
+          {/* E2 — INDUSTRY GRID SYSTEM */}
+          <div className="mb-24">
+            {isLoading ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20 gap-y-24">
+                {[1, 2].map(i => (
+                  <div key={i} className="h-80 bg-gold-antique/10 animate-pulse rounded-sm" />
+                ))}
+              </div>
+            ) : (
+              <StaggerContainer staggerDelay={0.12} className={`grid gap-20 gap-y-24 ${
+                industries.length >= 6 
+                  ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3' 
+                  : 'grid-cols-1 md:grid-cols-2'
+              }`}>
+                {/* SaaS Card */}
+                <StaggerItem>
+                  <motion.div
+                    whileHover={{ 
+                      borderColor: 'rgba(168, 132, 59, 0.4)',
+                      boxShadow: '0 12px 30px rgba(0, 0, 0, 0.25)',
+                      y: -2
+                    }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                    className="bg-[rgba(255,255,255,0.02)] p-[60px] border border-[rgba(255,255,255,0.06)] rounded-[6px] min-h-full flex flex-col justify-between"
+                  >
+                    {/* Industry Label */}
+                    <p className="text-[10px] uppercase tracking-[2px] text-gold-antique font-sans font-bold mb-[14px]">
+                      SaaS
+                    </p>
+                    
+                    {/* Headline */}
+                    <h3 className="text-[26px] md:text-[30px] font-heading text-ivory-primary mb-5 leading-tight">
+                      Recurring Revenue Architecture
+                    </h3>
+                    
+                    {/* Description */}
+                    <p className="text-[17px] font-serif text-ivory-primary/75 leading-[1.8] mb-7">
+                      SaaS growth depends on retention mechanics, activation velocity, pricing logic, and lifetime value alignment. Scale compounds only when churn, onboarding, and expansion are structurally integrated.
+                    </p>
+                    
+                    {/* Divider */}
+                    <div className="w-full h-px bg-[rgba(255,255,255,0.08)] my-7" />
+                    
+                    {/* Leverage List */}
+                    <div className="space-y-4">
+                      {[
+                        'LTV/CAC alignment',
+                        'Activation flow engineering',
+                        'Pricing model optimization',
+                        'Expansion revenue design',
+                        'Data-informed growth loops'
+                      ].map((item, idx) => (
+                        <p key={idx} className="text-[16px] font-serif text-ivory-primary/75 leading-[1.8]">
+                          {item}
+                        </p>
+                      ))}
+                    </div>
+                  </motion.div>
+                </StaggerItem>
+
+                {/* Retail & E-Commerce Card */}
+                <StaggerItem>
+                  <motion.div
+                    whileHover={{ 
+                      borderColor: 'rgba(168, 132, 59, 0.4)',
+                      boxShadow: '0 12px 30px rgba(0, 0, 0, 0.25)',
+                      y: -2
+                    }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                    className="bg-[rgba(255,255,255,0.02)] p-[60px] border border-[rgba(255,255,255,0.06)] rounded-[6px] min-h-full flex flex-col justify-between"
+                  >
+                    {/* Industry Label */}
+                    <p className="text-[10px] uppercase tracking-[2px] text-gold-antique font-sans font-bold mb-[14px]">
+                      Retail & E-Commerce
+                    </p>
+                    
+                    {/* Headline */}
+                    <h3 className="text-[26px] md:text-[30px] font-heading text-ivory-primary mb-5 leading-tight">
+                      Conversion & Margin Systems
+                    </h3>
+                    
+                    {/* Description */}
+                    <p className="text-[17px] font-serif text-ivory-primary/75 leading-[1.8] mb-7">
+                      Retail performance is governed by unit economics, conversion efficiency, offer structure, and customer lifetime value. Sustainable scale requires margin-aware acquisition and retention architecture.
+                    </p>
+                    
+                    {/* Divider */}
+                    <div className="w-full h-px bg-[rgba(255,255,255,0.08)] my-7" />
+                    
+                    {/* Leverage List */}
+                    <div className="space-y-4">
+                      {[
+                        'Conversion rate optimization',
+                        'AOV and bundling logic',
+                        'Retention lifecycle design',
+                        'Paid acquisition efficiency',
+                        'Margin-sensitive scaling models'
+                      ].map((item, idx) => (
+                        <p key={idx} className="text-[16px] font-serif text-ivory-primary/75 leading-[1.8]">
+                          {item}
+                        </p>
+                      ))}
+                    </div>
+                  </motion.div>
+                </StaggerItem>
+
+                {/* Render additional industries from CMS if available */}
+                {industries.map((industry, idx) => (
+                  <StaggerItem key={industry._id}>
+                    <motion.div
+                      whileHover={{ 
+                        borderColor: 'rgba(168, 132, 59, 0.4)',
+                        boxShadow: '0 12px 30px rgba(0, 0, 0, 0.25)',
+                        y: -2
+                      }}
+                      transition={{ duration: 0.3, ease: "easeOut" }}
+                      className="bg-[rgba(255,255,255,0.02)] p-[60px] border border-[rgba(255,255,255,0.06)] rounded-[6px] min-h-full flex flex-col justify-between"
+                    >
+                      {/* Industry Label */}
+                      <p className="text-[10px] uppercase tracking-[2px] text-gold-antique font-sans font-bold mb-[14px]">
+                        {industry.industryName}
+                      </p>
+                      
+                      {/* Headline */}
+                      <h3 className="text-[26px] md:text-[30px] font-heading text-ivory-primary mb-5 leading-tight">
+                        {industry.description}
+                      </h3>
+                      
+                      {/* Description */}
+                      <p className="text-[17px] font-serif text-ivory-primary/75 leading-[1.8] mb-7">
+                        {industry.targetAudience}
+                      </p>
+                      
+                      {/* Divider */}
+                      <div className="w-full h-px bg-[rgba(255,255,255,0.08)] my-7" />
+                      
+                      {/* Leverage List */}
+                      <div className="space-y-4">
+                        {industry.exampleCompanies && (
+                          <p className="text-[16px] font-serif text-ivory-primary/75 leading-[1.8]">
+                            {industry.exampleCompanies}
+                          </p>
+                        )}
+                      </div>
+                    </motion.div>
+                  </StaggerItem>
+                ))}
+              </StaggerContainer>
+            )}
+          </div>
+
+          {/* E3 — REINFORCEMENT STATEMENT */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="text-center mt-[110px]"
+          >
+            <p className="text-lg font-serif text-ivory-primary/75 leading-relaxed">
+              Our expansion into new industries follows structural qualification, not trend participation.
+            </p>
+          </motion.div>
+        </div>
+      </section>
       {/* --- 4. The Real Problem (Sticky Scroll Layout) --- */}
       <section className="w-full py-32 bg-navy-dark relative">
         <div className="max-w-[120rem] mx-auto px-6 md:px-12">
@@ -802,7 +997,7 @@ export default function HomePage() {
               <p className="text-ivory-primary/60">Limited engagements accepted quarterly.</p>
             </div>
 
-            <div className="text-center\">
+            <div className="text-center">
               <Link to="/application">
                 <Button className="bg-bronze-burnished text-ivory-primary hover:bg-bronze-burnished/90 rounded-none px-12 py-6 text-lg font-medium tracking-wide">
                   Start Your Application
