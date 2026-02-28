@@ -91,6 +91,7 @@ export default function HomePage() {
   });
   const [auditFormErrors, setAuditFormErrors] = useState<Record<string, string>>({});
   const [isSubmittingAudit, setIsSubmittingAudit] = useState(false);
+  const [auditSubmitStatus, setAuditSubmitStatus] = useState<'idle' | 'success'>('idle');
 
   // --- Scroll Progress for Global Indicator ---
   const { scrollYProgress } = useScroll();
@@ -171,17 +172,23 @@ export default function HomePage() {
       setIsSubmittingAudit(true);
       await new Promise(resolve => setTimeout(resolve, 1500));
       setIsSubmittingAudit(false);
-      setIsAuditModalOpen(false);
-      setAuditFormData({
-        companyName: '',
-        arrRange: '',
-        revenueChallenge: '',
-        emailPlatform: '',
-        crm: '',
-        leadVolume: '',
-        founderContactNumber: ''
-      });
-      setAuditFormErrors({});
+      setAuditSubmitStatus('success');
+      
+      // Reset form and close modal after 3 seconds
+      setTimeout(() => {
+        setAuditFormData({
+          companyName: '',
+          arrRange: '',
+          revenueChallenge: '',
+          emailPlatform: '',
+          crm: '',
+          leadVolume: '',
+          founderContactNumber: ''
+        });
+        setAuditFormErrors({});
+        setAuditSubmitStatus('idle');
+        setIsAuditModalOpen(false);
+      }, 3000);
     }
   };
 
@@ -209,18 +216,42 @@ export default function HomePage() {
             className="bg-navy-dark border border-gold-antique/30 rounded-lg p-6 md:p-8 max-w-2xl w-full max-h-[95vh] overflow-y-auto flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex justify-between items-center mb-6 flex-shrink-0">
-              <h2 className="text-2xl md:text-3xl font-heading text-ivory-primary">Request a Private Revenue Audit</h2>
-              <button
-                onClick={() => setIsAuditModalOpen(false)}
-                className="text-ivory-primary/60 hover:text-ivory-primary transition-colors flex-shrink-0 ml-4"
+            {auditSubmitStatus === 'success' ? (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="flex flex-col items-center justify-center py-12 text-center"
               >
-                <X className="w-6 h-6" />
-              </button>
-            </div>
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+                  className="w-16 h-16 bg-gold-antique/20 rounded-full flex items-center justify-center mb-6"
+                >
+                  <Check className="w-8 h-8 text-gold-antique" />
+                </motion.div>
+                <h2 className="text-3xl font-heading text-ivory-primary mb-4">Application Received</h2>
+                <p className="text-ivory-primary/70 mb-2">
+                  Thank you for your interest in Glacier Eagle.
+                </p>
+                <p className="text-sm text-ivory-primary/60">
+                  We'll review your application and reach out within 2-3 business days if we're a fit.
+                </p>
+              </motion.div>
+            ) : (
+              <>
+                <div className="flex justify-between items-center mb-6 flex-shrink-0">
+                  <h2 className="text-2xl md:text-3xl font-heading text-ivory-primary">Request a Private Revenue Audit</h2>
+                  <button
+                    onClick={() => setIsAuditModalOpen(false)}
+                    className="text-ivory-primary/60 hover:text-ivory-primary transition-colors flex-shrink-0 ml-4"
+                  >
+                    <X className="w-6 h-6" />
+                  </button>
+                </div>
 
-            <form onSubmit={handleAuditSubmit} className="space-y-4 flex-1 overflow-y-auto">
-              {Object.keys(auditFormErrors).length > 0 && (
+                <form onSubmit={handleAuditSubmit} className="space-y-4 flex-1 overflow-y-auto">
+                  {Object.keys(auditFormErrors).length > 0 && (
                 <div className="p-3 bg-destructive/10 border border-destructive rounded-lg flex-shrink-0">
                   <p className="text-xs md:text-sm font-paragraph text-destructive font-semibold">
                     Please fill out all required fields
@@ -403,16 +434,18 @@ export default function HomePage() {
                   <p className="text-xs text-destructive mt-0.5">{auditFormErrors.founderContactNumber}</p>
                 )}
               </div>
-            </form>
 
-            <Button
-              type="submit"
-              onClick={handleAuditSubmit}
-              disabled={isSubmittingAudit}
-              className="w-full bg-bronze-burnished text-ivory-primary hover:bg-bronze-burnished/90 rounded-none px-6 py-4 text-base font-medium tracking-wide disabled:opacity-50 flex-shrink-0 mt-4"
-            >
-              {isSubmittingAudit ? 'Submitting...' : 'Submit Application'}
-            </Button>
+              <Button
+                type="submit"
+                onClick={handleAuditSubmit}
+                disabled={isSubmittingAudit}
+                className="w-full bg-bronze-burnished text-ivory-primary hover:bg-bronze-burnished/90 rounded-none px-6 py-4 text-base font-medium tracking-wide disabled:opacity-50 flex-shrink-0 mt-4"
+              >
+                {isSubmittingAudit ? 'Submitting...' : 'Submit Application'}
+              </Button>
+            </form>
+            </>
+            )}
           </motion.div>
         </motion.div>
       )}
