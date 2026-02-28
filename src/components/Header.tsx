@@ -13,7 +13,7 @@ export default function Header() {
     { label: 'Services', href: '/services' },
     { label: 'Case Studies', href: '/case-studies' },
     { label: 'FAQ', href: '/faq' },
-    { label: 'Why Choose Us', href: '/why-choose-us' },
+    { label: "Why Choose Us ?", href: '/why-choose-us' },
   ];
 
   // Show sticky CTA after scrolling past hero section
