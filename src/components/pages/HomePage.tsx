@@ -86,7 +86,8 @@ export default function HomePage() {
     revenueChallenge: '',
     emailPlatform: '',
     crm: '',
-    leadVolume: ''
+    leadVolume: '',
+    founderContactNumber: ''
   });
   const [isSubmittingAudit, setIsSubmittingAudit] = useState(false);
 
@@ -132,7 +133,8 @@ export default function HomePage() {
       revenueChallenge: '',
       emailPlatform: '',
       crm: '',
-      leadVolume: ''
+      leadVolume: '',
+      founderContactNumber: ''
     });
   };
 
@@ -252,6 +254,18 @@ export default function HomePage() {
                     <SelectItem value="1000+" className="text-ivory-primary">1,000+</SelectItem>
                   </SelectContent>
                 </Select>
+              </div>
+
+              <div>
+                <Label className="text-ivory-primary mb-2 block">Founder/Executive Contact Number</Label>
+                <Input
+                  type="tel"
+                  placeholder="Your phone number"
+                  value={auditFormData.founderContactNumber}
+                  onChange={(e) => setAuditFormData({ ...auditFormData, founderContactNumber: e.target.value })}
+                  required
+                  className="bg-slate-deep border-gold-antique/30 text-ivory-primary placeholder:text-ivory-primary/40"
+                />
               </div>
 
               <Button
@@ -599,6 +613,177 @@ export default function HomePage() {
               </FadeIn>
             </div>
           </div>
+        </div>
+      </section>
+      {/* --- 4.5. WHY CHOOSE US — STRUCTURAL DIFFERENTIATION SECTION --- */}
+      <section className="w-full bg-navy-dark py-[150px]">
+        <div className="max-w-[1150px] mx-auto px-6 md:px-12">
+          {/* E1 — HEADLINE BLOCK */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.9, ease: "easeOut" }}
+            className="text-center mb-[100px]"
+          >
+            {/* Eyebrow */}
+            <p className="text-[11px] uppercase tracking-[3px] text-gold-antique font-sans font-bold mb-6">
+              Selection Criteria
+            </p>
+            
+            {/* Headline */}
+            <h2 className="text-4xl md:text-5xl lg:text-[52px] font-heading font-semibold text-ivory-primary mb-8 leading-[1.15]">
+              Most Firms Optimize Tactics.<br />
+              We Engineer Systems.
+            </h2>
+            
+            {/* Subline */}
+            <p className="text-lg font-serif text-ivory-primary/75 max-w-[760px] mx-auto leading-relaxed mb-10">
+              The difference is not stylistic. It is architectural.
+            </p>
+            
+            {/* Divider */}
+            <div className="w-[60px] h-px bg-gold-antique mx-auto" />
+          </motion.div>
+
+          {/* E2 — COMPARISON GRID */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="mb-[100px]"
+          >
+            {/* Top Divider */}
+            <div className="w-full h-px bg-[rgba(255,255,255,0.08)] mb-12" />
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
+              {/* LEFT COLUMN — Typical Firms */}
+              <div className="space-y-12">
+                {[
+                  {
+                    title: "TACTIC FRAGMENTATION",
+                    desc: "Separate teams for ads, funnels, and messaging with limited systemic integration."
+                  },
+                  {
+                    title: "VOLUME DEPENDENCE",
+                    desc: "Growth relies heavily on increasing traffic rather than improving architecture."
+                  },
+                  {
+                    title: "CAMPAIGN-LEVEL OPTIMIZATION",
+                    desc: "Metrics improved in isolation without structural alignment."
+                  },
+                  {
+                    title: "SHORT ENGAGEMENT CYCLES",
+                    desc: "Projects executed, then exited. System durability rarely addressed."
+                  },
+                  {
+                    title: "AI AS TOOLING",
+                    desc: "AI used for execution speed, not structural intelligence."
+                  }
+                ].map((item, idx) => (
+                  <div key={idx} className={idx !== 0 ? "border-t border-[rgba(255,255,255,0.08)] pt-12" : ""}>
+                    <p className="text-[10px] uppercase tracking-[2px] text-[rgba(255,255,255,0.5)] font-sans font-bold mb-3">
+                      {item.title}
+                    </p>
+                    <p className="text-[16px] font-serif text-[rgba(244,241,234,0.6)] leading-[1.8]">
+                      {item.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              {/* RIGHT COLUMN — Our Model */}
+              <motion.div
+                initial={{ opacity: 0, y: -12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="bg-[rgba(255,255,255,0.02)] border border-[rgba(168,132,59,0.2)] p-[60px] rounded-[6px] space-y-12"
+              >
+                {[
+                  {
+                    title: "SYSTEM ARCHITECTURE",
+                    desc: "Acquisition, conversion, retention, and expansion engineered as a unified revenue engine."
+                  },
+                  {
+                    title: "STRUCTURAL EFFICIENCY",
+                    desc: "Revenue growth derived from leverage, not dependency on traffic volume."
+                  },
+                  {
+                    title: "DATA-DRIVEN CAUSATION",
+                    desc: "AI identifies structural friction. Human oversight determines directional decisions."
+                  },
+                  {
+                    title: "LONG-HORIZON DESIGN",
+                    desc: "Engagement structured around durable systems, not campaign bursts."
+                  },
+                  {
+                    title: "AI + HUMAN HYBRID",
+                    desc: "AI handles modeling and diagnostics. Human judgment governs risk and prioritization."
+                  }
+                ].map((item, idx) => (
+                  <div key={idx} className={idx !== 0 ? "border-t border-[rgba(255,255,255,0.08)] pt-12" : ""}>
+                    <p className="text-[10px] uppercase tracking-[2px] text-gold-antique font-sans font-bold mb-3">
+                      {item.title}
+                    </p>
+                    <p className="text-[17px] font-serif text-[rgba(244,241,234,0.75)] leading-[1.8]">
+                      {item.desc}
+                    </p>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+          </motion.div>
+
+          {/* E3 — STRUCTURAL PROOF INDICATORS */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="mb-[120px] pt-[100px] border-t border-[rgba(255,255,255,0.08)]"
+          >
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-20 text-center">
+              {[
+                { number: "< 10", label: "Active Clients at Any Time" },
+                { number: "100%", label: "System-Level Engagements" },
+                { number: "AI + Human", label: "Hybrid Operating Model" },
+                { number: "Zero", label: "Pre-Built Templates Used" }
+              ].map((metric, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.7, delay: idx * 0.12, ease: "easeOut" }}
+                >
+                  <div className="text-4xl md:text-5xl font-heading text-ivory-primary mb-3 leading-tight">
+                    {metric.number}
+                  </div>
+                  <p className="text-[10px] uppercase tracking-[2px] text-gold-antique font-sans font-bold">
+                    {metric.label}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* E4 — CONTROLLED CTA */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="text-center"
+          >
+            <button
+              onClick={() => setIsAuditModalOpen(true)}
+              className="border border-gold-antique text-ivory-primary bg-transparent px-11 py-4 text-[11px] uppercase tracking-[1.8px] font-sans font-bold rounded-[4px] min-h-[44px] hover:bg-gold-antique hover:text-navy-dark transition-all duration-300 ease-out hover:translate-y-[-2px]"
+            >
+              Evaluate Structural Fit
+            </button>
+          </motion.div>
         </div>
       </section>
       {/* --- 5. The Glacier Eagle Model (Split Section) --- */}
