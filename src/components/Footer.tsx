@@ -38,12 +38,12 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-base font-paragraph text-ivory-warm font-semibold mb-6">Legal</h4>
+            <h4 className="text-base font-paragraph font-semibold mb-6 text-secondary-foreground">Legal</h4>
             <nav className="flex flex-col gap-3 mb-8">
-              <Link to="/privacy" className="text-base font-paragraph text-stone-light transition-colors duration-200 hover:text-gold-muted">
+              <Link to="/privacy" className="text-base font-paragraph transition-colors duration-200 hover:text-gold-muted text-secondary-foreground">
                 Privacy Policy
               </Link>
-              <Link to="/terms" className="text-base font-paragraph text-stone-light transition-colors duration-200 hover:text-gold-muted">
+              <Link to="/terms" className="text-base font-paragraph transition-colors duration-200 hover:text-gold-muted text-secondary-foreground">
                 Terms of Service
               </Link>
             </nav>
@@ -54,7 +54,7 @@ export default function Footer() {
               className="inline-flex items-center gap-2 text-stone-light transition-colors duration-200 hover:text-gold-muted"
               aria-label="LinkedIn"
             >
-              <Linkedin size={20} />
+              <Linkedin size={20} className="fill-secondary-foreground" />
             </a>
           </div>
         </div>

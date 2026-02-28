@@ -13,6 +13,7 @@ export default function Header() {
     { label: 'Services', href: '/services' },
     { label: 'Case Studies', href: '/case-studies' },
     { label: 'FAQ', href: '/faq' },
+    { label: 'Why Choose Us', href: '/why-choose-us' },
   ];
 
   // Show sticky CTA after scrolling past hero section
@@ -29,60 +30,68 @@ export default function Header() {
   return (
     <>
       <header className="w-full bg-navy-dark border-b border-gold-antique/20 fixed top-0 left-0 right-0 z-50">
-        <div className="max-w-[120rem] mx-auto px-6 md:px-12 py-6">
-          <div className="flex justify-between items-center">
-            {/* Logo */}
-            <Link to="/" className="text-xl font-heading text-ivory-primary tracking-tight hover:text-gold-antique transition-colors duration-300">
+        <div class="max-w-[120rem] mx-auto px-6 md:px-12 py-6 relative z-10 lg:py-8 xl:py-10">
+          <div class="flex flex-col lg:flex-row justify-between items-center gap-6 lg:gap-0">
+            <Link to="/" class="text-4xl md:text-5xl font-heading text-gold-antique tracking-tight hover:text-ivory-primary transition-colors duration-300 relative z-20 order-1 lg:order-none">
               Glacier Eagle
             </Link>
-
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-10">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  to={item.href}
-                  onClick={() => setIsMenuOpen(false)}
-                  className="text-base font-paragraph text-ivory-primary relative group transition-colors duration-300 hover:text-gold-antique px-2 py-2"
-                >
-                  {item.label}
-                  <span className="absolute bottom-0 left-0 w-0 h-px bg-gold-antique group-hover:w-full transition-all duration-300" />
-                </Link>
-              ))}
-              <Link
-                to="/application"
-                className="ml-6 px-6 py-3 border border-gold-antique text-ivory-primary font-paragraph font-medium transition-all duration-300 hover:bg-gold-antique hover:text-navy-dark"
-              >
-                Apply
-              </Link>
+            <nav class="hidden lg:flex flex-row items-center justify-center gap-x-10 gap-y-4 px-8 py-3 bg-slate-deep/50 backdrop-blur-sm rounded-full border border-gold-antique/30 shadow-lg order-2">
+              <div class="flex items-center gap-x-8">
+                {navItems.slice(0, 3).map((item) => (
+                  <Link
+                    key={item.href}
+                    to={item.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    class="text-base font-paragraph text-ivory-primary relative group transition-colors duration-300 hover:text-gold-antique px-2 py-1 uppercase tracking-wider"
+                  >
+                    {item.label}
+                    <span class="absolute bottom-0 left-0 w-0 h-px bg-gold-antique group-hover:w-full transition-all duration-300" />
+                  </Link>
+                ))}
+              </div>
+              <div class="flex items-center gap-x-8">
+                {navItems.slice(3).map((item) => (
+                  <Link
+                    key={item.href}
+                    to={item.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    class="text-base font-paragraph text-ivory-primary relative group transition-colors duration-300 hover:text-gold-antique px-2 py-1 uppercase tracking-wider"
+                  >
+                    {item.label}
+                    <span class="absolute bottom-0 left-0 w-0 h-px bg-gold-antique group-hover:w-full transition-all duration-300" />
+                  </Link>
+                ))}
+              </div>
             </nav>
-
-            {/* Mobile Menu Button */}
+            <Link
+              to="/application"
+              class="hidden lg:block px-8 py-3 border border-gold-antique text-ivory-primary font-paragraph font-medium transition-all duration-300 hover:bg-gold-antique hover:text-navy-dark rounded-full shadow-md hover:shadow-lg order-3"
+            >
+              Apply
+            </Link>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="lg:hidden text-ivory-primary"
+              class="lg:hidden text-ivory-primary absolute top-6 right-6 z-30"
               aria-label="Toggle menu"
             >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
-
-          {/* Mobile Navigation */}
           {isMenuOpen && (
-            <nav className="lg:hidden mt-6 pb-4 flex flex-col gap-4 border-t border-gold-antique/20 pt-4">
+            <nav class="lg:hidden mt-8 pb-4 flex flex-col gap-4 border-t border-gold-antique/20 pt-4 bg-navy-dark/95 backdrop-blur-sm rounded-b-lg shadow-xl">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   to={item.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className="text-base font-paragraph text-ivory-primary py-2 transition-colors duration-300 hover:text-gold-antique"
+                  class="text-lg font-paragraph text-ivory-primary py-2 px-4 transition-colors duration-300 hover:text-gold-antique hover:bg-slate-deep/50 rounded-md"
                 >
                   {item.label}
                 </Link>
               ))}
               <Link
                 to="/application"
-                className="mt-4 px-6 py-3 border border-gold-antique text-ivory-primary font-paragraph font-medium text-center transition-all duration-300 hover:bg-gold-antique hover:text-navy-dark"
+                class="mt-4 px-6 py-3 border border-gold-antique text-ivory-primary font-paragraph font-medium text-center transition-all duration-300 hover:bg-gold-antique hover:text-navy-dark rounded-md mx-4"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Apply
@@ -91,7 +100,6 @@ export default function Header() {
           )}
         </div>
       </header>
-
       {/* Sticky CTA Button - appears after scrolling past hero */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
