@@ -22,16 +22,16 @@ export default function Footer() {
               <Link to="/services" className="text-base font-paragraph transition-colors duration-200 hover:text-gold-muted text-secondary-foreground">
                 Services
               </Link>
-              <Link to="/engagement" className="text-base font-paragraph text-stone-light transition-colors duration-200 hover:text-gold-muted">
+              <Link to="/engagement" className="text-base font-paragraph transition-colors duration-200 hover:text-gold-muted text-secondary-foreground">
                 Engagement
               </Link>
-              <Link to="/process" className="text-base font-paragraph text-stone-light transition-colors duration-200 hover:text-gold-muted">
+              <Link to="/process" className="text-base font-paragraph transition-colors duration-200 hover:text-gold-muted text-secondary-foreground">
                 Process
               </Link>
-              <Link to="/case-studies" className="text-base font-paragraph text-stone-light transition-colors duration-200 hover:text-gold-muted">
+              <Link to="/case-studies" className="text-base font-paragraph transition-colors duration-200 hover:text-gold-muted text-secondary-foreground">
                 Case Studies
               </Link>
-              <Link to="/application" className="text-base font-paragraph text-stone-light transition-colors duration-200 hover:text-gold-muted">
+              <Link to="/application" className="text-base font-paragraph transition-colors duration-200 hover:text-gold-muted text-secondary-foreground">
                 Apply
               </Link>
             </nav>
@@ -60,7 +60,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gold-muted/30 pt-8">
-          <p className="text-sm font-paragraph text-stone-light text-center">
+          <p className="text-sm font-paragraph text-center text-secondary-foreground">
             © {new Date().getFullYear()} Glacier Eagle. All rights reserved.
           </p>
         </div>
