@@ -89,6 +89,7 @@ export default function HomePage() {
     leadVolume: '',
     founderContactNumber: ''
   });
+  const [auditFormErrors, setAuditFormErrors] = useState<Record<string, string>>({});
   const [isSubmittingAudit, setIsSubmittingAudit] = useState(false);
 
   // --- Scroll Progress for Global Indicator ---
@@ -121,8 +122,43 @@ export default function HomePage() {
     }
   };
 
+  const validateAuditForm = (): boolean => {
+    const newErrors: Record<string, string> = {};
+
+    if (!auditFormData.companyName.trim()) {
+      newErrors.companyName = 'Company name is required';
+    }
+    if (!auditFormData.arrRange) {
+      newErrors.arrRange = 'ARR range is required';
+    }
+    if (!auditFormData.revenueChallenge.trim()) {
+      newErrors.revenueChallenge = 'Revenue challenge is required';
+    }
+    if (!auditFormData.emailPlatform) {
+      newErrors.emailPlatform = 'Email platform is required';
+    }
+    if (!auditFormData.crm) {
+      newErrors.crm = 'CRM is required';
+    }
+    if (!auditFormData.leadVolume) {
+      newErrors.leadVolume = 'Lead volume is required';
+    }
+    if (!auditFormData.founderContactNumber.trim()) {
+      newErrors.founderContactNumber = 'Contact number is required';
+    }
+
+    setAuditFormErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleAuditSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validation check - does not affect scroll ref rendering
+    if (!validateAuditForm()) {
+      return;
+    }
+
     setIsSubmittingAudit(true);
     await new Promise(resolve => setTimeout(resolve, 1500));
     setIsSubmittingAudit(false);
@@ -136,11 +172,12 @@ export default function HomePage() {
       leadVolume: '',
       founderContactNumber: ''
     });
+    setAuditFormErrors({});
   };
 
   return (
     <PageLayout>
-      {/* Global Scroll Progress */}
+      {/* Global Scroll Progress - Rendered unconditionally to ensure ref hydration */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-1 bg-gold-antique origin-left z-50"
         style={{ scaleX }}
@@ -173,22 +210,50 @@ export default function HomePage() {
             </div>
 
             <form onSubmit={handleAuditSubmit} className="space-y-6">
+              {Object.keys(auditFormErrors).length > 0 && (
+                <div className="p-4 bg-destructive/10 border border-destructive rounded-lg">
+                  <p className="text-sm font-paragraph text-destructive font-semibold">
+                    Please fill out all required fields
+                  </p>
+                </div>
+              )}
+
               <div>
-                <Label className="text-ivory-primary mb-2 block">Company Name</Label>
+                <Label className={`text-ivory-primary mb-2 block ${auditFormErrors.companyName ? 'text-destructive' : ''}`}>
+                  Company Name
+                </Label>
                 <Input
                   type="text"
                   placeholder="Your company name"
                   value={auditFormData.companyName}
-                  onChange={(e) => setAuditFormData({ ...auditFormData, companyName: e.target.value })}
-                  required
-                  className="bg-slate-deep border-gold-antique/30 text-ivory-primary placeholder:text-ivory-primary/40"
+                  onChange={(e) => {
+                    setAuditFormData({ ...auditFormData, companyName: e.target.value });
+                    if (auditFormErrors.companyName) {
+                      setAuditFormErrors({ ...auditFormErrors, companyName: '' });
+                    }
+                  }}
+                  className={`bg-slate-deep text-ivory-primary placeholder:text-ivory-primary/40 ${
+                    auditFormErrors.companyName ? 'border-2 border-destructive' : 'border-gold-antique/30'
+                  }`}
                 />
+                {auditFormErrors.companyName && (
+                  <p className="text-sm text-destructive mt-1">{auditFormErrors.companyName}</p>
+                )}
               </div>
 
               <div>
-                <Label className="text-ivory-primary mb-2 block">Annual Recurring Revenue (ARR)</Label>
-                <Select value={auditFormData.arrRange} onValueChange={(value) => setAuditFormData({ ...auditFormData, arrRange: value })}>
-                  <SelectTrigger className="bg-slate-deep border-gold-antique/30 text-ivory-primary">
+                <Label className={`text-ivory-primary mb-2 block ${auditFormErrors.arrRange ? 'text-destructive' : ''}`}>
+                  Annual Recurring Revenue (ARR)
+                </Label>
+                <Select value={auditFormData.arrRange} onValueChange={(value) => {
+                  setAuditFormData({ ...auditFormData, arrRange: value });
+                  if (auditFormErrors.arrRange) {
+                    setAuditFormErrors({ ...auditFormErrors, arrRange: '' });
+                  }
+                }}>
+                  <SelectTrigger className={`bg-slate-deep text-ivory-primary ${
+                    auditFormErrors.arrRange ? 'border-2 border-destructive' : 'border-gold-antique/30'
+                  }`}>
                     <SelectValue placeholder="Select ARR range" />
                   </SelectTrigger>
                   <SelectContent className="bg-slate-deep border-gold-antique/30">
@@ -198,23 +263,46 @@ export default function HomePage() {
                     <SelectItem value="10m+" className="text-ivory-primary">$10M+</SelectItem>
                   </SelectContent>
                 </Select>
+                {auditFormErrors.arrRange && (
+                  <p className="text-sm text-destructive mt-1">{auditFormErrors.arrRange}</p>
+                )}
               </div>
 
               <div>
-                <Label className="text-ivory-primary mb-2 block">Primary Revenue Challenge</Label>
+                <Label className={`text-ivory-primary mb-2 block ${auditFormErrors.revenueChallenge ? 'text-destructive' : ''}`}>
+                  Primary Revenue Challenge
+                </Label>
                 <Textarea
                   placeholder="What's your biggest revenue bottleneck?"
                   value={auditFormData.revenueChallenge}
-                  onChange={(e) => setAuditFormData({ ...auditFormData, revenueChallenge: e.target.value })}
-                  required
-                  className="bg-slate-deep border-gold-antique/30 text-ivory-primary placeholder:text-ivory-primary/40 min-h-24"
+                  onChange={(e) => {
+                    setAuditFormData({ ...auditFormData, revenueChallenge: e.target.value });
+                    if (auditFormErrors.revenueChallenge) {
+                      setAuditFormErrors({ ...auditFormErrors, revenueChallenge: '' });
+                    }
+                  }}
+                  className={`bg-slate-deep text-ivory-primary placeholder:text-ivory-primary/40 min-h-24 ${
+                    auditFormErrors.revenueChallenge ? 'border-2 border-destructive' : 'border-gold-antique/30'
+                  }`}
                 />
+                {auditFormErrors.revenueChallenge && (
+                  <p className="text-sm text-destructive mt-1">{auditFormErrors.revenueChallenge}</p>
+                )}
               </div>
 
               <div>
-                <Label className="text-ivory-primary mb-2 block">Email Platform</Label>
-                <Select value={auditFormData.emailPlatform} onValueChange={(value) => setAuditFormData({ ...auditFormData, emailPlatform: value })}>
-                  <SelectTrigger className="bg-slate-deep border-gold-antique/30 text-ivory-primary">
+                <Label className={`text-ivory-primary mb-2 block ${auditFormErrors.emailPlatform ? 'text-destructive' : ''}`}>
+                  Email Platform
+                </Label>
+                <Select value={auditFormData.emailPlatform} onValueChange={(value) => {
+                  setAuditFormData({ ...auditFormData, emailPlatform: value });
+                  if (auditFormErrors.emailPlatform) {
+                    setAuditFormErrors({ ...auditFormErrors, emailPlatform: '' });
+                  }
+                }}>
+                  <SelectTrigger className={`bg-slate-deep text-ivory-primary ${
+                    auditFormErrors.emailPlatform ? 'border-2 border-destructive' : 'border-gold-antique/30'
+                  }`}>
                     <SelectValue placeholder="Select email platform" />
                   </SelectTrigger>
                   <SelectContent className="bg-slate-deep border-gold-antique/30">
@@ -224,12 +312,24 @@ export default function HomePage() {
                     <SelectItem value="other" className="text-ivory-primary">Other</SelectItem>
                   </SelectContent>
                 </Select>
+                {auditFormErrors.emailPlatform && (
+                  <p className="text-sm text-destructive mt-1">{auditFormErrors.emailPlatform}</p>
+                )}
               </div>
 
               <div>
-                <Label className="text-ivory-primary mb-2 block">CRM System</Label>
-                <Select value={auditFormData.crm} onValueChange={(value) => setAuditFormData({ ...auditFormData, crm: value })}>
-                  <SelectTrigger className="bg-slate-deep border-gold-antique/30 text-ivory-primary">
+                <Label className={`text-ivory-primary mb-2 block ${auditFormErrors.crm ? 'text-destructive' : ''}`}>
+                  CRM System
+                </Label>
+                <Select value={auditFormData.crm} onValueChange={(value) => {
+                  setAuditFormData({ ...auditFormData, crm: value });
+                  if (auditFormErrors.crm) {
+                    setAuditFormErrors({ ...auditFormErrors, crm: '' });
+                  }
+                }}>
+                  <SelectTrigger className={`bg-slate-deep text-ivory-primary ${
+                    auditFormErrors.crm ? 'border-2 border-destructive' : 'border-gold-antique/30'
+                  }`}>
                     <SelectValue placeholder="Select CRM" />
                   </SelectTrigger>
                   <SelectContent className="bg-slate-deep border-gold-antique/30">
@@ -239,12 +339,24 @@ export default function HomePage() {
                     <SelectItem value="other" className="text-ivory-primary">Other</SelectItem>
                   </SelectContent>
                 </Select>
+                {auditFormErrors.crm && (
+                  <p className="text-sm text-destructive mt-1">{auditFormErrors.crm}</p>
+                )}
               </div>
 
               <div>
-                <Label className="text-ivory-primary mb-2 block">Monthly Lead Volume</Label>
-                <Select value={auditFormData.leadVolume} onValueChange={(value) => setAuditFormData({ ...auditFormData, leadVolume: value })}>
-                  <SelectTrigger className="bg-slate-deep border-gold-antique/30 text-ivory-primary">
+                <Label className={`text-ivory-primary mb-2 block ${auditFormErrors.leadVolume ? 'text-destructive' : ''}`}>
+                  Monthly Lead Volume
+                </Label>
+                <Select value={auditFormData.leadVolume} onValueChange={(value) => {
+                  setAuditFormData({ ...auditFormData, leadVolume: value });
+                  if (auditFormErrors.leadVolume) {
+                    setAuditFormErrors({ ...auditFormErrors, leadVolume: '' });
+                  }
+                }}>
+                  <SelectTrigger className={`bg-slate-deep text-ivory-primary ${
+                    auditFormErrors.leadVolume ? 'border-2 border-destructive' : 'border-gold-antique/30'
+                  }`}>
                     <SelectValue placeholder="Select lead volume" />
                   </SelectTrigger>
                   <SelectContent className="bg-slate-deep border-gold-antique/30">
@@ -254,24 +366,38 @@ export default function HomePage() {
                     <SelectItem value="1000+" className="text-ivory-primary">1,000+</SelectItem>
                   </SelectContent>
                 </Select>
+                {auditFormErrors.leadVolume && (
+                  <p className="text-sm text-destructive mt-1">{auditFormErrors.leadVolume}</p>
+                )}
               </div>
 
               <div>
-                <Label className="text-ivory-primary mb-2 block">Founder/Executive Contact Number</Label>
+                <Label className={`text-ivory-primary mb-2 block ${auditFormErrors.founderContactNumber ? 'text-destructive' : ''}`}>
+                  Founder/Executive Contact Number
+                </Label>
                 <Input
                   type="tel"
                   placeholder="Your phone number"
                   value={auditFormData.founderContactNumber}
-                  onChange={(e) => setAuditFormData({ ...auditFormData, founderContactNumber: e.target.value })}
-                  required
-                  className="bg-slate-deep border-gold-antique/30 text-ivory-primary placeholder:text-ivory-primary/40"
+                  onChange={(e) => {
+                    setAuditFormData({ ...auditFormData, founderContactNumber: e.target.value });
+                    if (auditFormErrors.founderContactNumber) {
+                      setAuditFormErrors({ ...auditFormErrors, founderContactNumber: '' });
+                    }
+                  }}
+                  className={`bg-slate-deep text-ivory-primary placeholder:text-ivory-primary/40 ${
+                    auditFormErrors.founderContactNumber ? 'border-2 border-destructive' : 'border-gold-antique/30'
+                  }`}
                 />
+                {auditFormErrors.founderContactNumber && (
+                  <p className="text-sm text-destructive mt-1">{auditFormErrors.founderContactNumber}</p>
+                )}
               </div>
 
               <Button
                 type="submit"
                 disabled={isSubmittingAudit}
-                className="w-full bg-bronze-burnished text-ivory-primary hover:bg-bronze-burnished/90 rounded-none px-8 py-6 text-lg font-medium tracking-wide"
+                className="w-full bg-bronze-burnished text-ivory-primary hover:bg-bronze-burnished/90 rounded-none px-8 py-6 text-lg font-medium tracking-wide disabled:opacity-50"
               >
                 {isSubmittingAudit ? 'Submitting...' : 'Submit Application'}
               </Button>
