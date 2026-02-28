@@ -36,3 +36,8 @@ html {
 body {
   overflow-y: scroll;
 }
+
+/* Ensure select dropdowns appear above all other content */
+[data-radix-select-content] {
+  z-index: 9999 !important;
+}
