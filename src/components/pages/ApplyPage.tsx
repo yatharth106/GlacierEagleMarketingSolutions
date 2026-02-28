@@ -4,7 +4,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ChevronDown } from 'lucide-react';
 
 const FadeIn = ({ children, delay = 0, className = "" }: { children: React.ReactNode, delay?: number, className?: string }) => (
   <motion.div
@@ -200,24 +200,27 @@ export default function ApplyPage() {
                         <label className="text-xs font-bold uppercase tracking-widest text-ivory-primary/70 block mb-2">
                           Annual Recurring Revenue (ARR) *
                         </label>
-                        <Select value={formData.arrRange} onValueChange={(value) => {
-                          setFormData(prev => ({ ...prev, arrRange: value }));
-                          if (errors.arrRange) {
-                            setErrors(prev => ({ ...prev, arrRange: '' }));
-                          }
-                        }}>
-                          <SelectTrigger className={`bg-transparent border-b py-2 text-ivory-primary outline-none transition-colors ${
-                            errors.arrRange ? 'border-destructive focus:border-destructive' : 'border-gold-antique/30 focus:border-gold-antique'
-                          }`}>
-                            <SelectValue placeholder="Select Range" />
-                          </SelectTrigger>
-                          <SelectContent className="bg-navy-dark border-gold-antique/30">
-                            <SelectItem value="1m-5m" className="text-ivory-primary">$1M - $5M</SelectItem>
-                            <SelectItem value="5m-20m" className="text-ivory-primary">$5M - $20M</SelectItem>
-                            <SelectItem value="20m-50m" className="text-ivory-primary">$20M - $50M</SelectItem>
-                            <SelectItem value="50m+" className="text-ivory-primary">$50M+</SelectItem>
-                          </SelectContent>
-                        </Select>
+                        <div className="relative">
+                          <Select value={formData.arrRange} onValueChange={(value) => {
+                            setFormData(prev => ({ ...prev, arrRange: value }));
+                            if (errors.arrRange) {
+                              setErrors(prev => ({ ...prev, arrRange: '' }));
+                            }
+                          }}>
+                            <SelectTrigger className={`bg-transparent border-b py-2 text-ivory-primary outline-none transition-colors pr-8 ${
+                              errors.arrRange ? 'border-destructive focus:border-destructive' : 'border-gold-antique/30 focus:border-gold-antique'
+                            }`}>
+                              <SelectValue placeholder="Select Range" />
+                            </SelectTrigger>
+                            <SelectContent className="bg-navy-dark border-gold-antique/30">
+                              <SelectItem value="1m-5m" className="text-ivory-primary">$1M - $5M</SelectItem>
+                              <SelectItem value="5m-20m" className="text-ivory-primary">$5M - $20M</SelectItem>
+                              <SelectItem value="20m-50m" className="text-ivory-primary">$20M - $50M</SelectItem>
+                              <SelectItem value="50m+" className="text-ivory-primary">$50M+</SelectItem>
+                            </SelectContent>
+                          </Select>
+                          <ChevronDown className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-gold-antique/60 pointer-events-none" />
+                        </div>
                         {errors.arrRange && (
                           <p className="text-destructive text-sm mt-1">{errors.arrRange}</p>
                         )}
@@ -284,25 +287,28 @@ export default function ApplyPage() {
                       <label className="text-xs font-bold uppercase tracking-widest text-ivory-primary/70 block mb-2">
                         Email Platform *
                       </label>
-                      <Select value={formData.emailPlatform} onValueChange={(value) => {
-                        setFormData(prev => ({ ...prev, emailPlatform: value }));
-                        if (errors.emailPlatform) {
-                          setErrors(prev => ({ ...prev, emailPlatform: '' }));
-                        }
-                      }}>
-                        <SelectTrigger className={`bg-transparent border-b py-2 text-ivory-primary outline-none transition-colors ${
-                          errors.emailPlatform ? 'border-destructive focus:border-destructive' : 'border-gold-antique/30 focus:border-gold-antique'
-                        }`}>
-                          <SelectValue placeholder="Select email platform" />
-                        </SelectTrigger>
-                        <SelectContent className="bg-navy-dark border-gold-antique/30">
-                          <SelectItem value="klaviyo" className="text-ivory-primary">Klaviyo</SelectItem>
-                          <SelectItem value="hubspot" className="text-ivory-primary">HubSpot</SelectItem>
-                          <SelectItem value="mailchimp" className="text-ivory-primary">Mailchimp</SelectItem>
-                          <SelectItem value="marketo" className="text-ivory-primary">Marketo</SelectItem>
-                          <SelectItem value="other" className="text-ivory-primary">Other</SelectItem>
-                        </SelectContent>
-                      </Select>
+                      <div className="relative">
+                        <Select value={formData.emailPlatform} onValueChange={(value) => {
+                          setFormData(prev => ({ ...prev, emailPlatform: value }));
+                          if (errors.emailPlatform) {
+                            setErrors(prev => ({ ...prev, emailPlatform: '' }));
+                          }
+                        }}>
+                          <SelectTrigger className={`bg-transparent border-b py-2 text-ivory-primary outline-none transition-colors pr-8 ${
+                            errors.emailPlatform ? 'border-destructive focus:border-destructive' : 'border-gold-antique/30 focus:border-gold-antique'
+                          }`}>
+                            <SelectValue placeholder="Select email platform" />
+                          </SelectTrigger>
+                          <SelectContent className="bg-navy-dark border-gold-antique/30">
+                            <SelectItem value="klaviyo" className="text-ivory-primary">Klaviyo</SelectItem>
+                            <SelectItem value="hubspot" className="text-ivory-primary">HubSpot</SelectItem>
+                            <SelectItem value="mailchimp" className="text-ivory-primary">Mailchimp</SelectItem>
+                            <SelectItem value="marketo" className="text-ivory-primary">Marketo</SelectItem>
+                            <SelectItem value="other" className="text-ivory-primary">Other</SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <ChevronDown className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-gold-antique/60 pointer-events-none" />
+                      </div>
                       {errors.emailPlatform && (
                         <p className="text-destructive text-sm mt-1">{errors.emailPlatform}</p>
                       )}
