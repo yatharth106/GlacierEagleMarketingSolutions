@@ -43,7 +43,7 @@ export default function ApplicationPage() {
     if (!formData.revenueChallenge.trim()) {
       newErrors.revenueChallenge = 'Primary Revenue Challenge is required';
     }
-    if (!formData.emailPlatform.trim()) {
+    if (!formData.emailPlatform) {
       newErrors.emailPlatform = 'Current Email Platform is required';
     }
     if (!formData.crm.trim()) {
@@ -245,19 +245,27 @@ export default function ApplicationPage() {
                 <Label htmlFor="emailPlatform" className="text-base font-paragraph font-semibold text-primary-foreground">
                   Current Email Platform *
                 </Label>
-                <Input
-                  id="emailPlatform"
+                <Select
                   value={formData.emailPlatform}
-                  onChange={(e) => {
-                    setFormData({ ...formData, emailPlatform: e.target.value });
+                  onValueChange={(value) => {
+                    setFormData({ ...formData, emailPlatform: value });
                     if (errors.emailPlatform) {
                       setErrors({ ...errors, emailPlatform: '' });
                     }
                   }}
-                  placeholder="e.g., HubSpot, Mailchimp, ActiveCampaign"
-                  className={`bg-ivory border-charcoal text-charcoal ${errors.emailPlatform ? 'border-2 border-destructive' : ''}`}
-                  aria-invalid={!!errors.emailPlatform}
-                />
+                >
+                  <SelectTrigger className={`bg-ivory border-2 border-charcoal text-charcoal cursor-pointer hover:bg-ivory/90 transition-colors ${errors.emailPlatform ? 'border-destructive' : ''}`}>
+                    <SelectValue placeholder="Select email platform" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="klaviyo">Klaviyo</SelectItem>
+                    <SelectItem value="hubspot">HubSpot</SelectItem>
+                    <SelectItem value="mailchimp">Mailchimp</SelectItem>
+                    <SelectItem value="marketo">Marketo</SelectItem>
+                    <SelectItem value="activecampaign">ActiveCampaign</SelectItem>
+                    <SelectItem value="other">Other</SelectItem>
+                  </SelectContent>
+                </Select>
                 {errors.emailPlatform && (
                   <p className="text-sm text-destructive font-paragraph">{errors.emailPlatform}</p>
                 )}

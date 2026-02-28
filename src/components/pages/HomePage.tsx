@@ -155,24 +155,22 @@ export default function HomePage() {
     e.preventDefault();
     
     // Validation check - does not affect scroll ref rendering
-    if (!validateAuditForm()) {
-      return;
+    if (validateAuditForm()) {
+      setIsSubmittingAudit(true);
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      setIsSubmittingAudit(false);
+      setIsAuditModalOpen(false);
+      setAuditFormData({
+        companyName: '',
+        arrRange: '',
+        revenueChallenge: '',
+        emailPlatform: '',
+        crm: '',
+        leadVolume: '',
+        founderContactNumber: ''
+      });
+      setAuditFormErrors({});
     }
-
-    setIsSubmittingAudit(true);
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setIsSubmittingAudit(false);
-    setIsAuditModalOpen(false);
-    setAuditFormData({
-      companyName: '',
-      arrRange: '',
-      revenueChallenge: '',
-      emailPlatform: '',
-      crm: '',
-      leadVolume: '',
-      founderContactNumber: ''
-    });
-    setAuditFormErrors({});
   };
 
   return (
