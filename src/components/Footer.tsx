@@ -7,19 +7,19 @@ export default function Footer() {
       <div className="max-w-[120rem] mx-auto px-8 py-16">
         <div className="grid md:grid-cols-3 gap-12 mb-12">
           <div>
-            <h3 className="text-xl font-heading text-ivory-warm mb-6 tracking-tight">Glacier Eagle</h3>
-            <p className="text-base font-paragraph text-stone-light">
+            <h3 className="text-xl font-heading mb-6 tracking-tight text-secondary-foreground">Glacier Eagle</h3>
+            <p className="text-base font-paragraph text-secondary-foreground">
               Private Revenue Advisory for B2B Founders
             </p>
           </div>
           
           <div>
-            <h4 className="text-base font-paragraph text-ivory-warm font-semibold mb-6">Navigation</h4>
+            <h4 className="text-base font-paragraph font-semibold mb-6 text-secondary-foreground">Navigation</h4>
             <nav className="flex flex-col gap-3">
-              <Link to="/" className="text-base font-paragraph text-stone-light transition-colors duration-200 hover:text-gold-muted">
+              <Link to="/" className="text-base font-paragraph transition-colors duration-200 hover:text-gold-muted text-secondary-foreground">
                 Home
               </Link>
-              <Link to="/services" className="text-base font-paragraph text-stone-light transition-colors duration-200 hover:text-gold-muted">
+              <Link to="/services" className="text-base font-paragraph transition-colors duration-200 hover:text-gold-muted text-secondary-foreground">
                 Services
               </Link>
               <Link to="/engagement" className="text-base font-paragraph text-stone-light transition-colors duration-200 hover:text-gold-muted">
