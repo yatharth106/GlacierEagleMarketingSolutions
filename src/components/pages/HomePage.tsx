@@ -173,23 +173,22 @@ export default function HomePage() {
       await new Promise(resolve => setTimeout(resolve, 1500));
       setIsSubmittingAudit(false);
       setAuditSubmitStatus('success');
-      
-      // Reset form and close modal after 3 seconds
-      setTimeout(() => {
-        setAuditFormData({
-          companyName: '',
-          arrRange: '',
-          revenueChallenge: '',
-          emailPlatform: '',
-          crm: '',
-          leadVolume: '',
-          founderContactNumber: ''
-        });
-        setAuditFormErrors({});
-        setAuditSubmitStatus('idle');
-        setIsAuditModalOpen(false);
-      }, 3000);
     }
+  };
+
+  const closeAuditModal = () => {
+    setAuditFormData({
+      companyName: '',
+      arrRange: '',
+      revenueChallenge: '',
+      emailPlatform: '',
+      crm: '',
+      leadVolume: '',
+      founderContactNumber: ''
+    });
+    setAuditFormErrors({});
+    setAuditSubmitStatus('idle');
+    setIsAuditModalOpen(false);
   };
 
   return (
@@ -234,9 +233,15 @@ export default function HomePage() {
                 <p className="text-ivory-primary/70 mb-2">
                   Thank you for your interest in Glacier Eagle.
                 </p>
-                <p className="text-sm text-ivory-primary/60">
+                <p className="text-sm text-ivory-primary/60 mb-8">
                   We'll review your application and reach out within 2-3 business days if we're a fit.
                 </p>
+                <Button
+                  onClick={closeAuditModal}
+                  className="bg-bronze-burnished text-ivory-primary hover:bg-bronze-burnished/90 rounded-none px-8 py-3 text-base font-medium tracking-wide"
+                >
+                  Close
+                </Button>
               </motion.div>
             ) : (
               <>
