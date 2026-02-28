@@ -11,6 +11,7 @@ import ApplyPage from '@/components/pages/ApplyPage';
 import ApplicationPage from '@/components/pages/ApplicationPage';
 import PrivacyPage from '@/components/pages/PrivacyPage';
 import TermsPage from '@/components/pages/TermsPage';
+import WhyChooseUsPage from '@/components/pages/WhyChooseUsPage';
 
 // Layout component that includes ScrollToTop
 function Layout() {
@@ -96,6 +97,13 @@ const router = createBrowserRouter([
         element: <TermsPage />,
         routeMetadata: {
           pageIdentifier: 'terms',
+        },
+      },
+      {
+        path: "why-choose-us",
+        element: <WhyChooseUsPage />,
+        routeMetadata: {
+          pageIdentifier: 'why-choose-us',
         },
       },
       {
