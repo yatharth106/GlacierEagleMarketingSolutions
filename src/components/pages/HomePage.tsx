@@ -104,6 +104,18 @@ export default function HomePage() {
     loadData();
   }, []);
 
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (isAuditModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isAuditModalOpen]);
+
   const loadData = async () => {
     setIsLoading(true);
     try {
