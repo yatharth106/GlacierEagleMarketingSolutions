@@ -355,7 +355,6 @@ export default function HomePage() {
         </motion.div>
       </section>
       {/* --- 3. Credibility Strip (Authority Bar) --- */}
-
       {/* --- 3.5. INDUSTRY EXPERTISE SECTION — SCALABLE VERSION --- */}
       <section className="w-full py-[140px] bg-navy-dark">
         <div className="max-w-[1150px] mx-auto px-6 md:px-12">
@@ -552,70 +551,6 @@ export default function HomePage() {
         </div>
       </section>
       {/* --- 4. The Real Problem (Sticky Scroll Layout) --- */}
-      <section className="w-full py-32 bg-navy-dark relative">
-        <div className="max-w-[120rem] mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
-            
-            {/* Sticky Left Column */}
-            <div className="lg:col-span-5 relative">
-              <div className="sticky top-32">
-                <FadeIn>
-                  <h2 className="text-5xl md:text-6xl font-heading text-ivory-primary mb-8 leading-tight">
-                    Your Inbox Is <br />
-                    <span className="text-gold-antique italic">Leaking Revenue.</span>
-                  </h2>
-                  <p className="text-lg text-ivory-primary/70 mb-12 max-w-md leading-relaxed">
-                    Most B2B email systems are designed for marketing metrics, not revenue outcomes. While you track open rates, your actual pipeline is silently draining away.
-                  </p>
-                  <div className="hidden lg:block w-24 h-[1px] bg-ivory-primary/20" />
-                </FadeIn>
-              </div>
-            </div>
-
-            {/* Scrollable Right Column */}
-            <div className="lg:col-span-7 space-y-12">
-              {isLoading ? (
-                <div className="space-y-8">
-                  {[1, 2, 3].map(i => <div key={i} className="h-40 bg-gold-antique/10 animate-pulse rounded-sm" />)}
-                </div>
-              ) : (
-                problems.filter(p => p.isCommon).map((problem, index) => (
-                  <motion.div
-                    key={problem._id}
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    className="group border-l-2 border-gold-antique/30 pl-8 py-4 hover:border-gold-antique transition-colors duration-500"
-                  >
-                    <h3 className="text-2xl font-heading text-ivory-primary mb-3 group-hover:text-gold-antique transition-colors">
-                      {problem.problemDescription}
-                    </h3>
-                    {problem.symptomExample && (
-                      <p className="text-base text-ivory-primary/60 leading-relaxed">
-                        {problem.symptomExample}
-                      </p>
-                    )}
-                    {problem.revenueImpact && (
-                      <div className="mt-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gold-antique/70">
-                        <Minus className="w-4 h-4" />
-                        {problem.revenueImpact}
-                      </div>
-                    )}
-                  </motion.div>
-                ))
-              )}
-              
-              <FadeIn delay={0.4} className="pt-12">
-                <p className="text-2xl font-heading italic text-ivory-primary text-center lg:text-left">
-                  "Email should accelerate pipeline velocity — not generate vanity metrics."
-                </p>
-              </FadeIn>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* --- 4.5. WHY CHOOSE US — STRUCTURAL DIFFERENTIATION SECTION --- */}
       <section className="w-full bg-navy-dark py-[150px]">
         <div className="max-w-[1150px] mx-auto px-6 md:px-12">
           {/* E1 — HEADLINE BLOCK */}
@@ -777,15 +712,74 @@ export default function HomePage() {
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="text-center"
           >
-            <button
-              onClick={() => setIsAuditModalOpen(true)}
-              className="border border-gold-antique text-ivory-primary bg-transparent px-11 py-4 text-[11px] uppercase tracking-[1.8px] font-sans font-bold rounded-[4px] min-h-[44px] hover:bg-gold-antique hover:text-navy-dark transition-all duration-300 ease-out hover:translate-y-[-2px]"
-            >
-              Evaluate Structural Fit
-            </button>
+
           </motion.div>
         </div>
       </section>
+      <section className="w-full py-32 bg-navy-dark relative">
+        <div className="max-w-[120rem] mx-auto px-6 md:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
+            
+            {/* Sticky Left Column */}
+            <div className="lg:col-span-5 relative">
+              <div className="sticky top-32">
+                <FadeIn>
+                  <h2 className="text-5xl md:text-6xl font-heading text-ivory-primary mb-8 leading-tight">
+                    Your Inbox Is <br />
+                    <span className="text-gold-antique italic">Leaking Revenue.</span>
+                  </h2>
+                  <p className="text-lg text-ivory-primary/70 mb-12 max-w-md leading-relaxed">
+                    Most B2B email systems are designed for marketing metrics, not revenue outcomes. While you track open rates, your actual pipeline is silently draining away.
+                  </p>
+                  <div className="hidden lg:block w-24 h-[1px] bg-ivory-primary/20" />
+                </FadeIn>
+              </div>
+            </div>
+
+            {/* Scrollable Right Column */}
+            <div className="lg:col-span-7 space-y-12">
+              {isLoading ? (
+                <div className="space-y-8">
+                  {[1, 2, 3].map(i => <div key={i} className="h-40 bg-gold-antique/10 animate-pulse rounded-sm" />)}
+                </div>
+              ) : (
+                problems.filter(p => p.isCommon).map((problem, index) => (
+                  <motion.div
+                    key={problem._id}
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    className="group border-l-2 border-gold-antique/30 pl-8 py-4 hover:border-gold-antique transition-colors duration-500"
+                  >
+                    <h3 className="text-2xl font-heading text-ivory-primary mb-3 group-hover:text-gold-antique transition-colors">
+                      {problem.problemDescription}
+                    </h3>
+                    {problem.symptomExample && (
+                      <p className="text-base text-ivory-primary/60 leading-relaxed">
+                        {problem.symptomExample}
+                      </p>
+                    )}
+                    {problem.revenueImpact && (
+                      <div className="mt-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gold-antique/70">
+                        <Minus className="w-4 h-4" />
+                        {problem.revenueImpact}
+                      </div>
+                    )}
+                  </motion.div>
+                ))
+              )}
+              
+              <FadeIn delay={0.4} className="pt-12">
+                <p className="text-2xl font-heading italic text-ivory-primary text-center lg:text-left">
+                  "Email should accelerate pipeline velocity — not generate vanity metrics."
+                </p>
+              </FadeIn>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* --- 4.5. WHY CHOOSE US — STRUCTURAL DIFFERENTIATION SECTION --- */}
       {/* --- 5. The Glacier Eagle Model (Split Section) --- */}
       <section id="glacier-model" className="w-full bg-slate-deep py-32 overflow-hidden">
         <div className="max-w-[120rem] mx-auto px-6 md:px-12">
