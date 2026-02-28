@@ -716,7 +716,7 @@ export default function HomePage() {
           </motion.div>
         </div>
       </section>
-      <section className="w-full py-32 bg-navy-dark relative">
+      <section className="w-full pt-0 pb-32 bg-navy-dark relative">
         <div className="max-w-[120rem] mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
             
