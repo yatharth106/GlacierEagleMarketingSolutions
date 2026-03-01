@@ -584,6 +584,76 @@ export default function HomePage() {
           </div>
         </motion.div>
       </section>
+      {/* --- 1. ENGAGEMENT PHILOSOPHY SECTION --- */}
+      <section className="w-full py-section bg-navy-dark">
+        <div className="max-w-content mx-auto px-6 md:px-12">
+          {/* Intro Block */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.9, ease: "easeOut" }}
+            className="text-center mb-24"
+          >
+            {/* Eyebrow */}
+            <p className="text-[11px] uppercase tracking-[3px] text-gold-antique font-label font-bold mb-6">
+              Engagement Structure
+            </p>
+            
+            {/* Headline */}
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-semibold text-ivory-primary mb-8 leading-tight">
+              We Do Not Sell Marketing.<br />We Engineer Revenue Systems.
+            </h2>
+            
+            {/* Subline */}
+            <p className="text-lg font-paragraph text-ivory-body max-w-[760px] mx-auto leading-relaxed mb-10">
+              Our compensation aligns with measurable structural improvement.
+            </p>
+            
+            {/* Divider */}
+            <div className="w-[60px] h-px bg-gold-antique mx-auto" />
+          </motion.div>
+
+          {/* Three Paragraph Body Section */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.9, ease: "easeOut" }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 max-w-5xl mx-auto"
+          >
+            {/* Paragraph 1: Fixed Retainers */}
+            <div className="space-y-4">
+              <h3 className="text-xl font-heading text-ivory-primary leading-tight">
+                Fixed Retainers Misalign Incentives
+              </h3>
+              <p className="text-base font-paragraph text-ivory-body leading-relaxed">
+                When compensation is decoupled from outcomes, the incentive structure becomes perverse. Agencies optimize for billable hours and campaign volume, not revenue impact. Your growth becomes their secondary concern.
+              </p>
+            </div>
+
+            {/* Paragraph 2: Revenue-Share */}
+            <div className="space-y-4">
+              <h3 className="text-xl font-heading text-ivory-primary leading-tight">
+                Revenue-Share Creates Accountability
+              </h3>
+              <p className="text-base font-paragraph text-ivory-body leading-relaxed">
+                When we win only when you win, every decision is filtered through a single lens: measurable revenue impact. This alignment eliminates the noise of vanity metrics and forces structural thinking.
+              </p>
+            </div>
+
+            {/* Paragraph 3: Equity */}
+            <div className="space-y-4">
+              <h3 className="text-xl font-heading text-ivory-primary leading-tight">
+                Equity Reflects Long-Term Conviction
+              </h3>
+              <p className="text-base font-paragraph text-ivory-body leading-relaxed">
+                We take equity in select engagements because we believe in the structural durability of the systems we build. This is not a transaction. It is a partnership in revenue architecture.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
       {/* --- 3. Credibility Strip (Authority Bar) --- */}
       {/* --- 3.5. INDUSTRY EXPERTISE SECTION — SCALABLE VERSION --- */}
       <section className="w-full py-section bg-navy-dark">
