@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { BaseCrudService } from '@/integrations';
 import { CaseStudies } from '@/entities';
 import PageLayout from '@/components/PageLayout';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 
@@ -22,10 +22,11 @@ const FadeIn = ({ children, delay = 0, className = "" }: { children: React.React
 export default function CaseStudiesDetailPage() {
   const [caseStudies, setCaseStudies] = useState<CaseStudies[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const location = useLocation();
 
   useEffect(() => {
     loadData();
-  }, []);
+  }, [location.pathname]);
 
   const loadData = async () => {
     setIsLoading(true);

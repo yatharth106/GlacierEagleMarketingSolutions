@@ -4,6 +4,7 @@ import { BaseCrudService } from '@/integrations';
 import { FrequentlyAskedQuestions } from '@/entities';
 import PageLayout from '@/components/PageLayout';
 import { ChevronDown } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
 
 const FadeIn = ({ children, delay = 0, className = "" }: { children: React.ReactNode, delay?: number, className?: string }) => (
   <motion.div
@@ -22,10 +23,11 @@ export default function FAQDetailPage() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
   const [isLoading, setIsLoading] = useState(true);
   const itemRefs = React.useRef<(HTMLDivElement | null)[]>([]);
+  const location = useLocation();
 
   useEffect(() => {
     loadData();
-  }, []);
+  }, [location.pathname]);
 
   const loadData = async () => {
     setIsLoading(true);

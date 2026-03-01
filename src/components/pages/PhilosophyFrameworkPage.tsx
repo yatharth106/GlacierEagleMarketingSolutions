@@ -52,7 +52,7 @@ export default function PhilosophyFrameworkPage() {
 
   useEffect(() => {
     loadData();
-  }, []);
+  }, [location.pathname]);
 
   const loadData = async () => {
     setIsLoading(true);

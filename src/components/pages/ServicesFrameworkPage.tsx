@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { BaseCrudService } from '@/integrations';
 import { Services, EngagementTiers } from '@/entities';
 import PageLayout from '@/components/PageLayout';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
 const FadeIn = ({ children, delay = 0, className = "" }: { children: React.ReactNode, delay?: number, className?: string }) => (
@@ -22,10 +22,11 @@ export default function ServicesFrameworkPage() {
   const [services, setServices] = useState<Services[]>([]);
   const [tiers, setTiers] = useState<EngagementTiers[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const location = useLocation();
 
   useEffect(() => {
     loadData();
-  }, []);
+  }, [location.pathname]);
 
   const loadData = async () => {
     setIsLoading(true);
