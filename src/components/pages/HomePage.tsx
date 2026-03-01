@@ -87,7 +87,9 @@ export default function HomePage() {
     emailPlatform: '',
     crm: '',
     leadVolume: '',
-    founderContactNumber: ''
+    contactName: '',
+    contactEmail: '',
+    contactPhone: ''
   });
   const [auditFormErrors, setAuditFormErrors] = useState<Record<string, string>>({});
   const [isSubmittingAudit, setIsSubmittingAudit] = useState(false);
@@ -156,8 +158,13 @@ export default function HomePage() {
     if (!auditFormData.leadVolume) {
       newErrors.leadVolume = 'Lead volume is required';
     }
-    if (!auditFormData.founderContactNumber.trim()) {
-      newErrors.founderContactNumber = 'Contact number is required';
+    if (!auditFormData.contactName.trim()) {
+      newErrors.contactName = 'Your name is required';
+    }
+    if (!auditFormData.contactEmail.trim()) {
+      newErrors.contactEmail = 'Email address is required';
+    } else if (!/^\S+@\S+\.\S+$/.test(auditFormData.contactEmail)) {
+      newErrors.contactEmail = 'Please enter a valid email address';
     }
 
     setAuditFormErrors(newErrors);
@@ -184,7 +191,9 @@ export default function HomePage() {
       emailPlatform: '',
       crm: '',
       leadVolume: '',
-      founderContactNumber: ''
+      contactName: '',
+      contactEmail: '',
+      contactPhone: ''
     });
     setAuditFormErrors({});
     setAuditSubmitStatus('idle');
@@ -418,25 +427,71 @@ export default function HomePage() {
               </div>
 
               <div>
-                <Label className={`text-ivory-primary mb-1 block text-sm ${auditFormErrors.founderContactNumber ? 'text-destructive' : ''}`}>
-                  Founder/Executive Contact Number
+                <Label className={`text-ivory-primary mb-1 block text-sm ${auditFormErrors.contactName ? 'text-destructive' : ''}`}>
+                  Your Name *
                 </Label>
                 <Input
-                  type="tel"
-                  placeholder="Your phone number"
-                  value={auditFormData.founderContactNumber}
+                  type="text"
+                  placeholder="Full name"
+                  value={auditFormData.contactName}
                   onChange={(e) => {
-                    setAuditFormData({ ...auditFormData, founderContactNumber: e.target.value });
-                    if (auditFormErrors.founderContactNumber) {
-                      setAuditFormErrors({ ...auditFormErrors, founderContactNumber: '' });
+                    setAuditFormData({ ...auditFormData, contactName: e.target.value });
+                    if (auditFormErrors.contactName) {
+                      setAuditFormErrors({ ...auditFormErrors, contactName: '' });
                     }
                   }}
                   className={`bg-slate-deep text-ivory-primary placeholder:text-ivory-primary/40 text-sm py-2 ${
-                    auditFormErrors.founderContactNumber ? 'border-2 border-destructive' : 'border-gold-antique/30'
+                    auditFormErrors.contactName ? 'border-2 border-destructive' : 'border-gold-antique/30'
                   }`}
                 />
-                {auditFormErrors.founderContactNumber && (
-                  <p className="text-xs text-destructive mt-0.5">{auditFormErrors.founderContactNumber}</p>
+                {auditFormErrors.contactName && (
+                  <p className="text-xs text-destructive mt-0.5">{auditFormErrors.contactName}</p>
+                )}
+              </div>
+
+              <div>
+                <Label className={`text-ivory-primary mb-1 block text-sm ${auditFormErrors.contactEmail ? 'text-destructive' : ''}`}>
+                  Email Address *
+                </Label>
+                <Input
+                  type="email"
+                  placeholder="your@email.com"
+                  value={auditFormData.contactEmail}
+                  onChange={(e) => {
+                    setAuditFormData({ ...auditFormData, contactEmail: e.target.value });
+                    if (auditFormErrors.contactEmail) {
+                      setAuditFormErrors({ ...auditFormErrors, contactEmail: '' });
+                    }
+                  }}
+                  className={`bg-slate-deep text-ivory-primary placeholder:text-ivory-primary/40 text-sm py-2 ${
+                    auditFormErrors.contactEmail ? 'border-2 border-destructive' : 'border-gold-antique/30'
+                  }`}
+                />
+                {auditFormErrors.contactEmail && (
+                  <p className="text-xs text-destructive mt-0.5">{auditFormErrors.contactEmail}</p>
+                )}
+              </div>
+
+              <div>
+                <Label className={`text-ivory-primary mb-1 block text-sm ${auditFormErrors.contactPhone ? 'text-destructive' : ''}`}>
+                  Phone Number
+                </Label>
+                <Input
+                  type="tel"
+                  placeholder="+1 (555) 000-0000"
+                  value={auditFormData.contactPhone}
+                  onChange={(e) => {
+                    setAuditFormData({ ...auditFormData, contactPhone: e.target.value });
+                    if (auditFormErrors.contactPhone) {
+                      setAuditFormErrors({ ...auditFormErrors, contactPhone: '' });
+                    }
+                  }}
+                  className={`bg-slate-deep text-ivory-primary placeholder:text-ivory-primary/40 text-sm py-2 ${
+                    auditFormErrors.contactPhone ? 'border-2 border-destructive' : 'border-gold-antique/30'
+                  }`}
+                />
+                {auditFormErrors.contactPhone && (
+                  <p className="text-xs text-destructive mt-0.5">{auditFormErrors.contactPhone}</p>
                 )}
               </div>
 

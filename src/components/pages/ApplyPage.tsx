@@ -22,7 +22,7 @@ export default function ApplyPage() {
   const [formData, setFormData] = useState({
     companyName: '',
     arrRange: '',
-    trialVolume: '',
+    leadVolume: '',
     revenueChallenge: '',
     emailPlatform: '',
     crm: '',
@@ -44,8 +44,8 @@ export default function ApplyPage() {
     if (!formData.arrRange) {
       newErrors.arrRange = 'Please select an ARR range';
     }
-    if (!formData.trialVolume.trim()) {
-      newErrors.trialVolume = 'Trial volume is required';
+    if (!formData.leadVolume) {
+      newErrors.leadVolume = 'Monthly lead volume is required';
     }
     if (!formData.revenueChallenge.trim()) {
       newErrors.revenueChallenge = 'Please describe your revenue challenge';
@@ -107,7 +107,7 @@ export default function ApplyPage() {
       setFormData({
         companyName: '',
         arrRange: '',
-        trialVolume: '',
+        leadVolume: '',
         revenueChallenge: '',
         emailPlatform: '',
         crm: '',
@@ -226,23 +226,23 @@ export default function ApplyPage() {
                         )}
                       </div>
 
-                      <div data-error={!!errors.trialVolume}>
+                      <div data-error={!!errors.leadVolume}>
                         <label className="text-xs font-bold uppercase tracking-widest text-ivory-primary/70 block mb-2">
-                          Current Trial Volume (Monthly) *
+                          Monthly Lead Volume *
                         </label>
                         <input
                           type="text"
-                          name="trialVolume"
-                          value={formData.trialVolume}
+                          name="leadVolume"
+                          value={formData.leadVolume}
                           onChange={handleChange}
                           required
                           className={`w-full bg-transparent border-b py-2 text-ivory-primary outline-none transition-colors placeholder-ivory-primary/30 ${
-                            errors.trialVolume ? 'border-destructive focus:border-destructive' : 'border-gold-antique/30 focus:border-gold-antique'
+                            errors.leadVolume ? 'border-destructive focus:border-destructive' : 'border-gold-antique/30 focus:border-gold-antique'
                           }`}
-                          placeholder="e.g., 500 trials/month"
+                          placeholder="e.g., 500 leads/month"
                         />
-                        {errors.trialVolume && (
-                          <p className="text-destructive text-sm mt-1">{errors.trialVolume}</p>
+                        {errors.leadVolume && (
+                          <p className="text-destructive text-sm mt-1">{errors.leadVolume}</p>
                         )}
                       </div>
                     </div>
