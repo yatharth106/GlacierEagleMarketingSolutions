@@ -18,10 +18,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 
 const FadeIn = ({ children, delay = 0, className = "" }: { children: React.ReactNode, delay?: number, className?: string }) => (
   <motion.div
-    initial={{ opacity: 0, y: 20 }}
+    initial={{ opacity: 0, y: 14 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, margin: "-50px" }}
-    transition={{ duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] }}
+    transition={{ duration: 0.6, delay, ease: "easeOut" }}
     className={className}
   >
     {children}
@@ -50,7 +50,7 @@ const StaggerContainer = ({ children, className = "", staggerDelay = 0.1 }: { ch
 const StaggerItem = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => (
   <motion.div
     variants={{
-      hidden: { opacity: 0, y: 20 },
+      hidden: { opacity: 0, y: 14 },
       visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
     }}
     className={className}
@@ -247,7 +247,7 @@ export default function HomePage() {
                 </p>
                 <Button
                   onClick={closeAuditModal}
-                  className="bg-bronze-burnished text-ivory-primary hover:bg-bronze-burnished/90 rounded-none px-8 py-3 text-base font-medium tracking-wide"
+                  className="bg-gold-antique text-navy-dark hover:bg-gold-antique/90 rounded-none px-8 py-3 text-base font-label font-bold tracking-widest uppercase"
                 >
                   Close
                 </Button>
@@ -499,7 +499,7 @@ export default function HomePage() {
                 type="submit"
                 onClick={handleAuditSubmit}
                 disabled={isSubmittingAudit}
-                className="w-full bg-bronze-burnished text-ivory-primary hover:bg-bronze-burnished/90 rounded-none px-6 py-4 text-base font-medium tracking-wide disabled:opacity-50 flex-shrink-0 mt-4 mb-6 md:mb-8"
+                className="w-full bg-gold-antique text-navy-dark hover:bg-gold-antique/90 rounded-none px-6 py-4 text-base font-label font-bold tracking-widest uppercase disabled:opacity-50 flex-shrink-0 mt-4 mb-6 md:mb-8"
               >
                 {isSubmittingAudit ? 'Submitting...' : 'Submit Application'}
               </Button>
@@ -511,7 +511,7 @@ export default function HomePage() {
       )}
       {/* --- 1. Pre-Hero Micro Statement --- */}
       <section className="w-full pt-32 pb-8 relative z-10">
-        <div className="max-w-[120rem] mx-auto px-6 md:px-12 text-center">
+        <div className="max-w-content mx-auto px-6 md:px-12 text-center">
           <FadeIn>
             <p className="text-xs md:text-sm font-medium tracking-[0.2em] uppercase text-ivory-primary/50">
               Private Revenue Advisory for B2B Founders
@@ -527,16 +527,16 @@ export default function HomePage() {
            <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-gold-antique/5 rounded-full blur-[120px] mix-blend-multiply" />
         </div>
 
-        <div className="max-w-[120rem] mx-auto px-6 md:px-12 relative z-10 text-center">
+        <div className="max-w-content mx-auto px-6 md:px-12 relative z-10 text-center">
           <FadeIn delay={0.1}>
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-heading font-bold text-ivory-primary leading-[0.95] tracking-tight mb-12">
+            <h1 className="text-6xl md:text-8xl lg:text-9xl font-heading font-semibold text-ivory-primary leading-[0.95] tracking-tight mb-12">
               Email That Moves <br />
-              <span className="text-gold-antique italic font-serif">Revenue.</span> Not Just Metrics.
+              <span className="text-gold-antique italic">Revenue.</span> Not Just Metrics.
             </h1>
           </FadeIn>
 
           <FadeIn delay={0.3}>
-            <p className="text-lg md:text-xl text-ivory-primary/80 max-w-3xl mx-auto leading-relaxed mb-16">
+            <p className="text-lg md:text-xl text-ivory-body max-w-3xl mx-auto leading-relaxed mb-16">
               We design AI-assisted, strategist-led email systems that convert free trials, dormant leads, and silent prospects into qualified pipeline and measurable cash flow.
             </p>
           </FadeIn>
@@ -545,7 +545,7 @@ export default function HomePage() {
             <Button 
               size="lg" 
               onClick={() => setIsAuditModalOpen(true)}
-              className="bg-bronze-burnished text-ivory-primary border border-gold-antique hover:bg-bronze-burnished/90 rounded-none px-10 py-8 text-lg font-medium tracking-wide transition-all duration-200"
+              className="bg-gold-antique text-navy-dark border border-gold-antique hover:bg-gold-antique/90 rounded-none px-10 py-8 text-lg font-label font-bold tracking-widest uppercase transition-all duration-200"
             >
               Request a Private Revenue Audit
             </Button>
@@ -559,7 +559,7 @@ export default function HomePage() {
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="border-ivory-primary text-ivory-primary hover:bg-slate-deep/50 rounded-none px-10 py-8 text-lg font-medium tracking-wide bg-transparent transition-all duration-200"
+                className="border-ivory-primary text-ivory-primary hover:bg-slate-deep/50 rounded-none px-10 py-8 text-lg font-label font-bold tracking-widest uppercase bg-transparent transition-all duration-200"
               >
                 View Our Model
               </Button>
@@ -586,18 +586,18 @@ export default function HomePage() {
       </section>
       {/* --- 3. Credibility Strip (Authority Bar) --- */}
       {/* --- 3.5. INDUSTRY EXPERTISE SECTION — SCALABLE VERSION --- */}
-      <section className="w-full py-[140px] bg-navy-dark">
-        <div className="max-w-[1150px] mx-auto px-6 md:px-12">
+      <section className="w-full py-section bg-navy-dark">
+        <div className="max-w-content mx-auto px-6 md:px-12">
           {/* E1 — INTRO BLOCK (CENTERED) */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.9, ease: "easeOut" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-center mb-24"
           >
             {/* Eyebrow */}
-            <p className="text-[11px] uppercase tracking-[3px] text-gold-antique font-sans font-bold mb-6">
+            <p className="text-[11px] uppercase tracking-[3px] text-gold-antique font-label font-bold mb-6">
               Industry Architecture
             </p>
             
@@ -607,7 +607,7 @@ export default function HomePage() {
             </h2>
             
             {/* Subline */}
-            <p className="text-lg font-serif text-ivory-primary/75 max-w-[760px] mx-auto leading-relaxed mb-10">
+            <p className="text-lg font-paragraph text-ivory-body max-w-[760px] mx-auto leading-relaxed mb-10">
               Different business models demand different revenue systems. Our work adapts to the structural mechanics of each industry we operate within.
             </p>
             
@@ -638,10 +638,10 @@ export default function HomePage() {
                       y: -2
                     }}
                     transition={{ duration: 0.3, ease: "easeOut" }}
-                    className="bg-[rgba(255,255,255,0.02)] p-[60px] border border-[rgba(255,255,255,0.06)] rounded-[6px] min-h-full flex flex-col justify-between"
+                    className="bg-card-bg p-[60px] border border-divider rounded-[6px] min-h-full flex flex-col justify-between"
                   >
                     {/* Industry Label */}
-                    <p className="text-[10px] uppercase tracking-[2px] text-gold-antique font-sans font-bold mb-[14px]">
+                    <p className="text-[10px] uppercase tracking-[2px] text-gold-antique font-label font-bold mb-[14px]">
                       SaaS
                     </p>
                     
@@ -651,12 +651,12 @@ export default function HomePage() {
                     </h3>
                     
                     {/* Description */}
-                    <p className="text-[17px] font-serif text-ivory-primary/75 leading-[1.8] mb-7">
+                    <p className="text-[17px] font-paragraph text-ivory-body leading-[1.8] mb-7">
                       SaaS growth depends on retention mechanics, activation velocity, pricing logic, and lifetime value alignment. Scale compounds only when churn, onboarding, and expansion are structurally integrated.
                     </p>
                     
                     {/* Divider */}
-                    <div className="w-full h-px bg-[rgba(255,255,255,0.08)] my-7" />
+                    <div className="w-full h-px bg-divider my-7" />
                     
                     {/* Leverage List */}
                     <div className="space-y-4">
@@ -667,7 +667,7 @@ export default function HomePage() {
                         'Expansion revenue design',
                         'Data-informed growth loops'
                       ].map((item, idx) => (
-                        <p key={idx} className="text-[16px] font-serif text-ivory-primary/75 leading-[1.8]">
+                        <p key={idx} className="text-[16px] font-paragraph text-ivory-body leading-[1.8]">
                           {item}
                         </p>
                       ))}
@@ -684,10 +684,10 @@ export default function HomePage() {
                       y: -2
                     }}
                     transition={{ duration: 0.3, ease: "easeOut" }}
-                    className="bg-[rgba(255,255,255,0.02)] p-[60px] border border-[rgba(255,255,255,0.06)] rounded-[6px] min-h-full flex flex-col justify-between"
+                    className="bg-card-bg p-[60px] border border-divider rounded-[6px] min-h-full flex flex-col justify-between"
                   >
                     {/* Industry Label */}
-                    <p className="text-[10px] uppercase tracking-[2px] text-gold-antique font-sans font-bold mb-[14px]">
+                    <p className="text-[10px] uppercase tracking-[2px] text-gold-antique font-label font-bold mb-[14px]">
                       Retail & E-Commerce
                     </p>
                     
@@ -697,12 +697,12 @@ export default function HomePage() {
                     </h3>
                     
                     {/* Description */}
-                    <p className="text-[17px] font-serif text-ivory-primary/75 leading-[1.8] mb-7">
+                    <p className="text-[17px] font-paragraph text-ivory-body leading-[1.8] mb-7">
                       Retail performance is governed by unit economics, conversion efficiency, offer structure, and customer lifetime value. Sustainable scale requires margin-aware acquisition and retention architecture.
                     </p>
                     
                     {/* Divider */}
-                    <div className="w-full h-px bg-[rgba(255,255,255,0.08)] my-7" />
+                    <div className="w-full h-px bg-divider my-7" />
                     
                     {/* Leverage List */}
                     <div className="space-y-4">
@@ -713,7 +713,7 @@ export default function HomePage() {
                         'Paid acquisition efficiency',
                         'Margin-sensitive scaling models'
                       ].map((item, idx) => (
-                        <p key={idx} className="text-[16px] font-serif text-ivory-primary/75 leading-[1.8]">
+                        <p key={idx} className="text-[16px] font-paragraph text-ivory-body leading-[1.8]">
                           {item}
                         </p>
                       ))}
@@ -731,10 +731,10 @@ export default function HomePage() {
                         y: -2
                       }}
                       transition={{ duration: 0.3, ease: "easeOut" }}
-                      className="bg-[rgba(255,255,255,0.02)] p-[60px] border border-[rgba(255,255,255,0.06)] rounded-[6px] min-h-full flex flex-col justify-between"
+                      className="bg-card-bg p-[60px] border border-divider rounded-[6px] min-h-full flex flex-col justify-between"
                     >
                       {/* Industry Label */}
-                      <p className="text-[10px] uppercase tracking-[2px] text-gold-antique font-sans font-bold mb-[14px]">
+                      <p className="text-[10px] uppercase tracking-[2px] text-gold-antique font-label font-bold mb-[14px]">
                         {industry.industryName}
                       </p>
                       
@@ -744,17 +744,17 @@ export default function HomePage() {
                       </h3>
                       
                       {/* Description */}
-                      <p className="text-[17px] font-serif text-ivory-primary/75 leading-[1.8] mb-7">
+                      <p className="text-[17px] font-paragraph text-ivory-body leading-[1.8] mb-7">
                         {industry.targetAudience}
                       </p>
                       
                       {/* Divider */}
-                      <div className="w-full h-px bg-[rgba(255,255,255,0.08)] my-7" />
+                      <div className="w-full h-px bg-divider my-7" />
                       
                       {/* Leverage List */}
                       <div className="space-y-4">
                         {industry.exampleCompanies && (
-                          <p className="text-[16px] font-serif text-ivory-primary/75 leading-[1.8]">
+                          <p className="text-[16px] font-paragraph text-ivory-body leading-[1.8]">
                             {industry.exampleCompanies}
                           </p>
                         )}
@@ -771,28 +771,28 @@ export default function HomePage() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-center mt-[110px]"
           >
-            <p className="text-lg font-serif text-ivory-primary/75 leading-relaxed">
+            <p className="text-lg font-paragraph text-ivory-body leading-relaxed">
               Our expansion into new industries follows structural qualification, not trend participation.
             </p>
           </motion.div>
         </div>
       </section>
       {/* --- 4. The Real Problem (Sticky Scroll Layout) --- */}
-      <section className="w-full bg-navy-dark py-[150px]">
-        <div className="max-w-[1150px] mx-auto px-6 md:px-12">
+      <section className="w-full bg-navy-dark py-section">
+        <div className="max-w-content mx-auto px-6 md:px-12">
           {/* E1 — HEADLINE BLOCK */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.9, ease: "easeOut" }}
-            className="text-center mb-[100px]"
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="text-center mb-section-gap"
           >
             {/* Eyebrow */}
-            <p className="text-[11px] uppercase tracking-[3px] text-gold-antique font-sans font-bold mb-6">
+            <p className="text-[11px] uppercase tracking-[3px] text-gold-antique font-label font-bold mb-6">
               Selection Criteria
             </p>
             
@@ -803,7 +803,7 @@ export default function HomePage() {
             </h2>
             
             {/* Subline */}
-            <p className="text-lg font-serif text-ivory-primary/75 max-w-[760px] mx-auto leading-relaxed mb-10">
+            <p className="text-lg font-paragraph text-ivory-body max-w-[760px] mx-auto leading-relaxed mb-10">
               The difference is not stylistic. It is architectural.
             </p>
             
@@ -816,11 +816,11 @@ export default function HomePage() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="mb-[100px]"
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="mb-section-gap"
           >
             {/* Top Divider */}
-            <div className="w-full h-px bg-[rgba(255,255,255,0.08)] mb-12" />
+            <div className="w-full h-px bg-divider mb-12" />
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
               {/* LEFT COLUMN — Typical Firms */}
@@ -847,11 +847,11 @@ export default function HomePage() {
                     desc: "AI used for execution speed, not structural intelligence."
                   }
                 ].map((item, idx) => (
-                  <div key={idx} className={idx !== 0 ? "border-t border-[rgba(255,255,255,0.08)] pt-12" : ""}>
-                    <p className="text-[10px] uppercase tracking-[2px] text-[rgba(255,255,255,0.5)] font-sans font-bold mb-3">
+                  <div key={idx} className={idx !== 0 ? "border-t border-divider pt-12" : ""}>
+                    <p className="text-[10px] uppercase tracking-[2px] text-ivory-primary/50 font-label font-bold mb-3">
                       {item.title}
                     </p>
-                    <p className="text-[16px] font-serif text-[rgba(244,241,234,0.6)] leading-[1.8]">
+                    <p className="text-[16px] font-paragraph text-ivory-body leading-[1.8]">
                       {item.desc}
                     </p>
                   </div>
@@ -863,8 +863,8 @@ export default function HomePage() {
                 initial={{ opacity: 0, y: -12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                className="bg-[rgba(255,255,255,0.02)] border border-[rgba(168,132,59,0.2)] p-[60px] rounded-[6px] space-y-12"
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                className="bg-card-bg border border-gold-antique/20 p-[60px] rounded-[6px] space-y-12"
               >
                 {[
                   {
@@ -888,11 +888,11 @@ export default function HomePage() {
                     desc: "AI handles modeling and diagnostics. Human judgment governs risk and prioritization."
                   }
                 ].map((item, idx) => (
-                  <div key={idx} className={idx !== 0 ? "border-t border-[rgba(255,255,255,0.08)] pt-12" : ""}>
-                    <p className="text-[10px] uppercase tracking-[2px] text-gold-antique font-sans font-bold mb-3">
+                  <div key={idx} className={idx !== 0 ? "border-t border-divider pt-12" : ""}>
+                    <p className="text-[10px] uppercase tracking-[2px] text-gold-antique font-label font-bold mb-3">
                       {item.title}
                     </p>
-                    <p className="text-[17px] font-serif text-[rgba(244,241,234,0.75)] leading-[1.8]">
+                    <p className="text-[17px] font-paragraph text-ivory-body leading-[1.8]">
                       {item.desc}
                     </p>
                   </div>
@@ -906,8 +906,8 @@ export default function HomePage() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            className="mb-[120px] pt-[100px] border-t border-[rgba(255,255,255,0.08)]"
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="mb-[120px] pt-section-gap border-t border-divider"
           >
             <div className="grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-20 text-center">
               {[
@@ -921,12 +921,12 @@ export default function HomePage() {
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.7, delay: idx * 0.12, ease: "easeOut" }}
+                  transition={{ duration: 0.6, delay: idx * 0.1, ease: "easeOut" }}
                 >
                   <div className="text-4xl md:text-5xl font-heading text-ivory-primary mb-3 leading-tight">
                     {metric.number}
                   </div>
-                  <p className="text-[10px] uppercase tracking-[2px] text-gold-antique font-sans font-bold">
+                  <p className="text-[10px] uppercase tracking-[2px] text-gold-antique font-label font-bold">
                     {metric.label}
                   </p>
                 </motion.div>
@@ -939,7 +939,7 @@ export default function HomePage() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-center"
           >
 
@@ -947,7 +947,7 @@ export default function HomePage() {
         </div>
       </section>
       <section className="w-full pt-0 pb-32 bg-navy-dark relative">
-        <div className="max-w-[120rem] mx-auto px-6 md:px-12">
+        <div className="max-w-content mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
             
             {/* Sticky Left Column */}
@@ -958,7 +958,7 @@ export default function HomePage() {
                     Your Inbox Is <br />
                     <span className="text-gold-antique italic">Leaking Revenue.</span>
                   </h2>
-                  <p className="text-lg text-ivory-primary/70 mb-12 max-w-md leading-relaxed">
+                  <p className="text-lg text-ivory-body mb-12 max-w-md leading-relaxed">
                     Most B2B email systems are designed for marketing metrics, not revenue outcomes. While you track open rates, your actual pipeline is silently draining away.
                   </p>
                   <div className="hidden lg:block w-24 h-[1px] bg-ivory-primary/20" />
@@ -979,14 +979,14 @@ export default function HomePage() {
                     initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
                     className="group border-l-2 border-gold-antique/30 pl-8 py-4 hover:border-gold-antique transition-colors duration-500"
                   >
                     <h3 className="text-2xl font-heading text-ivory-primary mb-3 group-hover:text-gold-antique transition-colors">
                       {problem.problemDescription}
                     </h3>
                     {problem.symptomExample && (
-                      <p className="text-base text-ivory-primary/60 leading-relaxed">
+                      <p className="text-base text-ivory-body leading-relaxed">
                         {problem.symptomExample}
                       </p>
                     )}
@@ -1012,10 +1012,10 @@ export default function HomePage() {
       {/* --- 4.5. WHY CHOOSE US — STRUCTURAL DIFFERENTIATION SECTION --- */}
       {/* --- 5. The Glacier Eagle Model (Split Section) --- */}
       <section id="glacier-model" className="w-full bg-slate-deep py-32 overflow-hidden">
-        <div className="max-w-[120rem] mx-auto px-6 md:px-12">
+        <div className="max-w-content mx-auto px-6 md:px-12">
           <FadeIn className="mb-24 text-center">
             <h2 className="text-5xl md:text-6xl font-heading text-ivory-primary mb-6">A Hybrid Revenue Engine</h2>
-            <p className="text-lg text-ivory-primary/60 max-w-2xl mx-auto">
+            <p className="text-lg text-ivory-body max-w-2xl mx-auto">
               We bridge the gap between technical automation and high-level revenue strategy.
             </p>
           </FadeIn>
@@ -1025,7 +1025,7 @@ export default function HomePage() {
             <Button 
               size="lg" 
               onClick={() => setIsAuditModalOpen(true)}
-              className="bg-bronze-burnished text-ivory-primary border border-gold-antique hover:bg-bronze-burnished/90 rounded-none px-10 py-8 text-lg font-medium tracking-wide transition-all duration-200"
+              className="bg-gold-antique text-navy-dark border border-gold-antique hover:bg-gold-antique/90 rounded-none px-10 py-8 text-lg font-label font-bold tracking-widest uppercase transition-all duration-200"
             >
               Request a Private Revenue Audit
             </Button>
@@ -1036,7 +1036,7 @@ export default function HomePage() {
             <div className="p-12 md:p-20 border-b md:border-b-0 md:border-r border-gold-antique/30 relative group overflow-hidden">
               <div className="absolute top-0 left-0 w-1 h-full bg-gold-antique/30 group-hover:bg-gold-antique transition-colors duration-500" />
               <h3 className="text-3xl font-heading text-ivory-primary mb-8 flex items-center gap-4">
-                <span className="text-sm font-sans font-bold tracking-widest uppercase text-gold-antique/60">01</span>
+                <span className="text-sm font-label font-bold tracking-widest uppercase text-gold-antique/60">01</span>
                 AI Framework Layer
               </h3>
               <ul className="space-y-6">
@@ -1046,8 +1046,8 @@ export default function HomePage() {
                     initial={{ opacity: 0, x: -10 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 }}
-                    className="flex items-center gap-4 text-lg text-ivory-primary/80"
+                    transition={{ delay: i * 0.1, ease: "easeOut" }}
+                    className="flex items-center gap-4 text-lg text-ivory-body"
                   >
                     <div className="w-1.5 h-1.5 bg-gold-antique rounded-full" />
                     {item}
@@ -1060,7 +1060,7 @@ export default function HomePage() {
             <div className="p-12 md:p-20 bg-emerald-forest text-ivory-primary relative group overflow-hidden">
               <div className="absolute top-0 right-0 w-1 h-full bg-gold-antique group-hover:bg-ivory-primary transition-colors duration-500" />
               <h3 className="text-3xl font-heading text-ivory-primary mb-8 flex items-center gap-4">
-                <span className="text-sm font-sans font-bold tracking-widest uppercase text-gold-antique">02</span>
+                <span className="text-sm font-label font-bold tracking-widest uppercase text-gold-antique">02</span>
                 Human Strategy Layer
               </h3>
               <ul className="space-y-6">
@@ -1070,7 +1070,7 @@ export default function HomePage() {
                     initial={{ opacity: 0, x: 10 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 }}
+                    transition={{ delay: i * 0.1, ease: "easeOut" }}
                     className="flex items-center gap-4 text-lg text-ivory-primary/90"
                   >
                     <div className="w-1.5 h-1.5 bg-gold-antique rounded-full" />
@@ -1090,7 +1090,7 @@ export default function HomePage() {
       </section>
       {/* --- 6. Revenue Metrics We Optimize (Grid) --- */}
       <section className="w-full py-32 bg-navy-dark">
-        <div className="max-w-[120rem] mx-auto px-6 md:px-12">
+        <div className="max-w-content mx-auto px-6 md:px-12">
           <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
             <FadeIn>
               <h2 className="text-5xl font-heading text-ivory-primary max-w-xl leading-tight">
@@ -1098,7 +1098,7 @@ export default function HomePage() {
               </h2>
             </FadeIn>
             <FadeIn delay={0.2}>
-              <p className="text-lg text-ivory-primary/60 max-w-md text-right md:text-left">
+              <p className="text-lg text-ivory-body max-w-md text-right md:text-left">
                 No vanity metrics. We focus purely on the levers that drive revenue growth and business health.
               </p>
             </FadeIn>
@@ -1111,10 +1111,10 @@ export default function HomePage() {
               metrics.map((metric, index) => (
                 <motion.div
                   key={metric._id}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 14 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
+                  transition={{ delay: index * 0.1, ease: "easeOut" }}
                   className="bg-slate-deep p-12 hover:bg-emerald-forest/20 transition-colors duration-300 group min-h-[300px] flex flex-col justify-between"
                 >
                   <div>
@@ -1126,7 +1126,7 @@ export default function HomePage() {
                       </svg>
                     </div>
                     <h3 className="text-xl font-bold text-ivory-primary mb-3">{metric.metricName}</h3>
-                    <p className="text-sm text-ivory-primary/60 leading-relaxed">
+                    <p className="text-sm text-ivory-body leading-relaxed">
                       {metric.metricDescription || metric.businessImpact}
                     </p>
                   </div>
@@ -1143,7 +1143,7 @@ export default function HomePage() {
       </section>
       {/* --- 7. Services Breakdown (Accordion/Cards) --- */}
       <section className="w-full py-32 bg-slate-deep text-ivory-primary">
-        <div className="max-w-[120rem] mx-auto px-6 md:px-12">
+        <div className="max-w-content mx-auto px-6 md:px-12">
           <FadeIn className="mb-20">
             <h2 className="text-4xl md:text-5xl font-heading mb-6">Done-For-You Revenue Systems</h2>
             <Separator className="bg-ivory-primary/20" />
@@ -1174,17 +1174,17 @@ export default function HomePage() {
             ].map((service, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
+                transition={{ delay: i * 0.1, ease: "easeOut" }}
                 className="group"
               >
                 <div className="text-xs font-bold text-gold-antique mb-4 tracking-widest">{service.icon}</div>
                 <h3 className="text-2xl md:text-3xl font-heading mb-4 group-hover:text-gold-antique transition-colors">
                   {service.title}
                 </h3>
-                <p className="text-ivory-primary/60 text-lg leading-relaxed max-w-md">
+                <p className="text-ivory-body text-lg leading-relaxed max-w-md">
                   {service.desc}
                 </p>
               </motion.div>
@@ -1194,13 +1194,13 @@ export default function HomePage() {
       </section>
       {/* --- 8. Engagement Model (Vertical Tiers) --- */}
       <section className="w-full py-32 bg-navy-dark">
-        <div className="max-w-[100rem] mx-auto px-6 md:px-12">
+        <div className="max-w-content mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Header Column */}
             <div className="lg:col-span-1">
               <div className="sticky top-32">
                 <h2 className="text-5xl font-heading text-ivory-primary mb-8">Engagement Models</h2>
-                <p className="text-lg text-ivory-primary/60 mb-12">
+                <p className="text-lg text-ivory-body mb-12">
                   Structured as advisory retainers, not SaaS plans. We limit client capacity to ensure depth of focus.
                 </p>
                 <Button 
@@ -1225,7 +1225,7 @@ export default function HomePage() {
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.15 }}
+                  transition={{ delay: i * 0.15, ease: "easeOut" }}
                   className="border border-gold-antique/30 p-8 md:p-12 hover:border-gold-antique hover:shadow-lg hover:shadow-gold-antique/10 transition-all duration-500 bg-slate-deep"
                 >
                   <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
@@ -1252,7 +1252,7 @@ export default function HomePage() {
       </section>
       {/* --- 9. Who We Work With (Qualification) --- */}
       <section className="w-full py-32 bg-slate-deep border-y border-gold-antique/20">
-        <div className="max-w-[100rem] mx-auto px-6 md:px-12">
+        <div className="max-w-content mx-auto px-6 md:px-12">
           <FadeIn className="text-center mb-20">
             <h2 className="text-4xl font-heading text-ivory-primary">Qualification Criteria</h2>
           </FadeIn>
@@ -1272,7 +1272,7 @@ export default function HomePage() {
                   "You generate consistent leads or trials",
                   "You want measurable revenue lift"
                 ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3 text-lg text-ivory-primary/80">
+                  <li key={i} className="flex items-start gap-3 text-lg text-ivory-body">
                     <Check className="w-5 h-5 text-gold-antique mt-1 shrink-0" />
                     {item}
                   </li>
@@ -1294,7 +1294,7 @@ export default function HomePage() {
                   "Businesses without CRM visibility",
                   "Teams seeking 'growth hacks'"
                 ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3 text-lg text-ivory-primary/80">
+                  <li key={i} className="flex items-start gap-3 text-lg text-ivory-body">
                     <div className="w-1.5 h-1.5 bg-ivory-primary/40 rounded-full mt-2.5 shrink-0" />
                     {item}
                   </li>
@@ -1306,7 +1306,7 @@ export default function HomePage() {
       </section>
       {/* --- 10. Process Section (Timeline) --- */}
       <section className="w-full py-32 bg-navy-dark">
-        <div className="max-w-[100rem] mx-auto px-6 md:px-12">
+        <div className="max-w-content mx-auto px-6 md:px-12">
           <FadeIn className="mb-24 text-center">
             <h2 className="text-5xl font-heading text-ivory-primary">Our Advisory Process</h2>
           </FadeIn>
@@ -1323,10 +1323,10 @@ export default function HomePage() {
             ].map((item, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.2 }}
+                transition={{ delay: i * 0.15, ease: "easeOut" }}
                 className={`relative flex flex-col md:flex-row gap-8 md:gap-0 items-start md:items-center mb-20 last:mb-0 ${
                   i % 2 === 0 ? 'md:flex-row-reverse' : ''
                 }`}
@@ -1335,7 +1335,7 @@ export default function HomePage() {
                 <div className={`md:w-1/2 pl-12 md:pl-0 ${i % 2 === 0 ? 'md:pl-16 text-left' : 'md:pr-16 md:text-right'}`}>
                   <span className="text-sm font-bold text-gold-antique tracking-widest uppercase mb-2 block">Step {item.step}</span>
                   <h3 className="text-2xl font-heading text-ivory-primary mb-3">{item.title}</h3>
-                  <p className="text-ivory-primary/60">{item.desc}</p>
+                  <p className="text-ivory-body">{item.desc}</p>
                 </div>
 
                 {/* Center Node */}
@@ -1352,7 +1352,7 @@ export default function HomePage() {
       </section>
       {/* --- 11. Case Study Placeholder (Visual Breather) --- */}
       <section className="w-full py-24 bg-slate-deep text-ivory-primary">
-        <div className="max-w-[120rem] mx-auto px-6 md:px-12">
+        <div className="max-w-content mx-auto px-6 md:px-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-ivory-primary/10">
             {[
               { val: "+32%", label: "Trial Conversion" },
@@ -1365,11 +1365,11 @@ export default function HomePage() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
+                transition={{ delay: i * 0.1, ease: "easeOut" }}
                 className="p-4"
               >
                 <div className="text-4xl md:text-5xl font-heading font-bold text-ivory-primary mb-2">{stat.val}</div>
-                <div className="text-sm text-ivory-primary/60 uppercase tracking-widest">{stat.label}</div>
+                <div className="text-sm text-ivory-body uppercase tracking-widest">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -1381,7 +1381,7 @@ export default function HomePage() {
           <FadeIn>
             <div className="w-16 h-1 bg-gold-antique mx-auto mb-12" />
             <h2 className="text-3xl font-heading text-ivory-primary mb-8">A Note From the Founder</h2>
-            <div className="space-y-6 text-lg text-ivory-primary/80 leading-relaxed font-serif italic">
+            <div className="space-y-6 text-lg text-ivory-body leading-relaxed font-paragraph italic">
               <p>
                 "Glacier Eagle was built for founders who want quiet execution and measurable results."
               </p>
@@ -1401,12 +1401,12 @@ export default function HomePage() {
           <div className="bg-navy-dark p-8 md:p-16 border border-gold-antique/30">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-heading text-ivory-primary mb-4">Request a Private Revenue Audit</h2>
-              <p className="text-ivory-primary/60">Limited engagements accepted quarterly.</p>
+              <p className="text-ivory-body">Limited engagements accepted quarterly.</p>
             </div>
 
             <div className="text-center">
               <Link to="/application">
-                <Button className="bg-bronze-burnished text-ivory-primary hover:bg-bronze-burnished/90 rounded-none px-12 py-6 text-lg font-medium tracking-wide">
+                <Button className="bg-gold-antique text-navy-dark hover:bg-gold-antique/90 rounded-none px-12 py-6 text-lg font-label font-bold tracking-widest uppercase">
                   Start Your Application
                 </Button>
               </Link>
@@ -1426,7 +1426,7 @@ export default function HomePage() {
             ].map((faq, i) => (
               <div key={i} className="border-b border-gold-antique/20 pb-8">
                 <h3 className="text-lg font-bold text-ivory-primary mb-2">{faq.q}</h3>
-                <p className="text-ivory-primary/60">{faq.a}</p>
+                <p className="text-ivory-body">{faq.a}</p>
               </div>
             ))}
           </div>

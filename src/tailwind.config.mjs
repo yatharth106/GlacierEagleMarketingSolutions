@@ -19,8 +19,16 @@ export default {
                 '9xl': ['8rem', { lineHeight: '1.0', letterSpacing: '0.05em', fontWeight: '700' }],
             },
             fontFamily: {
-                heading: "playfair display",
-                paragraph: "open sans"
+                heading: "Cormorant Garamond, serif",
+                paragraph: "EB Garamond, serif",
+                label: "Jost, sans-serif"
+            },
+            spacing: {
+                section: '150px',
+                'section-gap': '100px',
+            },
+            maxWidth: {
+                'content': '1150px',
             },
             colors: {
                 // Primary backgrounds - Private equity + AI lab aesthetic
@@ -29,15 +37,16 @@ export default {
                 
                 // Typography - Soft ivory
                 'ivory-primary': '#F4F1EA',
+                'ivory-body': 'rgba(244,241,234,0.75)',
                 
                 // Accents - Muted antique gold
-                'gold-antique': '#C6A75E',
+                'gold-antique': '#A8843B',
                 
-                // CTA buttons - Burnished bronze
-                'bronze-burnished': '#A8843B',
+                // Dividers
+                'divider': 'rgba(255,255,255,0.08)',
                 
-                // Data visuals & strategic highlights - Deep forest emerald
-                'emerald-forest': '#1F3A33',
+                // Card background
+                'card-bg': 'rgba(255,255,255,0.02)',
                 
                 // Legacy mappings for compatibility
                 stone: '#D3CFC6',
@@ -51,6 +60,20 @@ export default {
                 'secondary-foreground': '#F4F1EA',
                 'primary-foreground': '#F4F1EA',
                 primary: '#A8843B'
+            },
+            animation: {
+                'fade-in': 'fadeIn 0.6s ease-out forwards',
+                'slide-up': 'slideUp 0.6s ease-out forwards',
+            },
+            keyframes: {
+                fadeIn: {
+                    '0%': { opacity: '0' },
+                    '100%': { opacity: '1' },
+                },
+                slideUp: {
+                    '0%': { opacity: '0', transform: 'translateY(14px)' },
+                    '100%': { opacity: '1', transform: 'translateY(0)' },
+                },
             },
         },
     },
