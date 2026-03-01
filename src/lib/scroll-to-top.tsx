@@ -10,27 +10,30 @@ export function ScrollToTop() {
     // Check if this is the same page (same pathname)
     const isSamePage = prevLocationRef.current === location.pathname;
 
-    // Update the previous location reference immediately
-    prevLocationRef.current = location.pathname;
+    // Use microtask to ensure URL has updated in browser before scrolling
+    queueMicrotask(() => {
+      // Update the previous location reference after URL has changed
+      prevLocationRef.current = location.pathname;
 
-    // Check if the URL has a hash
-    if (location.hash) {
-      // URL with hash: Wait 50ms and then call scrollIntoView() to the target element
-      setTimeout(() => {
-        const element = document.getElementById(location.hash.slice(1));
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 50);
-    } else {
-      // URL without hash: Scroll to the top of the page immediately
-      // Use smooth animation if same page, auto if different page
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: isSamePage ? 'smooth' : 'auto'
-      });
-    }
+      // Check if the URL has a hash
+      if (location.hash) {
+        // URL with hash: Wait 50ms and then call scrollIntoView() to the target element
+        setTimeout(() => {
+          const element = document.getElementById(location.hash.slice(1));
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 50);
+      } else {
+        // URL without hash: Scroll to the top of the page immediately
+        // Use smooth animation if same page, auto if different page
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: isSamePage ? 'smooth' : 'auto'
+        });
+      }
+    });
   }, [location]);
 
   return null;
