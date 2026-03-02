@@ -70,11 +70,32 @@ export default function ApplicationPage() {
 
     setIsSubmitting(true);
     
-    // Simulate submission delay
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+    try {
+      // Simulate API submission with form data
+      const submissionData = {
+        companyName: formData.companyName,
+        arrRange: formData.arrRange,
+        revenueChallenge: formData.revenueChallenge,
+        emailPlatform: formData.emailPlatform,
+        crm: formData.crm,
+        leadVolume: formData.leadVolume,
+        submittedAt: new Date().toISOString(),
+        testMode: isTestMode
+      };
+      
+      // Log submission for verification
+      console.log('Form submitted successfully:', submissionData);
+      
+      // Simulate submission delay
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setIsSubmitting(false);
+      setErrors({ submit: 'An error occurred during submission. Please try again.' });
+    }
   };
 
   const fadeIn = {
@@ -160,7 +181,14 @@ export default function ApplicationPage() {
             )}
 
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-7 bg-slate-deep p-12">
-              {Object.keys(errors).length > 0 && (
+              {errors.submit && (
+                <div className="p-4 bg-destructive/10 border border-destructive rounded-lg">
+                  <p className="text-sm font-paragraph text-destructive font-semibold">
+                    {errors.submit}
+                  </p>
+                </div>
+              )}
+              {Object.keys(errors).length > 0 && !errors.submit && (
                 <div className="p-4 bg-destructive/10 border border-destructive rounded-lg">
                   <p className="text-sm font-paragraph text-destructive font-semibold">
                     Please fill out all required fields
