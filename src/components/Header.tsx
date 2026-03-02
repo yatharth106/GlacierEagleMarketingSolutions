@@ -11,6 +11,7 @@ export default function Header() {
     { label: 'Philosophy', href: '/philosophy' },
     { label: 'Framework', href: '/framework' },
     { label: 'Services', href: '/services' },
+    { label: 'Engagement Model', href: '/engagement-model' },
     { label: 'Case Studies', href: '/case-studies' },
     { label: 'FAQ', href: '/faq' },
     { label: "Why Choose Us ?", href: '/why-choose-us' },
@@ -37,7 +38,7 @@ export default function Header() {
             </Link>
             <nav class="hidden lg:flex flex-row items-center justify-center gap-x-10 gap-y-4 px-8 py-3 bg-slate-deep/50 backdrop-blur-sm rounded-full border border-gold-antique/30 shadow-lg order-2">
               <div class="flex items-center gap-x-8">
-                {navItems.slice(0, 3).map((item) => (
+                {navItems.slice(0, 4).map((item) => (
                   <Link
                     key={item.href}
                     to={item.href}
@@ -50,7 +51,7 @@ export default function Header() {
                 ))}
               </div>
               <div class="flex items-center gap-x-8">
-                {navItems.slice(3).map((item) => (
+                {navItems.slice(4).map((item) => (
                   <Link
                     key={item.href}
                     to={item.href}
