@@ -159,7 +159,7 @@ export default function ApplicationPage() {
               </div>
             )}
 
-            <form ref={formRef} onSubmit={handleSubmit} className="space-y-8 bg-slate-deep p-12">
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-7 bg-slate-deep p-12">
               {Object.keys(errors).length > 0 && (
                 <div className="p-4 bg-destructive/10 border border-destructive rounded-lg">
                   <p className="text-sm font-paragraph text-destructive font-semibold">
@@ -169,7 +169,7 @@ export default function ApplicationPage() {
               )}
 
               <div className="space-y-3" ref={Object.keys(errors).length > 0 && errors.companyName ? firstErrorRef : undefined}>
-                <Label htmlFor="companyName" className="text-base font-paragraph text-ivory-primary font-semibold">
+                <Label htmlFor="companyName" className="text-xs font-label uppercase tracking-widest text-gold-antique">
                   Company Name *
                 </Label>
                 <Input
@@ -181,8 +181,9 @@ export default function ApplicationPage() {
                       setErrors({ ...errors, companyName: '' });
                     }
                   }}
-                  className={`bg-ivory border-charcoal text-charcoal ${errors.companyName ? 'border-2 border-destructive' : ''}`}
+                  className={`w-full bg-card-bg border text-ivory-primary placeholder-ivory-body focus:border-gold-antique focus:outline-none transition-colors px-4 py-3 rounded-sm font-paragraph text-base ${errors.companyName ? 'border-destructive focus:border-destructive' : 'border-divider'}`}
                   aria-invalid={!!errors.companyName}
+                  placeholder="Your company name"
                 />
                 {errors.companyName && (
                   <p className="text-sm text-destructive font-paragraph">{errors.companyName}</p>
@@ -190,7 +191,7 @@ export default function ApplicationPage() {
               </div>
 
               <div className="space-y-3" ref={Object.keys(errors).length > 0 && errors.arrRange && !errors.companyName ? firstErrorRef : undefined}>
-                <Label htmlFor="arrRange" className="text-base font-paragraph font-semibold text-primary-foreground">
+                <Label htmlFor="arrRange" className="text-xs font-label uppercase tracking-widest text-gold-antique">
                   Annual Recurring Revenue Range *
                 </Label>
                 <Select
@@ -202,15 +203,15 @@ export default function ApplicationPage() {
                     }
                   }}
                 >
-                  <SelectTrigger className={`bg-ivory border-2 border-charcoal text-charcoal cursor-pointer hover:bg-ivory/90 transition-colors ${errors.arrRange ? 'border-destructive' : ''}`}>
+                  <SelectTrigger className={`w-full bg-card-bg border text-ivory-primary focus:border-gold-antique focus:outline-none transition-colors px-4 py-3 rounded-sm font-paragraph text-base ${errors.arrRange ? 'border-destructive focus:border-destructive' : 'border-divider'}`}>
                     <SelectValue placeholder="Select ARR range" />
                   </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="under-500k">Under $500K</SelectItem>
-                    <SelectItem value="500k-1m">$500K - $1M</SelectItem>
-                    <SelectItem value="1m-5m">$1M - $5M</SelectItem>
-                    <SelectItem value="5m-10m">$5M - $10M</SelectItem>
-                    <SelectItem value="10m-plus">$10M+</SelectItem>
+                  <SelectContent className="bg-navy-dark border-divider">
+                    <SelectItem value="under-500k" className="text-ivory-primary">Under $500K</SelectItem>
+                    <SelectItem value="500k-1m" className="text-ivory-primary">$500K - $1M</SelectItem>
+                    <SelectItem value="1m-5m" className="text-ivory-primary">$1M - $5M</SelectItem>
+                    <SelectItem value="5m-10m" className="text-ivory-primary">$5M - $10M</SelectItem>
+                    <SelectItem value="10m-plus" className="text-ivory-primary">$10M+</SelectItem>
                   </SelectContent>
                 </Select>
                 {errors.arrRange && (
@@ -219,7 +220,7 @@ export default function ApplicationPage() {
               </div>
 
               <div className="space-y-3" ref={Object.keys(errors).length > 0 && errors.revenueChallenge && !errors.companyName && !errors.arrRange ? firstErrorRef : undefined}>
-                <Label htmlFor="revenueChallenge" className="text-base font-paragraph font-semibold text-primary-foreground">
+                <Label htmlFor="revenueChallenge" className="text-xs font-label uppercase tracking-widest text-gold-antique">
                   Primary Revenue Challenge *
                 </Label>
                 <Textarea
@@ -233,7 +234,7 @@ export default function ApplicationPage() {
                     }
                   }}
                   placeholder="Describe your primary revenue challenge or opportunity"
-                  className={`bg-ivory border-charcoal text-charcoal ${errors.revenueChallenge ? 'border-2 border-destructive' : ''}`}
+                  className={`w-full bg-card-bg border text-ivory-primary placeholder-ivory-body focus:border-gold-antique focus:outline-none transition-colors px-4 py-3 rounded-sm font-paragraph text-base resize-none ${errors.revenueChallenge ? 'border-destructive focus:border-destructive' : 'border-divider'}`}
                   aria-invalid={!!errors.revenueChallenge}
                 />
                 {errors.revenueChallenge && (
@@ -242,7 +243,7 @@ export default function ApplicationPage() {
               </div>
 
               <div className="space-y-3" ref={Object.keys(errors).length > 0 && errors.emailPlatform && !errors.companyName && !errors.arrRange && !errors.revenueChallenge ? firstErrorRef : undefined}>
-                <Label htmlFor="emailPlatform" className="text-base font-paragraph font-semibold text-primary-foreground">
+                <Label htmlFor="emailPlatform" className="text-xs font-label uppercase tracking-widest text-gold-antique">
                   Current Email Platform *
                 </Label>
                 <Select
@@ -254,16 +255,16 @@ export default function ApplicationPage() {
                     }
                   }}
                 >
-                  <SelectTrigger className={`bg-ivory border-2 border-charcoal text-charcoal cursor-pointer hover:bg-ivory/90 transition-colors ${errors.emailPlatform ? 'border-destructive' : ''}`}>
+                  <SelectTrigger className={`w-full bg-card-bg border text-ivory-primary focus:border-gold-antique focus:outline-none transition-colors px-4 py-3 rounded-sm font-paragraph text-base ${errors.emailPlatform ? 'border-destructive focus:border-destructive' : 'border-divider'}`}>
                     <SelectValue placeholder="Select email platform" />
                   </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="klaviyo">Klaviyo</SelectItem>
-                    <SelectItem value="hubspot">HubSpot</SelectItem>
-                    <SelectItem value="mailchimp">Mailchimp</SelectItem>
-                    <SelectItem value="marketo">Marketo</SelectItem>
-                    <SelectItem value="activecampaign">ActiveCampaign</SelectItem>
-                    <SelectItem value="other">Other</SelectItem>
+                  <SelectContent className="bg-navy-dark border-divider">
+                    <SelectItem value="klaviyo" className="text-ivory-primary">Klaviyo</SelectItem>
+                    <SelectItem value="hubspot" className="text-ivory-primary">HubSpot</SelectItem>
+                    <SelectItem value="mailchimp" className="text-ivory-primary">Mailchimp</SelectItem>
+                    <SelectItem value="marketo" className="text-ivory-primary">Marketo</SelectItem>
+                    <SelectItem value="activecampaign" className="text-ivory-primary">ActiveCampaign</SelectItem>
+                    <SelectItem value="other" className="text-ivory-primary">Other</SelectItem>
                   </SelectContent>
                 </Select>
                 {errors.emailPlatform && (
@@ -272,7 +273,7 @@ export default function ApplicationPage() {
               </div>
 
               <div className="space-y-3" ref={Object.keys(errors).length > 0 && errors.crm && !errors.companyName && !errors.arrRange && !errors.revenueChallenge && !errors.emailPlatform ? firstErrorRef : undefined}>
-                <Label htmlFor="crm" className="text-base font-paragraph font-semibold text-primary-foreground">
+                <Label htmlFor="crm" className="text-xs font-label uppercase tracking-widest text-gold-antique">
                   CRM Used *
                 </Label>
                 <Input
@@ -285,7 +286,7 @@ export default function ApplicationPage() {
                     }
                   }}
                   placeholder="e.g., Salesforce, HubSpot, Pipedrive"
-                  className={`bg-ivory border-charcoal text-charcoal ${errors.crm ? 'border-2 border-destructive' : ''}`}
+                  className={`w-full bg-card-bg border text-ivory-primary placeholder-ivory-body focus:border-gold-antique focus:outline-none transition-colors px-4 py-3 rounded-sm font-paragraph text-base ${errors.crm ? 'border-destructive focus:border-destructive' : 'border-divider'}`}
                   aria-invalid={!!errors.crm}
                 />
                 {errors.crm && (
@@ -294,7 +295,7 @@ export default function ApplicationPage() {
               </div>
 
               <div className="space-y-3" ref={Object.keys(errors).length > 0 && errors.leadVolume && !errors.companyName && !errors.arrRange && !errors.revenueChallenge && !errors.emailPlatform && !errors.crm ? firstErrorRef : undefined}>
-                <Label htmlFor="leadVolume" className="text-base font-paragraph font-semibold text-primary-foreground">
+                <Label htmlFor="leadVolume" className="text-xs font-label uppercase tracking-widest text-gold-antique">
                   Monthly Trial / Lead Volume *
                 </Label>
                 <Select
@@ -306,15 +307,15 @@ export default function ApplicationPage() {
                     }
                   }}
                 >
-                  <SelectTrigger className={`bg-ivory border-2 border-charcoal text-charcoal cursor-pointer hover:bg-ivory/90 transition-colors ${errors.leadVolume ? 'border-destructive' : ''}`}>
+                  <SelectTrigger className={`w-full bg-card-bg border text-ivory-primary focus:border-gold-antique focus:outline-none transition-colors px-4 py-3 rounded-sm font-paragraph text-base ${errors.leadVolume ? 'border-destructive focus:border-destructive' : 'border-divider'}`}>
                     <SelectValue placeholder="Select monthly volume" />
                   </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="under-50">Under 50</SelectItem>
-                    <SelectItem value="50-100">50 - 100</SelectItem>
-                    <SelectItem value="100-250">100 - 250</SelectItem>
-                    <SelectItem value="250-500">250 - 500</SelectItem>
-                    <SelectItem value="500-plus">500+</SelectItem>
+                  <SelectContent className="bg-navy-dark border-divider">
+                    <SelectItem value="under-50" className="text-ivory-primary">Under 50</SelectItem>
+                    <SelectItem value="50-100" className="text-ivory-primary">50 - 100</SelectItem>
+                    <SelectItem value="100-250" className="text-ivory-primary">100 - 250</SelectItem>
+                    <SelectItem value="250-500" className="text-ivory-primary">250 - 500</SelectItem>
+                    <SelectItem value="500-plus" className="text-ivory-primary">500+</SelectItem>
                   </SelectContent>
                 </Select>
                 {errors.leadVolume && (
@@ -323,14 +324,14 @@ export default function ApplicationPage() {
               </div>
 
               <div className="pt-6">
-                <Button
+                <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-primary text-primary-foreground hover:opacity-90 py-6 text-lg font-semibold disabled:opacity-50"
+                  className="w-full px-11 py-4 border border-gold-antique text-gold-antique font-label text-xs uppercase tracking-[1.8px] hover:bg-gold-antique hover:text-navy-dark transition-all duration-300 hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? 'Submitting...' : 'Submit for Review'}
-                </Button>
-                <p className="text-sm font-paragraph text-charcoal opacity-70 text-center mt-4">
+                </button>
+                <p className="text-sm font-paragraph text-ivory-body text-center mt-4">
                   Limited engagements accepted quarterly.
                 </p>
                 {isTestMode && (
