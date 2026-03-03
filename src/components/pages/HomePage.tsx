@@ -1706,7 +1706,7 @@ export default function HomePage() {
             </div>
 
             <div className="text-center">
-              <Link to="/application">
+              <Link to="/apply">
                 <Button className="bg-gold-antique text-navy-dark hover:bg-gold-antique/90 rounded-none px-12 py-6 text-lg font-label font-bold tracking-widest uppercase">
                   Start Your Application
                 </Button>

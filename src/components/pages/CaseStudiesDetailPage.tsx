@@ -247,7 +247,7 @@ export default function CaseStudiesDetailPage() {
             <p className="text-lg text-ivory-primary/60 max-w-2xl mx-auto mb-12">
               Limited engagements accepted per quarter. Request a private revenue audit to explore if we're a fit.
             </p>
-            <Link to="/application">
+            <Link to="/apply">
               <Button className="px-12 py-6 border border-gold-antique text-gold-antique font-label text-xs uppercase tracking-[1.8px] hover:bg-gold-antique hover:text-navy-dark transition-all duration-300 hover:-translate-y-0.5 inline-flex items-center gap-2">
                 Request a Private Revenue Audit
                 <ArrowRight className="w-4 h-4" />
