@@ -542,13 +542,14 @@ export default function HomePage() {
           </FadeIn>
 
           <FadeIn delay={0.5} className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <Button 
-              size="lg" 
-              onClick={() => setIsAuditModalOpen(true)}
-              className="bg-gold-antique text-navy-dark border border-gold-antique hover:bg-gold-antique/90 rounded-none px-10 py-8 text-lg font-label font-bold tracking-widest uppercase transition-all duration-200"
-            >
-              Request a Private Revenue Audit
-            </Button>
+            <Link to="/apply">
+              <Button 
+                size="lg" 
+                className="bg-gold-antique text-navy-dark border border-gold-antique hover:bg-gold-antique/90 rounded-none px-10 py-8 text-lg font-label font-bold tracking-widest uppercase transition-all duration-200"
+              >
+                Request a Private Revenue Audit
+              </Button>
+            </Link>
             <a href="#glacier-model" onClick={(e) => {
               e.preventDefault();
               const element = document.getElementById('glacier-model');
@@ -1320,13 +1321,14 @@ export default function HomePage() {
 
           {/* CTA Button after model intro */}
           <FadeIn delay={0.3} className="flex justify-center mb-16">
-            <Button 
-              size="lg" 
-              onClick={() => setIsAuditModalOpen(true)}
-              className="bg-gold-antique text-navy-dark border border-gold-antique hover:bg-gold-antique/90 rounded-none px-10 py-8 text-lg font-label font-bold tracking-widest uppercase transition-all duration-200"
-            >
-              Request a Private Revenue Audit
-            </Button>
+            <Link to="/apply">
+              <Button 
+                size="lg" 
+                className="bg-gold-antique text-navy-dark border border-gold-antique hover:bg-gold-antique/90 rounded-none px-10 py-8 text-lg font-label font-bold tracking-widest uppercase transition-all duration-200"
+              >
+                Request a Private Revenue Audit
+              </Button>
+            </Link>
           </FadeIn>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-gold-antique/30 bg-navy-dark">
@@ -1501,13 +1503,14 @@ export default function HomePage() {
                 <p className="text-lg text-ivory-body mb-12">
                   Structured as advisory retainers, not SaaS plans. We limit client capacity to ensure depth of focus.
                 </p>
-                <Button 
-                  variant="outline" 
-                  onClick={() => setIsAuditModalOpen(true)}
-                  className="border-ivory-primary text-ivory-primary hover:bg-slate-deep hover:text-gold-antique rounded-none px-8 py-6"
-                >
-                  Check Availability
-                </Button>
+                <Link to="/apply">
+                  <Button 
+                    variant="outline" 
+                    className="border-ivory-primary text-ivory-primary hover:bg-slate-deep hover:text-gold-antique rounded-none px-8 py-6"
+                  >
+                    Check Availability
+                  </Button>
+                </Link>
               </div>
             </div>
 

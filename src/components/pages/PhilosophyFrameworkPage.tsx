@@ -5,7 +5,7 @@ import { AdvisoryProcessSteps } from '@/entities';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Separator } from '@/components/ui/separator';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 
 const FadeIn = ({ children, delay = 0, className = "" }: { children: React.ReactNode, delay?: number, className?: string }) => (
   <motion.div
@@ -46,9 +46,7 @@ const SlideInRight = ({ children, delay = 0, className = "" }: { children: React
 export default function PhilosophyFrameworkPage() {
   const [processSteps, setProcessSteps] = useState<AdvisoryProcessSteps[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const navigate = useNavigate();
   const location = useLocation();
-  const [ctaDisabled, setCtaDisabled] = useState(false);
 
   useEffect(() => {
     loadData();
@@ -64,15 +62,6 @@ export default function PhilosophyFrameworkPage() {
     } finally {
       setIsLoading(false);
     }
-  };
-
-  const handleFrameworkCTA = () => {
-    if (ctaDisabled) return;
-    
-    setCtaDisabled(true);
-    setTimeout(() => setCtaDisabled(false), 800);
-
-    navigate('/application');
   };
 
   return (
@@ -236,16 +225,16 @@ export default function PhilosophyFrameworkPage() {
 
           {/* CTA Button */}
           <FadeIn delay={1.2} className="flex justify-center">
-            <motion.button
-              onClick={handleFrameworkCTA}
-              disabled={ctaDisabled}
-              whileHover={!ctaDisabled ? { y: -2 } : {}}
-              whileTap={!ctaDisabled ? { y: 1 } : {}}
-              transition={{ duration: 0.3 }}
-              className="border border-gold-antique text-ivory-primary bg-transparent px-11 py-4 text-[11px] uppercase tracking-[1.8px] font-light hover:bg-gold-antique hover:text-navy-dark transition-all duration-300 rounded-sm disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              Request a Private Revenue Audit
-            </motion.button>
+            <Link to="/apply">
+              <motion.button
+                whileHover={{ y: -2 }}
+                whileTap={{ y: 1 }}
+                transition={{ duration: 0.3 }}
+                className="border border-gold-antique text-ivory-primary bg-transparent px-11 py-4 text-[11px] uppercase tracking-[1.8px] font-light hover:bg-gold-antique hover:text-navy-dark transition-all duration-300 rounded-sm"
+              >
+                Request a Private Revenue Audit
+              </motion.button>
+            </Link>
           </FadeIn>
         </div>
       </section>
@@ -387,16 +376,16 @@ export default function PhilosophyFrameworkPage() {
 
           {/* E4 — CTA SYSTEM */}
           <FadeIn delay={0.72} className="flex justify-center">
-            <motion.button
-              onClick={handleFrameworkCTA}
-              disabled={ctaDisabled}
-              whileHover={!ctaDisabled ? { y: -2 } : {}}
-              whileTap={!ctaDisabled ? { y: 1 } : {}}
-              transition={{ duration: 0.3 }}
-              className="px-12 py-[18px] min-h-[46px] border border-gold-antique text-ivory-primary bg-transparent text-[11px] uppercase tracking-[1.8px] font-light hover:bg-gold-antique hover:text-navy-dark transition-all duration-300 rounded-sm disabled:opacity-50 disabled:cursor-not-allowed w-full md:w-auto max-w-[340px] md:max-w-none"
-            >
-              Request a Private Revenue Audit
-            </motion.button>
+            <Link to="/apply">
+              <motion.button
+                whileHover={{ y: -2 }}
+                whileTap={{ y: 1 }}
+                transition={{ duration: 0.3 }}
+                className="px-12 py-[18px] min-h-[46px] border border-gold-antique text-ivory-primary bg-transparent text-[11px] uppercase tracking-[1.8px] font-light hover:bg-gold-antique hover:text-navy-dark transition-all duration-300 rounded-sm w-full md:w-auto max-w-[340px] md:max-w-none"
+              >
+                Request a Private Revenue Audit
+              </motion.button>
+            </Link>
           </FadeIn>
         </div>
       </section>
