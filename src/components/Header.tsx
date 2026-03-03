@@ -33,9 +33,6 @@ export default function Header() {
       <header className="w-full bg-navy-dark border-b border-gold-antique/20 fixed top-0 left-0 right-0 z-50">
         <div class="max-w-[120rem] mx-auto px-6 md:px-12 py-6 relative z-10 lg:py-8 xl:py-10">
           <div class="flex flex-col lg:flex-row justify-between items-center gap-6 lg:gap-0">
-            <Link to="/" class="text-4xl md:text-5xl font-heading text-gold-antique tracking-tight hover:text-ivory-primary transition-colors duration-300 relative z-20 order-1 lg:order-none">
-              Glacier Eagle
-            </Link>
             <nav class="hidden lg:flex flex-row items-center justify-center gap-x-10 gap-y-4 px-8 py-3 bg-slate-deep/50 backdrop-blur-sm rounded-full border border-gold-antique/30 shadow-lg order-2">
               <div class="flex items-center gap-x-8">
                 {navItems.slice(0, 4).map((item) => (
@@ -64,6 +61,9 @@ export default function Header() {
                 ))}
               </div>
             </nav>
+            <Link to="/" class="text-4xl md:text-5xl font-heading text-gold-antique tracking-tight hover:text-ivory-primary transition-colors duration-300 relative z-20 order-1 lg:order-none">
+              Glacier Eagle
+            </Link>
             <Link
               to="/application"
               class="hidden lg:block px-8 py-3 border border-gold-antique text-gold-antique font-label text-xs uppercase tracking-[1.8px] hover:bg-gold-antique hover:text-navy-dark transition-all duration-300 hover:-translate-y-0.5 order-3"
