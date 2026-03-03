@@ -13,7 +13,6 @@ import PrivacyPage from '@/components/pages/PrivacyPage';
 import TermsPage from '@/components/pages/TermsPage';
 import WhyChooseUsPage from '@/components/pages/WhyChooseUsPage';
 import EngagementModelPage from '@/components/pages/EngagementModelPage';
-import StrategicPartnershipPage from '@/components/pages/StrategicPartnershipPage';
 
 // Layout component that includes ScrollToTop
 function Layout() {
@@ -113,13 +112,6 @@ const router = createBrowserRouter([
         element: <EngagementModelPage />,
         routeMetadata: {
           pageIdentifier: 'engagement-model',
-        },
-      },
-      {
-        path: "strategic-partnership",
-        element: <StrategicPartnershipPage />,
-        routeMetadata: {
-          pageIdentifier: 'strategic-partnership',
         },
       },
       {

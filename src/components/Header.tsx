@@ -66,7 +66,7 @@ export default function Header() {
             </nav>
             <Link
               to="/application"
-              class="hidden lg:block px-8 py-3 border border-gold-antique text-ivory-primary font-paragraph font-medium transition-all duration-300 hover:bg-gold-antique hover:text-navy-dark rounded-full shadow-md hover:shadow-lg order-3"
+              class="hidden lg:block px-8 py-3 border border-gold-antique text-gold-antique font-label text-xs uppercase tracking-[1.8px] hover:bg-gold-antique hover:text-navy-dark transition-all duration-300 hover:-translate-y-0.5 order-3"
             >
               Apply
             </Link>
@@ -92,7 +92,7 @@ export default function Header() {
               ))}
               <Link
                 to="/application"
-                class="mt-4 px-6 py-3 border border-gold-antique text-ivory-primary font-paragraph font-medium text-center transition-all duration-300 hover:bg-gold-antique hover:text-navy-dark rounded-md mx-4"
+                class="mt-4 px-6 py-3 border border-gold-antique text-gold-antique font-label text-xs uppercase tracking-[1.8px] text-center transition-all duration-300 hover:bg-gold-antique hover:text-navy-dark mx-4"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Apply
@@ -109,7 +109,7 @@ export default function Header() {
         className={`fixed top-24 right-6 md:right-12 z-40 pointer-events-none ${showStickyCTA ? 'pointer-events-auto' : ''}`}
       >
         <Link to="/application">
-          <button className="bg-bronze-burnished text-ivory-primary border border-gold-antique hover:bg-bronze-burnished/90 rounded-none px-6 md:px-8 py-3 md:py-4 text-sm md:text-base font-medium tracking-wide transition-all duration-200 shadow-lg hover:shadow-xl hover:shadow-gold-antique/20 whitespace-nowrap">
+          <button className="px-6 md:px-8 py-3 md:py-4 border border-gold-antique text-gold-antique font-label text-xs uppercase tracking-[1.8px] hover:bg-gold-antique hover:text-navy-dark transition-all duration-300 hover:-translate-y-0.5 whitespace-nowrap">
             Request a Private Revenue Audit
           </button>
         </Link>

@@ -461,7 +461,7 @@ export default function EngagementModelPage() {
             <motion.button
               variants={itemVariants}
               onClick={handleCTA}
-              className="inline-block px-8 py-4 border border-gold-antique text-gold-antique font-label text-sm uppercase tracking-widest transition-all duration-300 hover:bg-gold-antique hover:text-navy-dark"
+              className="inline-block px-8 py-4 border border-gold-antique text-gold-antique font-label text-xs uppercase tracking-[1.8px] hover:bg-gold-antique hover:text-navy-dark transition-all duration-300 hover:-translate-y-0.5"
             >
               Request Private Revenue Audit
             </motion.button>

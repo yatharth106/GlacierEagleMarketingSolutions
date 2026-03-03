@@ -248,7 +248,7 @@ export default function CaseStudiesDetailPage() {
               Limited engagements accepted per quarter. Request a private revenue audit to explore if we're a fit.
             </p>
             <Link to="/application">
-              <Button className="bg-bronze-burnished text-ivory-primary hover:bg-bronze-burnished/90 rounded-none px-12 py-6 text-lg font-medium tracking-wide inline-flex items-center gap-2">
+              <Button className="px-12 py-6 border border-gold-antique text-gold-antique font-label text-xs uppercase tracking-[1.8px] hover:bg-gold-antique hover:text-navy-dark transition-all duration-300 hover:-translate-y-0.5 inline-flex items-center gap-2">
                 Request a Private Revenue Audit
                 <ArrowRight className="w-4 h-4" />
               </Button>
