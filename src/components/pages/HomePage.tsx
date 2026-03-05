@@ -178,6 +178,96 @@ export default function HomePage() {
           </div>
         </motion.div>
       </section>
+      {/* --- THE GEMS DIFFERENCE SECTION --- */}
+      <section className="w-full bg-[#0C0D10] py-[100px] px-[80px] border-t border-[#C9A84C]/20">
+        <div className="max-w-[100rem] mx-auto">
+          {/* Section Heading */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="text-center mb-24"
+          >
+            <h2 className="text-[56px] font-heading font-light text-[#F0EDE8] leading-tight mb-6">
+              Why Serious Businesses Choose <span className="text-[#C9A84C] italic">GEMS</span>
+            </h2>
+            <p className="font-mono text-[11px] text-[#C9A84C] uppercase tracking-[0.25em]">
+              // NOT AN AGENCY. NOT A FREELANCER. A REVENUE ARCHITECTURE FIRM.
+            </p>
+          </motion.div>
+
+          {/* Three Column Layout */}
+          <div className="grid grid-cols-3 gap-0 mb-16">
+            {/* Column 1 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: 0, ease: "easeOut" }}
+              className="px-12 py-8 border-r border-[#1A1B20]"
+            >
+              {/* Diamond Icon */}
+              <div className="w-6 h-6 mb-8 flex items-center justify-center">
+                <div className="w-3 h-3 bg-[#C9A84C] transform rotate-45" />
+              </div>
+              <h3 className="text-xl font-bold text-[#F0EDE8] mb-4">We Think in Systems</h3>
+              <p className="text-base text-[#9A9AA0] leading-relaxed">
+                We don't run one-off campaigns. We map your entire revenue infrastructure and fix the architecture — not just the symptoms.
+              </p>
+            </motion.div>
+
+            {/* Column 2 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
+              className="px-12 py-8 border-r border-[#1A1B20]"
+            >
+              {/* Diamond Icon */}
+              <div className="w-6 h-6 mb-8 flex items-center justify-center">
+                <div className="w-3 h-3 bg-[#C9A84C] transform rotate-45" />
+              </div>
+              <h3 className="text-xl font-bold text-[#F0EDE8] mb-4">Aligned Incentives</h3>
+              <p className="text-base text-[#9A9AA0] leading-relaxed">
+                Our revenue-share model means we only win when you win. No retainers. No guarantees without skin in the game.
+              </p>
+            </motion.div>
+
+            {/* Column 3 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+              className="px-12 py-8"
+            >
+              {/* Diamond Icon */}
+              <div className="w-6 h-6 mb-8 flex items-center justify-center">
+                <div className="w-3 h-3 bg-[#C9A84C] transform rotate-45" />
+              </div>
+              <h3 className="text-xl font-bold text-[#F0EDE8] mb-4">Selective by Design</h3>
+              <p className="text-base text-[#9A9AA0] leading-relaxed">
+                We reject more clients than we take. Our model only works when there is real upside to unlock — so we only work with businesses where we can see a clear path to growth.
+              </p>
+            </motion.div>
+          </div>
+
+          {/* Bottom tagline */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+            className="text-center"
+          >
+            <p className="font-mono text-[11px] text-[#6B6B72] uppercase tracking-[0.25em]">
+              // REVENUE ARCHITECTURE FOR SAAS AND ECOMMERCE BRANDS
+            </p>
+          </motion.div>
+        </div>
+      </section>
       {/* --- 1. ENGAGEMENT PHILOSOPHY SECTION --- */}
       <section className="w-full py-section bg-navy-dark">
         <div className="max-w-content mx-auto px-6 md:px-12">
