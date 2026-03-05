@@ -121,8 +121,8 @@ export default function HomePage() {
       <section className="w-full pt-32 pb-8 relative z-10">
         <div className="max-w-content mx-auto px-6 md:px-12 text-center">
           <FadeIn>
-            <p className="text-xs md:text-sm font-medium tracking-[0.2em] uppercase text-ivory-primary/50">
-              Private Revenue Advisory for B2B Founders
+            <p className="text-xs md:text-sm font-label font-bold tracking-[0.25em] uppercase text-gold-antique">
+              PRIVATE REVENUE ADVISORY FOR SAAS & ECOMMERCE
             </p>
           </FadeIn>
         </div>
@@ -137,15 +137,15 @@ export default function HomePage() {
 
         <div className="max-w-content mx-auto px-6 md:px-12 relative z-10 text-center">
           <FadeIn delay={0.1}>
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-heading font-semibold text-ivory-primary leading-[0.95] tracking-tight mb-12">
-              Email That Moves <br />
-              <span className="text-gold-antique italic">Revenue.</span> Not Just Metrics.
+            <h1 className="text-6xl md:text-7xl lg:text-[88px] font-heading font-light text-ivory-primary leading-[0.95] tracking-tight mb-12">
+              Revenue Systems Built to <br />
+              <span className="text-gold-antique italic">Scale.</span>
             </h1>
           </FadeIn>
 
           <FadeIn delay={0.3}>
             <p className="text-lg md:text-xl text-ivory-body max-w-3xl mx-auto leading-relaxed mb-16">
-              We design AI-assisted, strategist-led email systems that convert free trials, dormant leads, and silent prospects into qualified pipeline and measurable cash flow.
+              We don't run campaigns. We architect the infrastructure that turns traffic into customers, customers into revenue, and revenue into compounding growth.
             </p>
           </FadeIn>
 
