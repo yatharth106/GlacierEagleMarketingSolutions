@@ -76,27 +76,8 @@ export default function ServicesFrameworkPage() {
 
   return (
     <PageLayout>
-      {/* Background texture overlay */}
-      <div className="fixed inset-0 pointer-events-none opacity-[0.02] bg-[url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22><filter id=%22noise%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 result=%22noise%22/></filter><rect width=%22100%22 height=%22100%22 fill=%22%23fff%22 filter=%22url(%23noise)%22/></svg>')] z-0" />
-
       {/* === HERO SECTION === */}
       <section className="relative w-full min-h-screen flex items-center justify-start bg-[#050608] overflow-hidden pt-32 pb-20">
-        {/* Decorative eagle silhouette - bottom right */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.08 }}
-          transition={{ duration: 1.5, delay: 0.8 }}
-          className="absolute bottom-0 right-0 w-96 h-96 pointer-events-none"
-        >
-          <svg viewBox="0 0 200 200" className="w-full h-full">
-            <path
-              d="M100 20 L140 80 L180 60 L160 120 L190 140 L140 130 L120 180 L100 140 L80 180 L60 130 L10 140 L40 120 L20 60 L60 80 Z"
-              fill="currentColor"
-              className="text-gold-antique"
-            />
-          </svg>
-        </motion.div>
-
         <div className="max-w-[120rem] mx-auto px-6 md:px-12 w-full relative z-10">
           <div className="max-w-3xl">
             {/* Hero headline */}
@@ -208,7 +189,7 @@ export default function ServicesFrameworkPage() {
                 "$10K+ monthly recurring revenue",
                 "Predictable customer acquisition channels",
                 "Team ready to implement systems",
-                "Commitment to 12+ month partnership"
+                "Ready to implement strategic changes within your business"
               ].map((qualifier, i) => (
                 <motion.div key={i} variants={itemVariants} className="flex gap-4 items-start">
                   <div className="text-gold-antique text-xl mt-1 flex-shrink-0">→</div>
