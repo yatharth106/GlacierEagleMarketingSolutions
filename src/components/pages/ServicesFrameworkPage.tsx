@@ -77,9 +77,9 @@ export default function ServicesFrameworkPage() {
   return (
     <PageLayout>
       {/* === HERO SECTION === */}
-      <section className="relative w-full min-h-screen flex items-center justify-start bg-[#050608] overflow-hidden pt-32 pb-20">
+      <section className="relative w-full min-h-screen flex items-center justify-center bg-[#050608] overflow-hidden pt-32 pb-20">
         <div className="max-w-[120rem] mx-auto px-6 md:px-12 w-full relative z-10">
-          <div className="max-w-3xl">
+          <div className="max-w-3xl mx-auto text-center">
             {/* Hero headline */}
             <motion.h1
               initial={{ opacity: 0, y: 40 }}
@@ -96,53 +96,34 @@ export default function ServicesFrameworkPage() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="text-lg md:text-xl text-ivory-body leading-relaxed mb-12 max-w-2xl"
+              className="text-lg md:text-xl text-ivory-body leading-relaxed mb-8 max-w-2xl mx-auto"
             >
               We don't run campaigns. We architect the infrastructure that turns traffic into customers, customers into revenue, and revenue into compounding growth.
             </motion.p>
-
-            {/* Stats */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-col md:flex-row gap-8 md:gap-16 mb-16"
-            >
-              <div>
-                <div className="text-xs font-bold uppercase tracking-widest text-gold-antique mb-2">
-                  Execution Model
-                </div>
-                <p className="text-lg text-ivory-primary font-light">AI + Human Model</p>
-              </div>
-              <div>
-                <div className="text-xs font-bold uppercase tracking-widest text-gold-antique mb-2">
-                  Alignment
-                </div>
-                <p className="text-lg text-ivory-primary font-light">Revenue-Share Aligned</p>
-              </div>
-            </motion.div>
-
-            {/* Animated line */}
-            <motion.div
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
-              className="h-px bg-gradient-to-r from-gold-antique via-gold-antique to-transparent mb-12"
-              style={{ transformOrigin: "left", maxWidth: "200px" }}
-            />
 
             {/* CTA Button */}
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="flex justify-center"
             >
               <Link to="/apply">
-                <Button className="bg-gold-antique hover:bg-gold-antique/90 text-navy-dark font-bold uppercase tracking-widest px-8 py-6 text-sm rounded-none transition-all duration-300 hover:shadow-lg hover:shadow-gold-antique/30 hover:-translate-y-1 font-mono border-none">
+                <Button className="bg-[#C9A84C] hover:bg-[#C9A84C]/90 text-[#050608] font-mono font-bold uppercase tracking-[0.2em] px-[52px] py-[18px] text-sm rounded-none transition-all duration-300 hover:shadow-lg hover:shadow-[#C9A84C]/30 hover:-translate-y-1 border-none">
                   APPLY FOR A BLUEPRINT
                 </Button>
               </Link>
             </motion.div>
+
+            {/* Note text */}
+            <motion.p
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="text-[11px] font-mono uppercase tracking-[0.1em] text-[#6B6B72] mt-8"
+            >
+              ≈ 48HR RESPONSE · NO COMMITMENT REQUIRED · LIMITED SPOTS
+            </motion.p>
           </div>
         </div>
       </section>
@@ -215,8 +196,8 @@ export default function ServicesFrameworkPage() {
       </section>
 
       {/* === THE TWO PHASES === */}
-      <section className="w-full py-32 bg-[#050608] relative overflow-hidden">
-        {/* Section label */}
+      <section className="w-full py-32 bg-[#050608] relative overflow-hidden border-b border-gold-antique/20">
+        {/* ... keep existing code (section label and content) ... */}
         <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 text-xs font-bold uppercase tracking-widest text-gold-antique/40 rotate-90 whitespace-nowrap pointer-events-none">
           // PHASES
         </div>
@@ -343,8 +324,8 @@ export default function ServicesFrameworkPage() {
       </section>
 
       {/* === THE PROCESS === */}
-      <section className="w-full py-32 bg-[#050608] relative overflow-hidden">
-        {/* Section label */}
+      <section className="w-full py-32 bg-[#050608] relative overflow-hidden border-t border-gold-antique/20">
+        {/* ... keep existing code (section label and content) ... */}
         <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 text-xs font-bold uppercase tracking-widest text-gold-antique/40 rotate-90 whitespace-nowrap pointer-events-none">
           // PROCESS
         </div>
