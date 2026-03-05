@@ -153,26 +153,11 @@ export default function HomePage() {
             <Link to="/apply">
               <Button 
                 size="lg" 
-                className="bg-gold-antique text-navy-dark border border-gold-antique hover:bg-gold-antique/90 rounded-none px-10 py-8 text-lg font-label font-bold tracking-widest uppercase transition-all duration-200"
+                className="bg-gold-antique text-navy-dark border-none hover:bg-gold-antique/90 rounded-none px-10 py-8 text-sm font-mono font-bold tracking-widest uppercase transition-all duration-200"
               >
-                Request a Private Revenue Audit
+                APPLY FOR A BLUEPRINT
               </Button>
             </Link>
-            <a href="#glacier-model" onClick={(e) => {
-              e.preventDefault();
-              const element = document.getElementById('glacier-model');
-              if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-              }
-            }}>
-              <Button 
-                variant="outline" 
-                size="lg" 
-                className="border-ivory-primary text-ivory-primary hover:bg-slate-deep/50 rounded-none px-10 py-8 text-lg font-label font-bold tracking-widest uppercase bg-transparent transition-all duration-200"
-              >
-                View Our Model
-              </Button>
-            </a>
           </FadeIn>
         </div>
 
@@ -932,9 +917,9 @@ export default function HomePage() {
             <Link to="/apply">
               <Button 
                 size="lg" 
-                className="bg-gold-antique text-navy-dark border border-gold-antique hover:bg-gold-antique/90 rounded-none px-10 py-8 text-lg font-label font-bold tracking-widest uppercase transition-all duration-200"
+                className="bg-gold-antique text-navy-dark border-none hover:bg-gold-antique/90 rounded-none px-10 py-8 text-sm font-mono font-bold tracking-widest uppercase transition-all duration-200"
               >
-                Request a Private Revenue Audit
+                APPLY FOR A BLUEPRINT
               </Button>
             </Link>
           </FadeIn>
@@ -1315,8 +1300,8 @@ export default function HomePage() {
 
             <div className="text-center">
               <Link to="/apply">
-                <Button className="bg-gold-antique text-navy-dark hover:bg-gold-antique/90 rounded-none px-12 py-6 text-lg font-label font-bold tracking-widest uppercase">
-                  Start Your Application
+                <Button className="bg-gold-antique text-navy-dark hover:bg-gold-antique/90 rounded-none px-12 py-6 text-sm font-mono font-bold tracking-widest uppercase">
+                  APPLY FOR A BLUEPRINT
                 </Button>
               </Link>
             </div>

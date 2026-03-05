@@ -248,9 +248,8 @@ export default function CaseStudiesDetailPage() {
               Limited engagements accepted per quarter. Request a private revenue audit to explore if we're a fit.
             </p>
             <Link to="/apply">
-              <Button className="px-12 py-6 border border-gold-antique text-gold-antique font-label text-xs uppercase tracking-[1.8px] hover:bg-gold-antique hover:text-navy-dark transition-all duration-300 hover:-translate-y-0.5 inline-flex items-center gap-2">
-                Request a Private Revenue Audit
-                <ArrowRight className="w-4 h-4" />
+              <Button className="px-12 py-6 bg-gold-antique text-navy-dark font-mono text-xs uppercase tracking-[1.8px] hover:bg-gold-antique/90 transition-all duration-300 hover:-translate-y-0.5 inline-flex items-center gap-2 border-none rounded-none">
+                APPLY FOR A BLUEPRINT
               </Button>
             </Link>
           </FadeIn>

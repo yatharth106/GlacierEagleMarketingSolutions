@@ -230,9 +230,9 @@ export default function PhilosophyFrameworkPage() {
                 whileHover={{ y: -2 }}
                 whileTap={{ y: 1 }}
                 transition={{ duration: 0.3 }}
-                className="border border-gold-antique text-ivory-primary bg-transparent px-11 py-4 text-[11px] uppercase tracking-[1.8px] font-light hover:bg-gold-antique hover:text-navy-dark transition-all duration-300 rounded-sm"
+                className="bg-gold-antique text-navy-dark px-11 py-4 text-[11px] uppercase tracking-[1.8px] font-mono font-bold hover:bg-gold-antique/90 transition-all duration-300 rounded-none border-none"
               >
-                Request a Private Revenue Audit
+                APPLY FOR A BLUEPRINT
               </motion.button>
             </Link>
           </FadeIn>
@@ -381,9 +381,9 @@ export default function PhilosophyFrameworkPage() {
                 whileHover={{ y: -2 }}
                 whileTap={{ y: 1 }}
                 transition={{ duration: 0.3 }}
-                className="px-12 py-[18px] min-h-[46px] border border-gold-antique text-ivory-primary bg-transparent text-[11px] uppercase tracking-[1.8px] font-light hover:bg-gold-antique hover:text-navy-dark transition-all duration-300 rounded-sm w-full md:w-auto max-w-[340px] md:max-w-none"
+                className="px-12 py-[18px] min-h-[46px] bg-gold-antique text-navy-dark text-[11px] uppercase tracking-[1.8px] font-mono font-bold hover:bg-gold-antique/90 transition-all duration-300 rounded-none border-none w-full md:w-auto max-w-[340px] md:max-w-none"
               >
-                Request a Private Revenue Audit
+                APPLY FOR A BLUEPRINT
               </motion.button>
             </Link>
           </FadeIn>

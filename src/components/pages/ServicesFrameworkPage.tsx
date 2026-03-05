@@ -157,9 +157,8 @@ export default function ServicesFrameworkPage() {
               transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             >
               <Link to="/apply">
-                <Button className="bg-gold-antique hover:bg-gold-antique/90 text-navy-dark font-bold uppercase tracking-widest px-8 py-6 text-sm rounded-none transition-all duration-300 hover:shadow-lg hover:shadow-gold-antique/30 hover:-translate-y-1">
-                  Apply for Blueprint
-                  <ArrowRight className="ml-2 w-4 h-4" />
+                <Button className="bg-gold-antique hover:bg-gold-antique/90 text-navy-dark font-bold uppercase tracking-widest px-8 py-6 text-sm rounded-none transition-all duration-300 hover:shadow-lg hover:shadow-gold-antique/30 hover:-translate-y-1 font-mono border-none">
+                  APPLY FOR A BLUEPRINT
                 </Button>
               </Link>
             </motion.div>
@@ -474,8 +473,8 @@ export default function ServicesFrameworkPage() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button className="bg-gold-antique hover:bg-gold-antique/90 text-navy-dark font-bold uppercase tracking-widest px-12 py-8 text-base rounded-none transition-all duration-300 hover:shadow-lg hover:shadow-gold-antique/40 relative overflow-hidden group">
-                  <span className="relative z-10">Apply for a Blueprint</span>
+                <Button className="bg-gold-antique hover:bg-gold-antique/90 text-navy-dark font-bold uppercase tracking-widest px-12 py-8 text-base rounded-none transition-all duration-300 hover:shadow-lg hover:shadow-gold-antique/40 relative overflow-hidden group font-mono border-none">
+                  <span className="relative z-10">APPLY FOR A BLUEPRINT</span>
                   {/* Shimmer effect */}
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20"

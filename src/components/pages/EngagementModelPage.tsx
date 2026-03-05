@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
@@ -26,22 +27,7 @@ const itemVariants = {
 };
 
 export default function EngagementModelPage() {
-  const navigate = useNavigate();
   const location = useLocation();
-  const isHomePage = location.pathname === '/';
-
-  const handleCTA = () => {
-    if (isHomePage) {
-      // Scroll to application section
-      const element = document.getElementById('application-section');
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    } else {
-      // Redirect to application page
-      navigate('/application');
-    }
-  };
 
   return (
     <div className="min-h-screen bg-navy-dark">
@@ -458,13 +444,15 @@ export default function EngagementModelPage() {
       >
         <div className="max-w-[1100px] mx-auto text-center">
           <motion.div variants={containerVariants} className="space-y-8">
-            <motion.button
-              variants={itemVariants}
-              onClick={handleCTA}
-              className="inline-block px-8 py-4 border border-gold-antique text-gold-antique font-label text-xs uppercase tracking-[1.8px] hover:bg-gold-antique hover:text-navy-dark transition-all duration-300 hover:-translate-y-0.5"
-            >
-              Request Private Revenue Audit
-            </motion.button>
+            <Link to="/apply">
+              <motion.div
+                variants={itemVariants}
+              >
+                <Button className="inline-block px-8 py-4 bg-gold-antique text-navy-dark font-mono text-xs uppercase tracking-[1.8px] hover:bg-gold-antique/90 transition-all duration-300 hover:-translate-y-0.5 border-none rounded-none">
+                  APPLY FOR A BLUEPRINT
+                </Button>
+              </motion.div>
+            </Link>
           </motion.div>
         </div>
       </motion.section>

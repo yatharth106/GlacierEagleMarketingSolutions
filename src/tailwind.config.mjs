@@ -21,7 +21,8 @@ export default {
             fontFamily: {
                 heading: "Cormorant Garamond, serif",
                 paragraph: "EB Garamond, serif",
-                label: "Jost, sans-serif"
+                label: "Jost, sans-serif",
+                mono: "Space Mono, monospace"
             },
             spacing: {
                 section: '150px',
