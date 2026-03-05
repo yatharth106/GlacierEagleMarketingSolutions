@@ -167,7 +167,7 @@ export default function ServicesFrameworkPage() {
       </section>
 
       {/* === POSITIONING STRIP === */}
-      <section className="w-full bg-slate-deep py-8 overflow-hidden border-y border-gold-antique/20">
+      <section className="w-full bg-[#050608] py-8 overflow-hidden border-y border-gold-antique/20">
         <motion.div
           animate={{ x: [0, -1000] }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
@@ -205,7 +205,7 @@ export default function ServicesFrameworkPage() {
             >
               {[
                 "Established SaaS or eCommerce brands",
-                "$50K+ monthly recurring revenue",
+                "$10K+ monthly recurring revenue",
                 "Predictable customer acquisition channels",
                 "Team ready to implement systems",
                 "Commitment to 12+ month partnership"
@@ -227,14 +227,14 @@ export default function ServicesFrameworkPage() {
             className="mt-16 p-6 border border-red-500/30 bg-red-500/5 rounded-sm"
           >
             <p className="text-sm text-red-400 font-light">
-              ✗ Not for idea-stage startups or businesses under $50K/mo revenue.
+              ✗ Not for idea-stage startups or businesses under $10K/mo revenue.
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* === THE TWO PHASES === */}
-      <section className="w-full py-32 bg-slate-deep relative overflow-hidden">
+      <section className="w-full py-32 bg-[#050608] relative overflow-hidden">
         {/* Section label */}
         <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 text-xs font-bold uppercase tracking-widest text-gold-antique/40 rotate-90 whitespace-nowrap pointer-events-none">
           // PHASES
@@ -262,7 +262,7 @@ export default function ServicesFrameworkPage() {
               </div>
 
               {/* Card */}
-              <div className="relative z-10 border-t-2 border-gold-antique p-12 bg-navy-dark hover:bg-navy-dark/80 transition-all duration-500 group-hover:-translate-y-2">
+              <div className="relative z-10 border-t-2 border-gold-antique p-16 bg-[#050608] hover:bg-[#050608]/80 transition-all duration-500 group-hover:-translate-y-2 min-h-[650px] flex flex-col">
                 {/* Tag */}
                 <div className="text-xs font-bold uppercase tracking-widest text-gold-antique mb-6">
                   Phase I — Entry
@@ -282,7 +282,7 @@ export default function ServicesFrameworkPage() {
                 </p>
 
                 {/* Deliverables */}
-                <div className="space-y-4 mb-10 pb-10 border-b border-gold-antique/20">
+                <div className="space-y-4 mb-10 pb-10 border-b border-gold-antique/20 flex-grow">
                   {[
                     "Complete revenue system audit",
                     "Customer journey mapping",
@@ -297,7 +297,7 @@ export default function ServicesFrameworkPage() {
                 </div>
 
                 {/* Engagement model */}
-                <div className="text-xs text-gold-antique/60 uppercase tracking-wider">
+                <div className="text-xs text-gold-antique/60 uppercase tracking-wider mt-auto">
                   Engagement Model: One-Time Paid Audit
                 </div>
               </div>
@@ -317,7 +317,7 @@ export default function ServicesFrameworkPage() {
               </div>
 
               {/* Card */}
-              <div className="relative z-10 border-t-2 border-green-600 p-12 bg-navy-dark hover:bg-navy-dark/80 transition-all duration-500 group-hover:-translate-y-2">
+              <div className="relative z-10 border-t-2 border-green-600 p-16 bg-[#050608] hover:bg-[#050608]/80 transition-all duration-500 group-hover:-translate-y-2 min-h-[650px] flex flex-col">
                 {/* Tag */}
                 <div className="text-xs font-bold uppercase tracking-widest text-green-600 mb-6">
                   Phase II — Partnership
@@ -337,7 +337,7 @@ export default function ServicesFrameworkPage() {
                 </p>
 
                 {/* Deliverables */}
-                <div className="space-y-4 mb-10 pb-10 border-b border-green-600/20">
+                <div className="space-y-4 mb-10 pb-10 border-b border-green-600/20 flex-grow">
                   {[
                     "Ongoing system implementation",
                     "Monthly optimization cycles",
@@ -352,7 +352,7 @@ export default function ServicesFrameworkPage() {
                 </div>
 
                 {/* Engagement model */}
-                <div className="text-xs text-green-600/60 uppercase tracking-wider">
+                <div className="text-xs text-green-600/60 uppercase tracking-wider mt-auto">
                   Engagement Model: Revenue-Share — We Win When You Win
                 </div>
               </div>
@@ -377,10 +377,10 @@ export default function ServicesFrameworkPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-gold-antique/10">
             {[
-              { step: "01", title: "Apply", desc: "Submit your application and business overview." },
-              { step: "02", title: "Qualification Call", desc: "We assess fit and discuss your revenue challenges." },
-              { step: "03", title: "Blueprint Delivered", desc: "Receive your custom revenue architecture plan." },
-              { step: "04", title: "Partnership Begins", desc: "Implementation and ongoing optimization starts." }
+              { step: "01", title: "Apply", desc: "Submit your application and business overview. We review your submission and assess whether your business aligns with our model and revenue potential." },
+              { step: "02", title: "Qualification Call", desc: "We assess fit and discuss your revenue challenges. During this call, we dive deep into your current systems, growth bottlenecks, and long-term vision." },
+              { step: "03", title: "Blueprint Delivered", desc: "Receive your custom revenue architecture plan. This comprehensive document outlines the exact systems and optimizations needed to unlock your growth potential." },
+              { step: "04", title: "Partnership Begins", desc: "Implementation and ongoing optimization starts. We become your fractional revenue team, executing the blueprint and iterating based on real-time performance data." }
             ].map((item, i) => (
               <motion.div
                 key={i}
@@ -388,7 +388,7 @@ export default function ServicesFrameworkPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: i * 0.1 }}
-                className="bg-navy-dark p-8 md:p-10 relative"
+                className="bg-[#050608] p-8 md:p-10 relative"
               >
                 {/* Faded step number */}
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -413,7 +413,7 @@ export default function ServicesFrameworkPage() {
       </section>
 
       {/* === TRUST / CREDIBILITY STRIP === */}
-      <section className="w-full bg-slate-deep py-16 border-y border-gold-antique/20">
+      <section className="w-full bg-[#050608] py-16 border-y border-gold-antique/20">
         <div className="max-w-[120rem] mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
             {[
