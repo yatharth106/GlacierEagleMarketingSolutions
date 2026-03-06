@@ -29,7 +29,7 @@ export default function Footer() {
                 Process
               </Link>
               <Link to="/case-studies" className="text-base font-paragraph transition-colors duration-200 hover:text-gold-muted text-secondary-foreground">
-                Case Studies
+                Concept Study
               </Link>
               <Link to="/application" className="text-base font-paragraph transition-colors duration-200 hover:text-gold-muted text-secondary-foreground">
                 Apply
