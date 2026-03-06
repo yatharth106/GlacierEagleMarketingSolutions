@@ -96,7 +96,7 @@ export default function ServicesFrameworkPage() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="text-lg md:text-xl text-ivory-body leading-relaxed mb-8 max-w-2xl mx-auto"
+              className="text-lg md:text-xl text-ivory-body leading-relaxed max-w-2xl mx-auto"
             >
               We don't run campaigns. We architect the infrastructure that turns traffic into customers, customers into revenue, and revenue into compounding growth.
             </motion.p>
@@ -106,7 +106,7 @@ export default function ServicesFrameworkPage() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="flex justify-center"
+              className="flex justify-center pt-10"
             >
               <Link to="/apply">
                 <Button className="bg-[#C9A84C] hover:bg-[#C9A84C]/90 text-[#050608] font-mono font-bold uppercase tracking-[0.2em] px-[52px] py-[18px] text-sm rounded-none transition-all duration-300 hover:shadow-lg hover:shadow-[#C9A84C]/30 hover:-translate-y-1 border-none">
