@@ -283,7 +283,7 @@ export default function ApplyPage() {
 
                           <div>
                             <label className="text-xs font-bold uppercase tracking-widest text-ivory-primary/70 block mb-3">
-                              Annual Recurring Revenue (ARR) *
+                              Monthly Revenue *
                             </label>
                             <div className="relative">
                               <Select value={formData.arrRange} onValueChange={(value) => {
@@ -298,10 +298,11 @@ export default function ApplyPage() {
                                   <SelectValue placeholder="Select Range" />
                                 </SelectTrigger>
                                 <SelectContent className="bg-navy-dark border-gold-antique/30">
-                                  <SelectItem value="1m-5m" className="text-ivory-primary">$1M - $5M</SelectItem>
-                                  <SelectItem value="5m-20m" className="text-ivory-primary">$5M - $20M</SelectItem>
-                                  <SelectItem value="20m-50m" className="text-ivory-primary">$20M - $50M</SelectItem>
-                                  <SelectItem value="50m+" className="text-ivory-primary">$50M+</SelectItem>
+                                  <SelectItem value="under-10k" className="text-ivory-primary">Under $10K/month</SelectItem>
+                                  <SelectItem value="10k-30k" className="text-ivory-primary">$10K–$30K/month</SelectItem>
+                                  <SelectItem value="30k-100k" className="text-ivory-primary">$30K–$100K/month</SelectItem>
+                                  <SelectItem value="100k-500k" className="text-ivory-primary">$100K–$500K/month</SelectItem>
+                                  <SelectItem value="500k+" className="text-ivory-primary">$500K+/month</SelectItem>
                                 </SelectContent>
                               </Select>
                               <ChevronDown className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-gold-antique/60 pointer-events-none" />
@@ -603,7 +604,7 @@ export default function ApplyPage() {
                       'Established product-market fit',
                       'Consistent lead or trial flow',
                       'Want measurable revenue lift',
-                      '$1M-$100M+ ARR range'
+                      '$10K-$500K+/month revenue range'
                     ].map((item, i) => (
                       <li key={i} className="flex items-start gap-2">
                         <span className="text-gold-antique mt-1">•</span>
