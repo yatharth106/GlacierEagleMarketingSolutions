@@ -179,7 +179,7 @@ export default function HomePage() {
         </motion.div>
       </section>
       {/* --- THE GEMS DIFFERENCE SECTION --- */}
-      <section className="w-full bg-[#0C0D10] py-[100px] px-[80px] border-t border-[#C9A84C]/20">
+      <section className="w-full bg-[#0C0D10] py-[60px] md:py-[100px] px-6 md:px-[80px] border-t border-[#C9A84C]/20">
         <div className="max-w-[100rem] mx-auto">
           {/* Section Heading */}
           <motion.div
@@ -197,15 +197,15 @@ export default function HomePage() {
             </p>
           </motion.div>
 
-          {/* Three Column Layout */}
-          <div className="grid grid-cols-3 gap-0 mb-16">
+          {/* Three Column Layout - Stacks on mobile */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-0 mb-16">
             {/* Column 1 */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: 0, ease: "easeOut" }}
-              className="px-12 py-8 border-r border-[#1A1B20]"
+              className="px-6 md:px-12 py-10 md:py-8 border-b md:border-b-0 md:border-r border-[#1A1B20] flex flex-col items-center md:items-start text-center md:text-left"
             >
               {/* Diamond Icon */}
               <div className="w-6 h-6 mb-8 flex items-center justify-center">
@@ -223,7 +223,7 @@ export default function HomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
-              className="px-12 py-8 border-r border-[#1A1B20]"
+              className="px-6 md:px-12 py-10 md:py-8 border-b md:border-b-0 md:border-r border-[#1A1B20] flex flex-col items-center md:items-start text-center md:text-left"
             >
               {/* Diamond Icon */}
               <div className="w-6 h-6 mb-8 flex items-center justify-center">
@@ -241,7 +241,7 @@ export default function HomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-              className="px-12 py-8"
+              className="px-6 md:px-12 py-10 md:py-8 flex flex-col items-center md:items-start text-center md:text-left"
             >
               {/* Diamond Icon */}
               <div className="w-6 h-6 mb-8 flex items-center justify-center">
