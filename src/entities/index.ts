@@ -4,6 +4,19 @@
  */
 
 /**
+ * Collection ID: Import1
+ * Interface for Import1
+ */
+export interface Import1 {
+  _id: string;
+  _createdDate?: Date;
+  _updatedDate?: Date;
+  /** @wixFieldType text */
+  title?: string;
+}
+
+
+/**
  * Collection ID: casestudies
  * Interface for CaseStudies
  */
