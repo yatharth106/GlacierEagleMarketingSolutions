@@ -25,8 +25,21 @@ export default function Header() {
           </div>
         </Link>
 
-        {/* Desktop Navigation - Apply button only */}
-        <nav className="hidden lg:flex items-center gap-12">
+        {/* Desktop Navigation - Navigation and Apply buttons */}
+        <nav className="hidden lg:flex items-center gap-8">
+          {/* Navigation Links */}
+          <div className="flex items-center gap-8">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                to={item.href}
+                className="font-mono text-[11px] font-bold text-[#F0EDE8] uppercase tracking-[0.15em] hover:text-[#C9A84C] transition-colors"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+          
           {/* Apply Button */}
           <Link to="/apply">
             <button className="border border-[#C9A84C] bg-transparent text-[#C9A84C] font-mono text-[11px] font-bold uppercase tracking-[0.15em] px-6 py-[10px] rounded-none hover:bg-[#C9A84C] hover:text-black transition-all duration-200">
