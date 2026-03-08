@@ -13,6 +13,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { useSEO } from '@/hooks/use-seo';
 
 // --- Utility Components for Motion & Layout ---
 
@@ -79,6 +80,26 @@ export default function HomePage() {
   const [metrics, setMetrics] = useState<OptimizationMetrics[]>([]);
   const [industries, setIndustries] = useState<TargetIndustries[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  // --- SEO Configuration ---
+  useSEO({
+    title: 'Private Equity & AI Advisory | Strategic Business Optimization',
+    description: 'Transform your business with expert private equity and AI-driven advisory services. We optimize operations, maximize growth, and deliver measurable results for ambitious enterprises.',
+    keywords: 'private equity advisory, AI consulting, business optimization, growth strategy, enterprise advisory',
+    canonical: typeof window !== 'undefined' ? window.location.origin + '/' : undefined,
+    ogTitle: 'Private Equity & AI Advisory | Strategic Business Optimization',
+    ogDescription: 'Transform your business with expert private equity and AI-driven advisory services.',
+    ogType: 'website',
+    twitterCard: 'summary_large_image',
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: 'Strategic Advisory Group',
+      description: 'Private equity and AI advisory services for business optimization',
+      url: typeof window !== 'undefined' ? window.location.origin : undefined,
+      sameAs: [],
+    },
+  });
 
   // --- Scroll Progress for Global Indicator ---
   const { scrollYProgress } = useScroll();

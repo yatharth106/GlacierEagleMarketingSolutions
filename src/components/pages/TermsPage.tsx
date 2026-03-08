@@ -1,8 +1,20 @@
 import { motion } from 'framer-motion';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { useSEO } from '@/hooks/use-seo';
 
 export default function TermsPage() {
+  // --- SEO Configuration ---
+  useSEO({
+    title: 'Terms of Service | Strategic Advisory',
+    description: 'Read our terms of service to understand the conditions and agreements for using our advisory services.',
+    keywords: 'terms of service, terms and conditions, legal',
+    canonical: typeof window !== 'undefined' ? window.location.origin + '/terms' : undefined,
+    ogTitle: 'Terms of Service | Strategic Advisory',
+    ogDescription: 'Read our terms of service.',
+    ogType: 'website',
+    twitterCard: 'summary_large_image',
+  });
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }

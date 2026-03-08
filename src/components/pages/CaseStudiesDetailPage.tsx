@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import PageLayout from '@/components/PageLayout';
 import { Button } from '@/components/ui/button';
+import { useSEO } from '@/hooks/use-seo';
 
 const FadeIn = ({ children, delay = 0, className = "" }: { children: React.ReactNode, delay?: number, className?: string }) => (
   <motion.div
@@ -16,6 +17,24 @@ const FadeIn = ({ children, delay = 0, className = "" }: { children: React.React
 );
 
 export default function CaseStudiesDetailPage() {
+  // --- SEO Configuration ---
+  useSEO({
+    title: 'Case Studies & Sample Blueprint | Strategic Advisory',
+    description: 'Explore our case studies and sample revenue architecture blueprint demonstrating our diagnostic framework and proven advisory process.',
+    keywords: 'case studies, revenue architecture, business blueprint, advisory results, success stories',
+    canonical: typeof window !== 'undefined' ? window.location.origin + '/case-studies' : undefined,
+    ogTitle: 'Case Studies & Sample Blueprint | Strategic Advisory',
+    ogDescription: 'Explore our case studies and sample revenue architecture blueprint.',
+    ogType: 'website',
+    twitterCard: 'summary_large_image',
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      name: 'Case Studies',
+      description: 'Collection of case studies and success stories',
+    },
+  });
+
   const handleDownloadPDF = () => {
     const pdfUrl = 'https://69454350-dff2-47bf-8672-beafe615a8aa.usrfiles.com/ugd/5fdb91_e7d8c58f30b743c0a9eabedbdf6e1b57.pdf';
     const link = document.createElement('a');

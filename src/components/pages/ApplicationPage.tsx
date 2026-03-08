@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Check, ChevronRight } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { useSEO } from '@/hooks/use-seo';
 
 interface FormData {
   // Step 1: Contact Information
@@ -41,6 +42,18 @@ interface FormData {
 }
 
 export default function ApplicationPage() {
+  // --- SEO Configuration ---
+  useSEO({
+    title: 'Application Form | Strategic Advisory',
+    description: 'Complete our application form to begin your journey with our strategic advisory services. Tell us about your business and goals.',
+    keywords: 'application, business application, advisory form, consultation',
+    canonical: typeof window !== 'undefined' ? window.location.origin + '/application' : undefined,
+    ogTitle: 'Application Form | Strategic Advisory',
+    ogDescription: 'Complete our application form to begin your journey.',
+    ogType: 'website',
+    twitterCard: 'summary_large_image',
+  });
+
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState<FormData>({
     fullName: '',

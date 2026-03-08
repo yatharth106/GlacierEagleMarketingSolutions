@@ -6,6 +6,7 @@ import PageLayout from '@/components/PageLayout';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
+import { useSEO } from '@/hooks/use-seo';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -53,6 +54,28 @@ export default function ServicesFrameworkPage() {
   const [processSteps, setProcessSteps] = useState<AdvisoryProcessSteps[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
+
+  // --- SEO Configuration ---
+  useSEO({
+    title: 'Our Services & Engagement Models | Strategic Advisory',
+    description: 'Explore our comprehensive advisory services and flexible engagement models designed to drive business transformation and measurable results.',
+    keywords: 'advisory services, engagement models, business consulting, strategic services, enterprise solutions',
+    canonical: typeof window !== 'undefined' ? window.location.origin + '/services' : undefined,
+    ogTitle: 'Our Services & Engagement Models | Strategic Advisory',
+    ogDescription: 'Explore our comprehensive advisory services and flexible engagement models.',
+    ogType: 'website',
+    twitterCard: 'summary_large_image',
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      name: 'Advisory Services',
+      description: 'Comprehensive advisory services for business transformation',
+      provider: {
+        '@type': 'Organization',
+        name: 'Strategic Advisory Group',
+      },
+    },
+  });
 
   useEffect(() => {
     loadData();

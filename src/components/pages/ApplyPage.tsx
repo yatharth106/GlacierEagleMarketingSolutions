@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { ArrowRight, ChevronDown, Check, ChevronLeft } from 'lucide-react';
+import { useSEO } from '@/hooks/use-seo';
 
 const FadeIn = ({ children, delay = 0, className = "" }: { children: React.ReactNode, delay?: number, className?: string }) => (
   <motion.div
@@ -19,6 +20,18 @@ const FadeIn = ({ children, delay = 0, className = "" }: { children: React.React
 );
 
 export default function ApplyPage() {
+  // --- SEO Configuration ---
+  useSEO({
+    title: 'Apply for Advisory Services | Strategic Advisory',
+    description: 'Apply for our strategic advisory services. Tell us about your business and we\'ll determine if we\'re the right fit for your growth objectives.',
+    keywords: 'apply, advisory application, business consultation, strategic partnership',
+    canonical: typeof window !== 'undefined' ? window.location.origin + '/apply' : undefined,
+    ogTitle: 'Apply for Advisory Services | Strategic Advisory',
+    ogDescription: 'Apply for our strategic advisory services.',
+    ogType: 'website',
+    twitterCard: 'summary_large_image',
+  });
+
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
     companyName: '',

@@ -6,6 +6,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Separator } from '@/components/ui/separator';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
+import { useSEO } from '@/hooks/use-seo';
 
 const FadeIn = ({ children, delay = 0, className = "" }: { children: React.ReactNode, delay?: number, className?: string }) => (
   <motion.div
@@ -44,6 +45,24 @@ const SlideInRight = ({ children, delay = 0, className = "" }: { children: React
 );
 
 export default function PhilosophyFrameworkPage() {
+  // --- SEO Configuration ---
+  useSEO({
+    title: 'Our Philosophy & Framework | Strategic Advisory',
+    description: 'Learn about our strategic philosophy and proven advisory framework that drives measurable business transformation.',
+    keywords: 'philosophy, framework, advisory process, business strategy, methodology',
+    canonical: typeof window !== 'undefined' ? window.location.origin + '/philosophy' : undefined,
+    ogTitle: 'Our Philosophy & Framework | Strategic Advisory',
+    ogDescription: 'Learn about our strategic philosophy and proven advisory framework.',
+    ogType: 'website',
+    twitterCard: 'summary_large_image',
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      name: 'Our Philosophy & Framework',
+      description: 'Strategic advisory philosophy and proven framework',
+    },
+  });
+
   const [processSteps, setProcessSteps] = useState<AdvisoryProcessSteps[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();

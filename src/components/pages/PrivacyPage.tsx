@@ -1,8 +1,20 @@
 import { motion } from 'framer-motion';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { useSEO } from '@/hooks/use-seo';
 
 export default function PrivacyPage() {
+  // --- SEO Configuration ---
+  useSEO({
+    title: 'Privacy Policy | Strategic Advisory',
+    description: 'Read our privacy policy to understand how we collect, use, and protect your personal information.',
+    keywords: 'privacy policy, data protection, privacy',
+    canonical: typeof window !== 'undefined' ? window.location.origin + '/privacy' : undefined,
+    ogTitle: 'Privacy Policy | Strategic Advisory',
+    ogDescription: 'Read our privacy policy to understand how we protect your information.',
+    ogType: 'website',
+    twitterCard: 'summary_large_image',
+  });
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }

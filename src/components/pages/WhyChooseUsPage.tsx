@@ -1,8 +1,20 @@
 import { motion } from 'framer-motion';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { useSEO } from '@/hooks/use-seo';
 
 export default function WhyChooseUsPage() {
+  // --- SEO Configuration ---
+  useSEO({
+    title: 'Why Choose Us | Strategic Advisory',
+    description: 'Discover why leading companies choose our strategic advisory services. Compare our approach to traditional consulting and see the difference.',
+    keywords: 'why choose us, advisory comparison, strategic consulting, business advisory',
+    canonical: typeof window !== 'undefined' ? window.location.origin + '/why-choose-us' : undefined,
+    ogTitle: 'Why Choose Us | Strategic Advisory',
+    ogDescription: 'Discover why leading companies choose our strategic advisory services.',
+    ogType: 'website',
+    twitterCard: 'summary_large_image',
+  });
   const comparisonData = [
     {
       dimension: 'Strategic Depth',

@@ -5,6 +5,7 @@ import { FrequentlyAskedQuestions } from '@/entities';
 import PageLayout from '@/components/PageLayout';
 import { ChevronDown } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
+import { useSEO } from '@/hooks/use-seo';
 
 const FadeIn = ({ children, delay = 0, className = "" }: { children: React.ReactNode, delay?: number, className?: string }) => (
   <motion.div
@@ -24,6 +25,23 @@ export default function FAQDetailPage() {
   const [isLoading, setIsLoading] = useState(true);
   const itemRefs = React.useRef<(HTMLDivElement | null)[]>([]);
   const location = useLocation();
+
+  // --- SEO Configuration ---
+  useSEO({
+    title: 'Frequently Asked Questions | Strategic Advisory',
+    description: 'Find answers to common questions about our advisory services, engagement models, and how we help businesses achieve measurable results.',
+    keywords: 'FAQ, frequently asked questions, advisory services, engagement, business consulting',
+    canonical: typeof window !== 'undefined' ? window.location.origin + '/faq' : undefined,
+    ogTitle: 'Frequently Asked Questions | Strategic Advisory',
+    ogDescription: 'Find answers to common questions about our advisory services.',
+    ogType: 'website',
+    twitterCard: 'summary_large_image',
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: [],
+    },
+  });
 
   useEffect(() => {
     loadData();

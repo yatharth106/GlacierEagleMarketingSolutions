@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { useSEO } from '@/hooks/use-seo';
 
 const fadeInVariants = {
   hidden: { opacity: 0 },
@@ -28,6 +29,24 @@ const itemVariants = {
 
 export default function EngagementModelPage() {
   const location = useLocation();
+
+  // --- SEO Configuration ---
+  useSEO({
+    title: 'Engagement Models | Strategic Advisory',
+    description: 'Discover our flexible engagement models designed to meet your business needs. From diagnostic assessments to ongoing advisory partnerships.',
+    keywords: 'engagement models, advisory partnerships, business consulting, strategic engagement',
+    canonical: typeof window !== 'undefined' ? window.location.origin + '/engagement-model' : undefined,
+    ogTitle: 'Engagement Models | Strategic Advisory',
+    ogDescription: 'Discover our flexible engagement models designed to meet your business needs.',
+    ogType: 'website',
+    twitterCard: 'summary_large_image',
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      name: 'Engagement Models',
+      description: 'Flexible engagement models for advisory services',
+    },
+  });
 
   return (
     <div className="min-h-screen bg-navy-dark">
