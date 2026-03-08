@@ -1199,59 +1199,144 @@ export default function HomePage() {
       {/* --- 8. Engagement Model (Vertical Tiers) --- */}
       <section className="w-full py-32 bg-navy-dark">
         <div className="max-w-content mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Header Column */}
-            <div className="lg:col-span-1">
-              <div className="sticky top-32">
-                <h2 className="text-5xl font-heading text-ivory-primary mb-8">Engagement Models</h2>
-                <p className="text-lg text-ivory-body mb-12">
-                  Structured as advisory retainers, not SaaS plans. We limit client capacity to ensure depth of focus.
-                </p>
-                <Link to="/apply">
-                  <Button 
-                    variant="outline" 
-                    className="border-ivory-primary text-ivory-primary hover:bg-slate-deep hover:text-gold-antique rounded-none px-8 py-6"
-                  >
-                    Check Availability
-                  </Button>
-                </Link>
-              </div>
-            </div>
+          <div className="mb-20 text-center">
+            <h2 className="text-5xl font-heading text-ivory-primary mb-8">Engagement Models</h2>
+            <p className="text-lg text-ivory-body mb-12 max-w-2xl mx-auto">
+              Structured as advisory retainers, not SaaS plans. We limit client capacity to ensure depth of focus.
+            </p>
+          </div>
 
-            {/* Tiers Column */}
-            <div className="lg:col-span-2 space-y-8">
-              {[
-                { name: "Trust", outcome: "Foundation & Compliance", scope: "Core Infrastructure", limit: "4 Clients/Qtr" },
-                { name: "Patrimony", outcome: "Growth & Optimization", scope: "Full Revenue System", limit: "2 Clients/Qtr" },
-                { name: "Estate", outcome: "Market Dominance", scope: "Fractional CRO + System", limit: "Waitlist Only" }
-              ].map((tier, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.15, ease: "easeOut" }}
-                  className="border border-gold-antique/30 p-8 md:p-12 hover:border-gold-antique hover:shadow-lg hover:shadow-gold-antique/10 transition-all duration-500 bg-slate-deep"
-                >
-                  <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
-                    <h3 className="text-3xl font-heading text-ivory-primary">{tier.name}</h3>
-                    <span className="text-xs font-bold uppercase tracking-widest bg-gold-antique/20 px-3 py-1 text-gold-antique">
-                      {tier.limit}
-                    </span>
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <span className="text-xs text-gold-antique/60 uppercase tracking-wider block mb-2">Core Outcome</span>
-                      <p className="text-lg font-medium text-ivory-primary">{tier.outcome}</p>
-                    </div>
-                    <div>
-                      <span className="text-xs text-gold-antique/60 uppercase tracking-wider block mb-2">Scope</span>
-                      <p className="text-lg font-medium text-ivory-primary">{tier.scope}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+          {/* Three-Column Tier Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mb-12">
+            {/* Card 1: Trust */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0, ease: "easeOut" }}
+              className="border border-gold-antique/30 p-8 md:p-12 hover:border-gold-antique hover:shadow-lg hover:shadow-gold-antique/10 transition-all duration-500 bg-slate-deep flex flex-col"
+            >
+              <div className="flex items-center justify-between mb-8">
+                <h3 className="text-3xl font-heading text-ivory-primary">Trust</h3>
+                <span className="text-xs font-bold uppercase tracking-widest bg-gold-antique/20 px-3 py-1 text-gold-antique rounded-sm">
+                  NOW OPEN
+                </span>
+              </div>
+              
+              <p className="text-lg text-ivory-body mb-8 leading-relaxed">
+                Our entry partnership. We prove results before you pay a retainer.
+              </p>
+              
+              <div className="space-y-6 mb-8 flex-grow">
+                <div>
+                  <span className="text-xs text-gold-antique/60 uppercase tracking-wider block mb-2">Blueprint</span>
+                  <p className="text-2xl font-heading text-ivory-primary">$497</p>
+                </div>
+                <div>
+                  <span className="text-xs text-gold-antique/60 uppercase tracking-wider block mb-2">Phase II</span>
+                  <p className="text-lg text-ivory-primary">$0 base + 20% of new MRR</p>
+                </div>
+                <div>
+                  <span className="text-xs text-gold-antique/60 uppercase tracking-wider block mb-2">Minimum</span>
+                  <p className="text-lg text-ivory-primary">3 months</p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Card 2: Patrimony */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.15, ease: "easeOut" }}
+              className="border border-gold-antique/30 p-8 md:p-12 hover:border-gold-antique hover:shadow-lg hover:shadow-gold-antique/10 transition-all duration-500 bg-slate-deep flex flex-col"
+            >
+              <div className="flex items-center justify-between mb-8">
+                <h3 className="text-3xl font-heading text-ivory-primary">Patrimony</h3>
+                <span className="text-xs font-bold uppercase tracking-widest bg-gold-antique/20 px-3 py-1 text-gold-antique rounded-sm">
+                  COMING SOON
+                </span>
+              </div>
+              
+              <p className="text-lg text-ivory-body mb-8 leading-relaxed">
+                For founders ready to scale with a proven partner.
+              </p>
+              
+              <div className="space-y-6 mb-8 flex-grow">
+                <div>
+                  <span className="text-xs text-gold-antique/60 uppercase tracking-wider block mb-2">Blueprint</span>
+                  <p className="text-2xl font-heading text-ivory-primary">$997</p>
+                </div>
+                <div>
+                  <span className="text-xs text-gold-antique/60 uppercase tracking-wider block mb-2">Phase II</span>
+                  <p className="text-lg text-ivory-primary">$1,500/month base + 15% of new MRR</p>
+                </div>
+                <div>
+                  <span className="text-xs text-gold-antique/60 uppercase tracking-wider block mb-2">Minimum</span>
+                  <p className="text-lg text-ivory-primary">4 months</p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Card 3: Estate */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, ease: "easeOut" }}
+              className="border border-gold-antique/30 p-8 md:p-12 hover:border-gold-antique hover:shadow-lg hover:shadow-gold-antique/10 transition-all duration-500 bg-slate-deep flex flex-col"
+            >
+              <div className="flex items-center justify-between mb-8">
+                <h3 className="text-3xl font-heading text-ivory-primary">Estate</h3>
+                <span className="text-xs font-bold uppercase tracking-widest bg-gold-antique/20 px-3 py-1 text-gold-antique rounded-sm">
+                  WAITLIST ONLY
+                </span>
+              </div>
+              
+              <p className="text-lg text-ivory-body mb-8 leading-relaxed">
+                Full fractional CRO engagement for high-revenue businesses.
+              </p>
+              
+              <div className="space-y-6 mb-8 flex-grow">
+                <div>
+                  <span className="text-xs text-gold-antique/60 uppercase tracking-wider block mb-2">Blueprint</span>
+                  <p className="text-2xl font-heading text-ivory-primary">$2,000</p>
+                </div>
+                <div>
+                  <span className="text-xs text-gold-antique/60 uppercase tracking-wider block mb-2">Phase II</span>
+                  <p className="text-lg text-ivory-primary">$3,000/month base + 12% of new MRR</p>
+                </div>
+                <div>
+                  <span className="text-xs text-gold-antique/60 uppercase tracking-wider block mb-2">Minimum</span>
+                  <p className="text-lg text-ivory-primary">6 months</p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Pricing Lock Statement */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.45, ease: "easeOut" }}
+            className="text-center"
+          >
+            <p className="text-lg font-paragraph text-ivory-body italic">
+              Trust clients lock in these rates forever. Pricing only increases from here.
+            </p>
+          </motion.div>
+
+          {/* CTA Button */}
+          <div className="flex justify-center mt-16">
+            <Link to="/apply">
+              <Button 
+                variant="outline" 
+                className="border-ivory-primary text-ivory-primary hover:bg-slate-deep hover:text-gold-antique rounded-none px-8 py-6"
+              >
+                Check Availability
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
