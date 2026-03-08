@@ -34,6 +34,7 @@ export default function ApplyPage() {
 
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
+    monthlyRevenue: '',
     companyName: '',
     arrRange: '',
     leadVolume: '',
@@ -53,6 +54,10 @@ export default function ApplyPage() {
     const newErrors: Record<string, string> = {};
 
     if (step === 1) {
+      if (!formData.monthlyRevenue) {
+        newErrors.monthlyRevenue = 'Please select your monthly revenue range';
+      }
+    } else if (step === 2) {
       if (!formData.companyName.trim()) {
         newErrors.companyName = 'Company name is required';
       }
@@ -62,7 +67,7 @@ export default function ApplyPage() {
       if (!formData.leadVolume) {
         newErrors.leadVolume = 'Monthly lead volume is required';
       }
-    } else if (step === 2) {
+    } else if (step === 3) {
       if (!formData.revenueChallenge.trim()) {
         newErrors.revenueChallenge = 'Please describe your revenue challenge';
       }

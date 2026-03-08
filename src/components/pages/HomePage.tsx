@@ -166,7 +166,7 @@ export default function HomePage() {
 
           <FadeIn delay={0.3}>
             <p className="text-lg md:text-xl text-ivory-body max-w-3xl mx-auto leading-relaxed mb-16">
-              We don't run campaigns. We architect the infrastructure that turns traffic into customers, customers into revenue, and revenue into compounding growth.
+              We take $0 until you grow. Then we split the upside. No retainers. No risk. Just results.
             </p>
           </FadeIn>
 
@@ -270,7 +270,7 @@ export default function HomePage() {
               </div>
               <h3 className="text-xl font-bold text-[#F0EDE8] mb-4">Selective by Design</h3>
               <p className="text-base text-[#9A9AA0] leading-relaxed">
-                We reject more clients than we take. Our model only works when there is real upside to unlock — so we only work with businesses where we can see a clear path to growth.
+                We cap at 5 active clients at all times. Not for optics — because real partnership requires real attention. Every client gets everything.
               </p>
             </motion.div>
           </div>
@@ -1313,7 +1313,7 @@ export default function HomePage() {
       <section className="w-full py-32 bg-navy-dark">
         <div className="max-w-content mx-auto px-6 md:px-12">
           <FadeIn className="mb-24 text-center">
-            <h2 className="text-5xl font-heading text-ivory-primary">Our Advisory Process</h2>
+            <h2 className="text-5xl font-heading text-ivory-primary">How It Works</h2>
           </FadeIn>
 
           <div className="relative max-w-4xl mx-auto">
@@ -1321,10 +1321,10 @@ export default function HomePage() {
             <div className="absolute left-[15px] md:left-1/2 top-0 bottom-0 w-px bg-gold-antique/30 md:-translate-x-1/2" />
 
             {[
-              { step: "01", title: "Revenue Audit", desc: "Deep dive into your current metrics, leaks, and opportunities." },
-              { step: "02", title: "Funnel Mapping", desc: "Architecting the ideal user journey and behavioral triggers." },
-              { step: "03", title: "System Build", desc: "Implementation of automation, copy, and technical infrastructure." },
-              { step: "04", title: "Optimization", desc: "Continuous testing and refinement based on revenue data." }
+              { step: "01", title: "Apply", desc: "Fill out a short application. We review within 48 hours. If there's a fit, we schedule a call." },
+              { step: "02", title: "Audit", desc: "We spend 14 days inside your revenue system. Funnel. Pricing. Retention. All of it." },
+              { step: "03", title: "Blueprint Delivery", desc: "You receive a full Revenue Architecture Blueprint — every leak, every fix, every projection. Yours to keep regardless of what you decide next." },
+              { step: "04", title: "Partnership Begins", desc: "If you're ready to move, Phase II starts. $0 base. 20% of every dollar of new revenue we generate together." }
             ].map((item, i) => (
               <motion.div
                 key={i}
