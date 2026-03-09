@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { Linkedin } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -39,7 +38,7 @@ export default function Footer() {
 
           <div>
             <h4 className="text-base font-paragraph font-semibold mb-6 text-secondary-foreground">Legal</h4>
-            <nav className="flex flex-col gap-3 mb-8">
+            <nav className="flex flex-col gap-3">
               <Link to="/privacy" className="text-base font-paragraph transition-colors duration-200 hover:text-gold-muted text-secondary-foreground">
                 Privacy Policy
               </Link>
@@ -47,15 +46,6 @@ export default function Footer() {
                 Terms of Service
               </Link>
             </nav>
-            <a 
-              href="https://linkedin.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-stone-light transition-colors duration-200 hover:text-gold-muted"
-              aria-label="LinkedIn"
-            >
-              <Linkedin size={20} className="fill-secondary-foreground" />
-            </a>
           </div>
         </div>
 
