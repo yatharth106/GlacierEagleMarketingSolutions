@@ -5,6 +5,7 @@ import ErrorPage from '@/integrations/errorHandlers/ErrorPage';
 import HomePage from '@/components/pages/HomePage';
 import PhilosophyFrameworkPage from '@/components/pages/PhilosophyFrameworkPage';
 import ServicesFrameworkPage from '@/components/pages/ServicesFrameworkPage';
+import ProcessPage from '@/components/pages/ProcessPage';
 import CaseStudiesDetailPage from '@/components/pages/CaseStudiesDetailPage';
 import FAQDetailPage from '@/components/pages/FAQDetailPage';
 import ApplyPage from '@/components/pages/ApplyPage';
@@ -56,6 +57,13 @@ const router = createBrowserRouter([
         element: <ServicesFrameworkPage />,
         routeMetadata: {
           pageIdentifier: 'services',
+        },
+      },
+      {
+        path: "process",
+        element: <ProcessPage />,
+        routeMetadata: {
+          pageIdentifier: 'process',
         },
       },
       {
