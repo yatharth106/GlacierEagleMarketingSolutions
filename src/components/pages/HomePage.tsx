@@ -1166,52 +1166,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      {/* --- 10. Process Section (Timeline) --- */}
-      <section className="w-full py-32 bg-navy-dark">
-        <div className="max-w-content mx-auto px-6 md:px-12">
-          <FadeIn className="mb-24 text-center">
-            <h2 className="text-5xl font-heading text-ivory-primary">How It Works</h2>
-          </FadeIn>
 
-          <div className="relative max-w-4xl mx-auto">
-            {/* Vertical Line */}
-            <div className="absolute left-[15px] md:left-1/2 top-0 bottom-0 w-px bg-gold-antique/30 md:-translate-x-1/2" />
-
-            {[
-              { step: "01", title: "Apply", desc: "Fill out a short application. We review within 48 hours. If there's a fit, we schedule a call." },
-              { step: "02", title: "Audit", desc: "We spend 14 days inside your revenue system. Funnel. Pricing. Retention. All of it." },
-              { step: "03", title: "Blueprint Delivery", desc: "You receive a full Revenue Architecture Blueprint — every leak, every fix, every projection. Yours to keep regardless of what you decide next." },
-              { step: "04", title: "Partnership Begins", desc: "If you're ready to move, Phase II starts. $0 base. 20% of every dollar of new revenue we generate together." }
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 14 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.15, ease: "easeOut" }}
-                className={`relative flex flex-col md:flex-row gap-8 md:gap-0 items-start md:items-center mb-20 last:mb-0 ${
-                  i % 2 === 0 ? 'md:flex-row-reverse' : ''
-                }`}
-              >
-                {/* Content Side */}
-                <div className={`md:w-1/2 pl-12 md:pl-0 ${i % 2 === 0 ? 'md:pl-16 text-left' : 'md:pr-16 md:text-right'}`}>
-                  <span className="text-sm font-bold text-gold-antique tracking-widest uppercase mb-2 block">Step {item.step}</span>
-                  <h3 className="text-2xl font-heading text-ivory-primary mb-3">{item.title}</h3>
-                  <p className="text-ivory-body">{item.desc}</p>
-                </div>
-
-                {/* Center Node */}
-                <div className="absolute left-0 md:left-1/2 w-8 h-8 bg-navy-dark border-2 border-gold-antique rounded-full flex items-center justify-center z-10 md:-translate-x-1/2">
-                  <div className="w-2 h-2 bg-gold-antique rounded-full" />
-                </div>
-
-                {/* Empty Side for Balance */}
-                <div className="md:w-1/2" />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
       {/* --- 11. Case Study Placeholder (Visual Breather) --- */}
       <section className="w-full py-24 bg-slate-deep text-ivory-primary">
         <div className="max-w-content mx-auto px-6 md:px-12">
