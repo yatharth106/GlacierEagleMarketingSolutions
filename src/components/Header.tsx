@@ -39,13 +39,6 @@ export default function Header() {
               </Link>
             ))}
           </div>
-          
-          {/* Apply Button */}
-          <Link to="/apply">
-            <button className="border border-[#C9A84C] bg-transparent text-[#C9A84C] font-mono text-[11px] font-bold uppercase tracking-[0.15em] px-6 py-[10px] rounded-none hover:bg-[#C9A84C] hover:text-black transition-all duration-200">
-              Apply
-            </button>
-          </Link>
         </nav>
 
         {/* Mobile Hamburger */}
