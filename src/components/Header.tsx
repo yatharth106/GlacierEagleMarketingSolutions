@@ -9,7 +9,6 @@ export default function Header() {
     { label: 'Services', href: '/services' },
     { label: 'Concept Study', href: '/case-studies' },
     { label: 'Process', href: '/services' },
-    { label: 'Apply', href: '/apply' },
   ];
 
   return (
@@ -39,6 +38,13 @@ export default function Header() {
               </Link>
             ))}
           </div>
+          {/* Apply Button */}
+          <Link
+            to="/apply"
+            className="font-mono text-[11px] font-bold text-[#050608] uppercase tracking-[0.15em] bg-[#C9A84C] px-6 py-2 hover:bg-[#B8963A] transition-colors"
+          >
+            Apply
+          </Link>
         </nav>
 
         {/* Mobile Hamburger */}
@@ -64,6 +70,13 @@ export default function Header() {
               {item.label}
             </Link>
           ))}
+          <Link
+            to="/apply"
+            onClick={() => setIsMenuOpen(false)}
+            className="font-mono text-[11px] font-bold text-[#050608] uppercase tracking-[0.15em] bg-[#C9A84C] px-6 py-2 hover:bg-[#B8963A] transition-colors inline-block w-fit"
+          >
+            Apply
+          </Link>
         </nav>
       )}
     </header>
