@@ -56,7 +56,7 @@ export default function CaseStudiesDetailPage() {
               Sample Revenue Architecture Blueprint
             </h1>
             <p className="text-lg text-ivory-primary/60 max-w-3xl mx-auto mb-12 leading-relaxed">
-              The following is a concept study demonstrating our diagnostic framework and process. This Blueprint was built for a fictional B2B SaaS brand to illustrate exactly what clients receive during Phase I engagement.
+              The following is a concept study demonstrating our diagnostic framework and process. This Blueprint was built for a representative B2B SaaS brand to illustrate exactly what clients receive during Phase I engagement.
             </p>
             <Button onClick={handleDownloadPDF} className="px-12 py-6 bg-gold-antique text-navy-dark font-mono text-xs uppercase tracking-[1.8px] hover:bg-gold-antique/90 transition-all duration-300 hover:-translate-y-0.5 border-none rounded-none">
               DOWNLOAD SAMPLE BLUEPRINT
