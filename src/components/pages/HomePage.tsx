@@ -1,14 +1,12 @@
-// HPI 1.7-G
 import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useScroll, useTransform, useSpring, useInView } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { BaseCrudService } from '@/integrations';
 import { ProblemStatements, OptimizationMetrics, TargetIndustries } from '@/entities';
 import PageLayout from '@/components/PageLayout';
-import { ArrowRight, Check, ChevronDown, Minus, X } from 'lucide-react';
+import { ArrowRight, Check, ChevronDown, Minus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import { Image } from '@/components/ui/image';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
