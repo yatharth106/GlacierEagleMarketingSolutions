@@ -231,6 +231,7 @@ export default function HomePage() {
                 <div className="w-3 h-3 bg-[#C9A84C] transform rotate-45" />
               </div>
               <h3 className="text-xl font-bold text-[#F0EDE8] mb-4">We Think in Systems</h3>
+              <p className="text-sm text-[#C9A84C] mb-3">Powered by a proprietary AI Revenue Operating System — built for speed, precision, and scale without the overhead.</p>
               <p className="text-base text-[#9A9AA0] leading-relaxed">
                 We don't run one-off campaigns. We map your entire revenue infrastructure and fix the architecture — not just the symptoms.
               </p>
