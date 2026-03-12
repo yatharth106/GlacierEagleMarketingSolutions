@@ -729,11 +729,11 @@ export default function HomePage() {
               <div className="sticky top-32">
                 <FadeIn>
                   <h2 className="text-5xl md:text-6xl font-heading text-ivory-primary mb-8 leading-tight">
-                    Your Inbox Is <br />
-                    <span className="text-gold-antique italic">Leaking Revenue.</span>
+                    Your Revenue System Is <br />
+                    <span className="text-gold-antique italic">Leaking.</span>
                   </h2>
                   <p className="text-lg text-ivory-body mb-12 max-w-md leading-relaxed">
-                    Most B2B email systems are designed for marketing metrics, not revenue outcomes. While you track open rates, your actual pipeline is silently draining away.
+                    Most founders optimize tactics — ads, emails, funnels — in isolation. The real problem is structural. When acquisition, conversion, retention, and expansion are not engineered as a unified system, revenue leaks silently from every gap.
                   </p>
                   <div className="hidden lg:block w-24 h-[1px] bg-ivory-primary/20" />
                 </FadeIn>
@@ -744,39 +744,39 @@ export default function HomePage() {
             <div className="lg:col-span-7 space-y-12">
               {isLoading ? (
                 <div className="space-y-8">
-                  {[1, 2, 3].map(i => <div key={i} className="h-40 bg-gold-antique/10 animate-pulse rounded-sm" />)}
+                  {[1, 2, 3, 4].map(i => <div key={i} className="h-40 bg-gold-antique/10 animate-pulse rounded-sm" />)}
                 </div>
               ) : (
-                problems.filter(p => p.isCommon).map((problem, index) => (
-                  <motion.div
-                    key={problem._id}
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
-                    className="group border-l-2 border-gold-antique/30 pl-8 py-4 hover:border-gold-antique transition-colors duration-500"
-                  >
-                    <h3 className="text-2xl font-heading text-ivory-primary mb-3 group-hover:text-gold-antique transition-colors">
-                      {problem.problemDescription}
-                    </h3>
-                    {problem.symptomExample && (
-                      <p className="text-base text-ivory-body leading-relaxed">
-                        {problem.symptomExample}
-                      </p>
-                    )}
-                    {problem.revenueImpact && (
+                <>
+                  {[
+                    { title: "Trial users activate but never convert to paid", impact: "- Lost conversion revenue" },
+                    { title: "Leads engage but stall before a buying decision", impact: "- Extended sales cycles" },
+                    { title: "Customers churn before lifetime value compounds", impact: "- Reduced LTV" },
+                    { title: "Expansion revenue sits untouched inside your existing base", impact: "- Missed upsell opportunity" }
+                  ].map((item, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, x: 20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true, margin: "-100px" }}
+                      transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
+                      className="group border-l-2 border-gold-antique/30 pl-8 py-4 hover:border-gold-antique transition-colors duration-500"
+                    >
+                      <h3 className="text-2xl font-heading text-ivory-primary mb-3 group-hover:text-gold-antique transition-colors">
+                        {item.title}
+                      </h3>
                       <div className="mt-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gold-antique/70">
                         <Minus className="w-4 h-4" />
-                        {problem.revenueImpact}
+                        {item.impact}
                       </div>
-                    )}
-                  </motion.div>
-                ))
+                    </motion.div>
+                  ))}
+                </>
               )}
               
               <FadeIn delay={0.4} className="pt-12">
                 <p className="text-2xl font-heading italic text-ivory-primary text-center lg:text-left">
-                  "Email should accelerate pipeline velocity — not generate vanity metrics."
+                  "The issue is never one campaign. It is always the architecture."
                 </p>
               </FadeIn>
             </div>
