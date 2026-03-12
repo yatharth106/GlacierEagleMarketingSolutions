@@ -449,52 +449,6 @@ export default function HomePage() {
                   </motion.div>
                 </StaggerItem>
 
-                {/* Retail & E-Commerce Card */}
-                <StaggerItem>
-                  <motion.div
-                    whileHover={{ 
-                      borderColor: 'rgba(168, 132, 59, 0.4)',
-                      boxShadow: '0 12px 30px rgba(0, 0, 0, 0.25)',
-                      y: -2
-                    }}
-                    transition={{ duration: 0.3, ease: "easeOut" }}
-                    className="bg-card-bg p-[60px] border border-divider rounded-[6px] min-h-full flex flex-col justify-between"
-                  >
-                    {/* Industry Label */}
-                    <p className="text-[10px] uppercase tracking-[2px] text-gold-antique font-label font-bold mb-[14px]">
-                      Retail & E-Commerce
-                    </p>
-                    
-                    {/* Headline */}
-                    <h3 className="text-[26px] md:text-[30px] font-heading text-ivory-primary mb-5 leading-tight">
-                      Conversion & Margin Systems
-                    </h3>
-                    
-                    {/* Description */}
-                    <p className="text-[17px] font-paragraph text-ivory-body leading-[1.8] mb-7">
-                      Retail performance is governed by unit economics, conversion efficiency, offer structure, and customer lifetime value. Sustainable scale requires margin-aware acquisition and retention architecture.
-                    </p>
-                    
-                    {/* Divider */}
-                    <div className="w-full h-px bg-divider my-7" />
-                    
-                    {/* Leverage List */}
-                    <div className="space-y-4">
-                      {[
-                        'Conversion rate optimization',
-                        'AOV and bundling logic',
-                        'Retention lifecycle design',
-                        'Paid acquisition efficiency',
-                        'Margin-sensitive scaling models'
-                      ].map((item, idx) => (
-                        <p key={idx} className="text-[16px] font-paragraph text-ivory-body leading-[1.8]">
-                          {item}
-                        </p>
-                      ))}
-                    </div>
-                  </motion.div>
-                </StaggerItem>
-
                 {/* Render additional industries from CMS if available */}
                 {industries.map((industry, idx) => (
                   <StaggerItem key={industry._id}>
