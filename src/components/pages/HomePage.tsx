@@ -749,8 +749,8 @@ export default function HomePage() {
                 icon: "03"
               },
               {
-                title: "Infrastructure Hardening",
-                desc: "Technical optimization to ensure your revenue engine reaches inboxes, not spam.",
+                title: "Revenue Diagnostic Layer",
+                desc: "We identify structural friction across your entire revenue system — from acquisition to expansion — and map every leak to a measurable revenue impact.",
                 icon: "04"
               }
             ].map((service, i) => (
