@@ -150,7 +150,7 @@ export default function HomePage() {
       <section className="w-full relative min-h-[85vh] flex flex-col justify-center items-center overflow-hidden">
         {/* Subtle Background Texture/Motion */}
         <div className="absolute inset-0 z-0 opacity-30 pointer-events-none">
-           <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-emerald-forest/10 rounded-full blur-[100px] mix-blend-multiply animate-pulse" style={{ animationDuration: '10s' }} />
+           <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-gold-antique/10 rounded-full blur-[100px] mix-blend-multiply animate-pulse" style={{ animationDuration: '10s' }} />
            <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-gold-antique/5 rounded-full blur-[120px] mix-blend-multiply" />
         </div>
 
