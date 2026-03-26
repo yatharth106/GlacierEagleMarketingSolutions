@@ -163,20 +163,26 @@ export default function ApplicationPage() {
   const handleNext = () => {
     if (validateStep(currentStep) && currentStep < 5) {
       setCurrentStep(currentStep + 1);
-      // Scroll to top of form to ensure all fields are visible
-      if (formRef.current) {
-        formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      // Scroll to top of form after state update and animation begins
+      setTimeout(() => {
+        if (formRef.current) {
+          const offsetTop = formRef.current.getBoundingClientRect().top + window.scrollY - 100;
+          window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+        }
+      }, 50);
     }
   };
 
   const handlePrev = () => {
     if (currentStep > 1) {
       setCurrentStep(currentStep - 1);
-      // Scroll to top of form
-      if (formRef.current) {
-        formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      // Scroll to top of form after state update and animation begins
+      setTimeout(() => {
+        if (formRef.current) {
+          const offsetTop = formRef.current.getBoundingClientRect().top + window.scrollY - 100;
+          window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+        }
+      }, 50);
     }
   };
 
