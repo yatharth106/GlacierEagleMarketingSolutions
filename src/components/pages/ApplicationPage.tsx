@@ -376,12 +376,24 @@ export default function ApplicationPage() {
                   />
                 </div>
                 <div className="flex justify-between items-center">
-                  <p className="font-label text-xs uppercase tracking-widest text-ivory-body">
+                  <motion.p 
+                    key={`step-${currentStep}`}
+                    className="font-label text-xs uppercase tracking-widest text-ivory-body"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  >
                     Step {currentStep} of 5
-                  </p>
-                  <p className="font-label text-xs uppercase tracking-widest text-gold-antique">
+                  </motion.p>
+                  <motion.p 
+                    key={`progress-${currentStep}`}
+                    className="font-label text-xs uppercase tracking-widest text-gold-antique"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  >
                     {Math.round(progressPercentage)}%
-                  </p>
+                  </motion.p>
                 </div>
               </motion.div>
 
