@@ -83,6 +83,7 @@ export default function ApplicationPage() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const formRef = React.useRef<HTMLDivElement>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
@@ -162,12 +163,20 @@ export default function ApplicationPage() {
   const handleNext = () => {
     if (validateStep(currentStep) && currentStep < 5) {
       setCurrentStep(currentStep + 1);
+      // Scroll to top of form to ensure all fields are visible
+      if (formRef.current) {
+        formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
   };
 
   const handlePrev = () => {
     if (currentStep > 1) {
       setCurrentStep(currentStep - 1);
+      // Scroll to top of form
+      if (formRef.current) {
+        formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
   };
 
@@ -343,6 +352,7 @@ export default function ApplicationPage() {
               variants={containerVariants}
               initial="hidden"
               animate="visible"
+              ref={formRef}
             >
               {/* Progress Bar */}
               <motion.div
