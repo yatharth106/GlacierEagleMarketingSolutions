@@ -17,6 +17,31 @@ export interface Import1 {
 
 
 /**
+ * Collection ID: SubmissionForm
+ * Interface for SumbitionForm
+ */
+export interface SumbitionForm {
+  _id: string;
+  _createdDate?: Date;
+  _updatedDate?: Date;
+  /** @wixFieldType text */
+  fullName?: string;
+  /** @wixFieldType text */
+  messageInquiry?: string;
+  /** @wixFieldType text */
+  companyOrganization?: string;
+  /** @wixFieldType text */
+  emailAddress?: string;
+  /** @wixFieldType number */
+  phoneNumber?: number;
+  /** @wixFieldType image - Contains image URL, render with <Image> component, NOT as text */
+  profilePicture?: string;
+  /** @wixFieldType datetime */
+  submissionDate?: Date | string;
+}
+
+
+/**
  * Collection ID: casestudies
  * Interface for CaseStudies
  */
