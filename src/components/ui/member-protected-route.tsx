@@ -1,73 +1,25 @@
-import { ReactNode } from 'react';
+import React from 'react';
 import { useMember } from '@/integrations';
-import { SignIn } from '@/components/ui/sign-in';
-import { LoadingSpinner } from '@/components/ui/loading-spinner';
-
-interface SignInProps {
-  title?: string;
-  message?: string;
-  className?: string;
-  cardClassName?: string;
-  buttonClassName?: string;
-  buttonText?: string;
-}
-
-interface LoadingSpinnerProps {
-  message?: string;
-  className?: string;
-  spinnerClassName?: string;
-}
+import { LoadingSpinner } from './loading-spinner';
+import { SignIn } from './sign-in';
 
 interface MemberProtectedRouteProps {
-  children: ReactNode;
-
-  // Simple props for quick customization
+  children: React.ReactNode;
   messageToSignIn?: string;
-  messageToLoading?: string;
-  signInTitle?: string;
-  signInClassName?: string;
-  loadingClassName?: string;
-
-  // Advanced prop objects for full customization
-  signInProps?: Partial<SignInProps>;
-  loadingSpinnerProps?: Partial<LoadingSpinnerProps>;
 }
 
-export function MemberProtectedRoute({
-  children,
-  messageToSignIn = "Please sign in to access this page.",
-  messageToLoading = "Loading page...",
-  signInTitle = "Sign In Required",
-  signInClassName = "",
-  loadingClassName = "",
-  signInProps = {},
-  loadingSpinnerProps = {}
+export function MemberProtectedRoute({ 
+  children, 
+  messageToSignIn = "Please sign in to access this page" 
 }: MemberProtectedRouteProps) {
-  const { isAuthenticated, isLoading } = useMember();
+  const { member, isLoading } = useMember();
 
   if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center p-4">
-        <LoadingSpinner
-          message={messageToLoading}
-          className={loadingClassName}
-          {...loadingSpinnerProps}
-        />
-      </div>
-    );
+    return <LoadingSpinner />;
   }
 
-  if (!isAuthenticated) {
-    return (
-      <div className="min-h-screen flex items-center justify-center p-4">
-        <SignIn
-          title={signInTitle}
-          message={messageToSignIn}
-          className={signInClassName}
-          {...signInProps}
-        />
-      </div>
-    );
+  if (!member) {
+    return <SignIn message={messageToSignIn} />;
   }
 
   return <>{children}</>;

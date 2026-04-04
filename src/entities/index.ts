@@ -4,44 +4,6 @@
  */
 
 /**
- * Collection ID: Import1
- * Interface for Import1
- */
-export interface Import1 {
-  _id: string;
-  _createdDate?: Date;
-  _updatedDate?: Date;
-  /** @wixFieldType text */
-  title?: string;
-}
-
-
-/**
- * Collection ID: SubmissionForm
- * Interface for SumbitionForm
- */
-export interface SumbitionForm {
-  _id: string;
-  _createdDate?: Date;
-  _updatedDate?: Date;
-  /** @wixFieldType text */
-  fullName?: string;
-  /** @wixFieldType text */
-  messageInquiry?: string;
-  /** @wixFieldType text */
-  companyOrganization?: string;
-  /** @wixFieldType text */
-  emailAddress?: string;
-  /** @wixFieldType number */
-  phoneNumber?: number;
-  /** @wixFieldType image - Contains image URL, render with <Image> component, NOT as text */
-  profilePicture?: string;
-  /** @wixFieldType datetime */
-  submissionDate?: Date | string;
-}
-
-
-/**
  * Collection ID: casestudies
  * Interface for CaseStudies
  */
@@ -103,6 +65,19 @@ export interface FrequentlyAskedQuestions {
   displayOrder?: number;
   /** @wixFieldType boolean */
   isFeatured?: boolean;
+}
+
+
+/**
+ * Collection ID: Import1
+ * Interface for Import1
+ */
+export interface Import1 {
+  _id: string;
+  _createdDate?: Date;
+  _updatedDate?: Date;
+  /** @wixFieldType text */
+  title?: string;
 }
 
 
@@ -187,6 +162,31 @@ export interface Services {
   shortDescription?: string;
   /** @wixFieldType image - Contains image URL, render with <Image> component, NOT as text */
   illustrationImage?: string;
+}
+
+
+/**
+ * Collection ID: SubmissionForm
+ * Interface for SumbitionForm
+ */
+export interface SumbitionForm {
+  _id: string;
+  _createdDate?: Date;
+  _updatedDate?: Date;
+  /** @wixFieldType text */
+  fullName?: string;
+  /** @wixFieldType text */
+  messageInquiry?: string;
+  /** @wixFieldType text */
+  companyOrganization?: string;
+  /** @wixFieldType text */
+  emailAddress?: string;
+  /** @wixFieldType number */
+  phoneNumber?: number;
+  /** @wixFieldType image - Contains image URL, render with <Image> component, NOT as text */
+  profilePicture?: string;
+  /** @wixFieldType datetime */
+  submissionDate?: Date | string;
 }
 
 
