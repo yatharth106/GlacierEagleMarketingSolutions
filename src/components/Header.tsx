@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { Image } from '@/components/ui/image';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,13 +14,17 @@ export default function Header() {
   return (
     <header className="w-full bg-[#050608] border-b border-[#1A1B20] fixed top-0 left-0 right-0 z-50 h-[72px] flex items-center">
       <div className="w-full px-[60px] flex items-center justify-between h-full">
-        {/* Logo - Two Lines */}
-        <Link to="/" className="flex flex-col gap-0 hover:opacity-80 transition-opacity">
+        {/* Logo - GEMS with Icon */}
+        <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+          <Image
+            src="https://static.wixstatic.com/media/5fdb91_1346d12087cf420c9fca76128bae4265~mv2.png"
+            alt="GEMS Logo"
+            width={40}
+            height={40}
+            className="object-contain"
+          />
           <div className="font-mono text-[13px] font-bold text-[#C9A84C] uppercase tracking-[0.2em] leading-tight">
-            Glacier Eagle
-          </div>
-          <div className="font-mono text-[9px] font-bold text-[#6B6B72] uppercase tracking-[0.3em] leading-tight">
-            Marketing Solutions
+            GEMS
           </div>
         </Link>
 
