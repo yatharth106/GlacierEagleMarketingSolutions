@@ -12,6 +12,9 @@ export const Head = () => {
       <meta name="googlebot" content="index, follow" />
       <meta name="language" content="English" />
       
+      {/* Google Site Verification */}
+      <meta name="google-site-verification" content="fUK_e6B7my8tBxM77HXcN6DTS3XHICPup0DljrtDabw" />
+      
       {/* Fonts */}
       <link rel="preconnect" href="https://static.parastorage.com" />
       <link rel="dns-prefetch" href="https://static.parastorage.com" />
