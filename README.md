@@ -1,3 +1,38 @@
+# Glacier Eagle Marketing Solutions
+
+Curated resources and systems for modern marketing, revenue growth, and business building.
+
+Built by **Yatharth Bagri** (@yatharth106) — a 15-year-old founder from India.
+
+## About Me
+Started my journey at age 12 with a dream of building something meaningful. Turned Glacier Eagle from an email marketing idea into a focused Revenue Architecture project. Passionate about systems thinking, AI leverage, polymath learning, and helping businesses grow sustainably.
+
+## What's Inside
+- Notes on business systems and mental models
+- General learning resources
+- Productivity templates and prompts
+- Insights from my daily building journey
+
+This repository is part of my public learning and experimentation as a young founder. I use tools like Claude heavily every day to accelerate my growth.
+
+**Goal**: Keep improving, learn in public, and eventually contribute more to the ecosystem as I build.
+
+⭐ Star if you find it useful. Contributions and feedback are welcome!
+
+---
+
+**Connect**
+- GitHub: [@yatharth106](https://github.com/yatharth106)
+- Email: gemsbagri@gmail.com
+
+---
+
+*Last updated: June 2026*
+
+
+
+
+
 # Wixstro - Wix Astro Template
 
 A modern, full-featured Wix Astro template built with React, TypeScript, and Tailwind CSS. This template provides a solid foundation for building dynamic, interactive websites with Wix's powerful ecosystem.
